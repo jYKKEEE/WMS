@@ -1,0 +1,24 @@
+@import "../../assets/styles/config.scss";
+.shelf {
+  display: flex;
+  border-bottom: 1px solid $shelf-border;
+  color: $product-text;
+}
+
+.shelf_data {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: $shelf-padding;
+}
+.shelf_amount,
+.shelf_timespan,
+.shelf_average {
+  text-align: right;
+}
+
+.shelf_type,
+.shelf_amount {
+  font-weight: bold;
+  color: $shelf-text-strong;
+}

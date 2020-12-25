@@ -1,0 +1,8 @@
+@import "../../assets/styles/config.scss";
+
+.products_header {
+  display: flex;
+  justify-content: center;
+  font-size: $products-fontsize;
+  border-bottom: 1px solid $product-border;
+}

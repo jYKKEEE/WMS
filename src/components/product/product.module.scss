@@ -1,0 +1,24 @@
+@import "../../assets/styles/config.scss";
+.product {
+  display: flex;
+  border-bottom: 1px solid $product-border;
+  color: $product-text;
+}
+
+.product_data {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: $product-padding;
+}
+.product_amount,
+.product_timespan,
+.product_average {
+  text-align: right;
+}
+
+.product_type,
+.product_amount {
+  font-weight: bold;
+  color: $product-text-strong;
+}
