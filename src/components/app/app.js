@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import styles from "./app.module.scss";
 import Header from "../header";
 import Content from "../content";
-import Scanner from "../scanner";
+import Search from "../search";
 import AddShelf from "../shelf/addShelf";
 import Shelfs from "../shelfs";
 import Menu from "../menu";
@@ -18,9 +18,7 @@ function App() {
         barcode: Math.ceil(Math.random() * 9999999999),
         level: 0,
         slot: 1,
-        products: [
-          { name: "kala", barcode: Math.ceil(Math.random(1) * 10000000) },
-        ],
+        products: [{ id: 7, name: "jalka" }],
       },
     ],
   };
@@ -32,9 +30,18 @@ function App() {
         level: 0,
         slot: 1,
         products: [
-          { name: "kissa", barcode: Math.ceil(Math.random(1) * 10000000) },
-          { name: "kivi", barcode: Math.ceil(Math.random(1) * 10000000) },
-          { name: "koira", barcode: Math.ceil(Math.random(1) * 10000000) },
+          {
+            id: 1,
+            name: "kissa",
+          },
+          {
+            id: 2,
+            name: "kivi",
+          },
+          {
+            id: 3,
+            name: "koira",
+          },
         ],
       },
       {
@@ -42,15 +49,67 @@ function App() {
         level: 3,
         slot: 2,
         products: [
-          { name: "rotta", barcode: Math.ceil(Math.random(1) * 10000000) },
-          { name: "kivi", barcode: Math.ceil(Math.random(1) * 10000000) },
-          { name: "kallio", barcode: Math.ceil(Math.random(1) * 10000000) },
+          {
+            id: 4,
+            name: "rotta",
+          },
+          {
+            id: 5,
+            name: "kivi",
+          },
+          {
+            id: 6,
+            name: "kallio",
+          },
+        ],
+      },
+    ],
+  };
+  var hylly3 = {
+    id: 3,
+    slots: [
+      {
+        barcode: Math.ceil(Math.random() * 9999999999),
+        level: 0,
+        slot: 1,
+        products: [
+          {
+            id: 8,
+            name: "pena",
+          },
+          {
+            id: 9,
+            name: "timo",
+          },
+          {
+            id: 10,
+            name: "ville",
+          },
+        ],
+      },
+      {
+        barcode: Math.ceil(Math.random() * 9999999999),
+        level: 1,
+        slot: 2,
+        products: [
+          {
+            id: 12,
+            name: "kitta",
+          },
+          {
+            id: 13,
+            name: "jyri",
+          },
+          {
+            id: 14,
+            name: "jasu",
+          },
         ],
       },
     ],
   };
 
-  const [shelfs, setShelfs] = useState([hylly1, hylly2]);
+  const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
   const [activeShelf, setActiveShelf] = useState(0);
   console.log(`active: ${activeShelf}`);
 
@@ -72,11 +131,11 @@ function App() {
           )}
         />
         <Route
-          path="/"
+          path="/search"
           exact
           render={() => (
             <Content>
-              <Scanner />
+              <Search />
             </Content>
           )}
         />

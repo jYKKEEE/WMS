@@ -1,7 +1,7 @@
 import styles from "./menu.module.scss";
 import AddIcon from "@material-ui/icons/Add";
 import ShelfsIcon from "@material-ui/icons/ListAlt";
-import ScanIcon from "@material-ui/icons/AddCircleOutline";
+import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 
 function Menu() {
@@ -12,9 +12,9 @@ function Menu() {
           <AddIcon />
         </div>
       </Link>
-      <Link to="/">
+      <Link to="/search">
         <div>
-          <ScanIcon />
+          <SearchIcon />
         </div>
       </Link>
       <Link to="/shelfs">

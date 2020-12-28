@@ -1,5 +1,6 @@
 import Product from "../product";
 import styles from "./products.module.scss";
+import { Link } from "react-router-dom";
 
 /*var shelf = {
     id: 1,
@@ -27,7 +28,11 @@ function Products({ shelf }) {
         slot={slot.slot}
         barcode={slot.barcode}
         products={slot.products.map((product) => (
-          <p>{product.name}</p>
+          <Link to="">
+            <p>
+              ({product.id}) {product.name}
+            </p>
+          </Link>
         ))}
       />
     </div>
