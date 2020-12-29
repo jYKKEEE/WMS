@@ -13,7 +13,11 @@ import { Link } from "react-router-dom";
   };*/
 
 function Shelfs(props) {
-  const { shelfs, activeShelfHandler } = props;
+  const { shelfs, setActiveShelf } = props;
+
+  const activeShelfHandler = (id) => {
+    setActiveShelf(id);
+  };
 
   const output = shelfs.map((shelf, index) => (
     <Link

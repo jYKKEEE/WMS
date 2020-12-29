@@ -14,7 +14,19 @@ import { Link } from "react-router-dom";
   };*/
 
 function Slots(props) {
-  const { shelf, activeProductHandler, barcodeHandler, productHandler } = props;
+  const { shelf, setActiveProductId, setBarcode, setProduct } = props;
+
+  //funktiot joilla muutetaan tiloja
+  const activeProductHandler = (id) => {
+    setActiveProductId(id);
+  };
+  const barcodeHandler = (barcode) => {
+    setBarcode(barcode);
+  };
+  const productHandler = (product) => {
+    setProduct(product);
+  };
+
   //ota jokainen hyllypaikka omaan taulukkoonsa
   console.log(`shelf id: ${shelf.id}`);
   const slots = shelf.slots.map((slot, index) => (

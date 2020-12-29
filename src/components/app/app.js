@@ -123,20 +123,6 @@ function App() {
   console.log(`active Product: ${activeProductId}`);
   console.log(`filter: ${filter}`);
 
-  //funktiot, jolla tuodaan tilat alemmilta tasoilta
-  const activeShelfHandler = (id) => {
-    setActiveShelf(id);
-  };
-  const activeProductHandler = (id) => {
-    setActiveProductId(id);
-  };
-  const barcodeHandler = (barcode) => {
-    setBarcode(barcode);
-  };
-  const productHandler = (product) => {
-    setProduct(product);
-  };
-
   return (
     <Router>
       <div className={styles.app}>
@@ -165,7 +151,7 @@ function App() {
           exact
           render={() => (
             <Content>
-              <Shelfs shelfs={shelfs} activeShelfHandler={activeShelfHandler} />
+              <Shelfs shelfs={shelfs} setActiveShelf={setActiveShelf} />
             </Content>
           )}
         />
@@ -176,9 +162,9 @@ function App() {
             <Content>
               <Slots
                 shelf={shelfs[activeShelf]}
-                activeProductHandler={activeProductHandler}
-                barcodeHandler={barcodeHandler}
-                productHandler={productHandler}
+                setActiveProductId={setActiveProductId}
+                setBarcode={setBarcode}
+                setProduct={setProduct}
               />
             </Content>
           )}

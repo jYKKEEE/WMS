@@ -12,7 +12,7 @@ function Menu() {
           <AddIcon />
         </div>
       </Link>
-      <Link to="/search">
+      <Link to="/">
         <div>
           <SearchIcon />
         </div>
