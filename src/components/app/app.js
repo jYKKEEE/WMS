@@ -118,7 +118,6 @@ function App() {
   const [filter, setFilter] = useState("");
 
   console.log(`active Shelf: ${activeShelf}`);
-  console.log(`active Shelf plus 1: ${activeShelf + 1}`);
   console.log(`active barcode: ${barcode}`);
   console.log(`active Product: ${activeProductId}`);
   console.log(`filter: ${filter}`);
@@ -127,7 +126,6 @@ function App() {
     <Router>
       <div className={styles.app}>
         <Header />
-
         <Route
           path="/add"
           render={() => (
@@ -169,7 +167,6 @@ function App() {
             </Content>
           )}
         />
-
         <Route
           path={`/${barcode}/${activeProductId}`}
           render={() => (
@@ -178,11 +175,9 @@ function App() {
             </Content>
           )}
         />
-
         <Menu />
       </div>
     </Router>
   );
 }
-// /
 export default App;
