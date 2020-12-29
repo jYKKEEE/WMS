@@ -115,11 +115,13 @@ function App() {
   const [activeProductId, setActiveProductId] = useState(0);
   const [barcode, setBarcode] = useState(0);
   const [product, setProduct] = useState({});
+  const [filter, setFilter] = useState("");
 
   console.log(`active Shelf: ${activeShelf}`);
   console.log(`active Shelf plus 1: ${activeShelf + 1}`);
   console.log(`active barcode: ${barcode}`);
   console.log(`active Product: ${activeProductId}`);
+  console.log(`filter: ${filter}`);
 
   //funktiot, jolla tuodaan tilat alemmilta tasoilta
   const activeShelfHandler = (id) => {
@@ -139,6 +141,7 @@ function App() {
     <Router>
       <div className={styles.app}>
         <Header />
+
         <Route
           path="/add"
           render={() => (
@@ -149,11 +152,11 @@ function App() {
           )}
         />
         <Route
-          path="/search"
+          path="/"
           exact
           render={() => (
             <Content>
-              <Search />
+              <Search filter={filter} setFilter={setFilter} />
             </Content>
           )}
         />

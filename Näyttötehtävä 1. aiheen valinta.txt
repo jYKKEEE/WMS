@@ -1,0 +1,14 @@
+WMS - warehouse management system
+
+WMS (Varastonhallinta) on ohjelma, jolla pidetäään kirjaa tavaroistasi ja niiden sijainnista.
+
+Ohjelmassa käsitellän yhtä varastoa.
+
+Varastoon luodaan hyllyjä sekä hyllyihin hyllypaikkoja, johon laitetaan tavaroita (products).
+
+Jokainen hylly voi olla erilainen ja kullekin hyllypaikalle sopii oma määrä taravaa.
+
+Tavaroita voi lisätä,muokata, poistaa tai siirtää paikalta toiselle.
+
+Varastosta voi etsiä tuotteita nimen tai speksien perusteella.
+
