@@ -18,7 +18,7 @@ function Shelfs(props) {
   const output = shelfs.map((shelf, index) => (
     <Link
       key={shelf.id}
-      to="/products"
+      to={`shelfs/${shelf.id}/products`}
       onClick={() => {
         activeShelfHandler(index);
       }}

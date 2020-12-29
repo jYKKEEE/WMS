@@ -14,22 +14,16 @@ import { Link } from "react-router-dom";
 
 function Products({ shelf }) {
   //ota jokainen hyllypaikka omaan taulukkoonsa
-  const slots = shelf.slots.map((slot) => (
-    /*<div key={slot.barcode}>
-      level:{slot.level}
-      <br />
-      slot:{slot.slot}
-      <br />
-      products:
-      {}*/
-    <div>
+
+  const slots = shelf.slots.map((slot, index) => (
+    <div key={index}>
       <Product
         level={slot.level}
         slot={slot.slot}
         barcode={slot.barcode}
         products={slot.products.map((product) => (
-          <Link to="">
-            <p>
+          <Link to={`/shelfs/${shelf.id}/products/`}>
+            <p key={product.id}>
               ({product.id}) {product.name}
             </p>
           </Link>

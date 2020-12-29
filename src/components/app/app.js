@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import styles from "./app.module.scss";
 import Header from "../header";
@@ -141,21 +141,24 @@ function App() {
         />
         <Route
           path="/shelfs"
+          exact
           render={() => (
             <Content>
               <Shelfs shelfs={shelfs} activeShelfHandler={activeShelfHandler} />
             </Content>
           )}
         />
-        <Route
-          path="/products"
-          exact
-          render={() => (
-            <Content>
-              <Products shelf={shelfs[activeShelf]} />
-            </Content>
-          )}
-        />
+        <Switch>
+          <Route
+            path={`/shelfs/${activeShelf + 1}/products`}
+            exact
+            render={() => (
+              <Content>
+                <Products shelf={shelfs[activeShelf]} />
+              </Content>
+            )}
+          />
+        </Switch>
         <Menu />
       </div>
     </Router>
