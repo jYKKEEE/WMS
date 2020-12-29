@@ -1,7 +1,7 @@
 @import "../../assets/styles/config.scss";
 .product {
   display: flex;
-  border-bottom: 1px solid $shelf-border;
+  border-bottom: 1px solid $product-border;
   color: $product-text;
 }
 
@@ -9,7 +9,7 @@
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: $shelf-padding;
+  padding: $product-padding;
 }
 .product_amount,
 .product_timespan,
@@ -20,5 +20,5 @@
 .product_type,
 .product_amount {
   font-weight: bold;
-  color: $shelf-text-strong;
+  color: $product-text-strong;
 }

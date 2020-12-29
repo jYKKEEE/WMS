@@ -8,7 +8,8 @@ import Search from "../search";
 import AddShelf from "../shelf/addShelf";
 import Shelfs from "../shelfs";
 import Menu from "../menu";
-import Products from "../products";
+import Slots from "../slots";
+import Product from "../product";
 
 function App() {
   var hylly1 = {
@@ -18,7 +19,7 @@ function App() {
         barcode: Math.ceil(Math.random() * 9999999999),
         level: 0,
         slot: 1,
-        products: [{ id: 7, name: "jalka" }],
+        products: [{ id: 65464, name: "jalka" }],
       },
     ],
   };
@@ -31,15 +32,15 @@ function App() {
         slot: 1,
         products: [
           {
-            id: 1,
+            id: 87659,
             name: "kissa",
           },
           {
-            id: 2,
+            id: 34523,
             name: "kivi",
           },
           {
-            id: 3,
+            id: 87657,
             name: "koira",
           },
         ],
@@ -50,15 +51,15 @@ function App() {
         slot: 2,
         products: [
           {
-            id: 4,
+            id: 23464,
             name: "rotta",
           },
           {
-            id: 5,
+            id: 34523,
             name: "kivi",
           },
           {
-            id: 6,
+            id: 18765,
             name: "kallio",
           },
         ],
@@ -74,34 +75,34 @@ function App() {
         slot: 1,
         products: [
           {
-            id: 8,
+            id: 72341,
             name: "pena",
           },
           {
-            id: 9,
+            id: 37654,
             name: "timo",
           },
           {
-            id: 10,
+            id: 49823,
             name: "ville",
           },
         ],
       },
       {
-        barcode: Math.ceil(Math.random() * 9999999999),
         level: 1,
         slot: 2,
+        barcode: Math.ceil(Math.random() * 9999999999),
         products: [
           {
-            id: 12,
+            id: 26457,
             name: "kitta",
           },
           {
-            id: 13,
+            id: 72345,
             name: "jyri",
           },
           {
-            id: 14,
+            id: 29864,
             name: "jasu",
           },
         ],
@@ -111,10 +112,27 @@ function App() {
 
   const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
   const [activeShelf, setActiveShelf] = useState(0);
-  console.log(`active: ${activeShelf}`);
+  const [activeProductId, setActiveProductId] = useState(0);
+  const [barcode, setBarcode] = useState(0);
+  const [product, setProduct] = useState({});
 
+  console.log(`active Shelf: ${activeShelf}`);
+  console.log(`active Shelf plus 1: ${activeShelf + 1}`);
+  console.log(`active barcode: ${barcode}`);
+  console.log(`active Product: ${activeProductId}`);
+
+  //funktiot, jolla tuodaan tilat alemmilta tasoilta
   const activeShelfHandler = (id) => {
     setActiveShelf(id);
+  };
+  const activeProductHandler = (id) => {
+    setActiveProductId(id);
+  };
+  const barcodeHandler = (barcode) => {
+    setBarcode(barcode);
+  };
+  const productHandler = (product) => {
+    setProduct(product);
   };
 
   return (
@@ -148,21 +166,34 @@ function App() {
             </Content>
           )}
         />
-        <Switch>
-          <Route
-            path={`/shelfs/${activeShelf + 1}/products`}
-            exact
-            render={() => (
-              <Content>
-                <Products shelf={shelfs[activeShelf]} />
-              </Content>
-            )}
-          />
-        </Switch>
+        <Route
+          path={`/shelfs/${activeShelf + 1}`}
+          exact
+          render={() => (
+            <Content>
+              <Slots
+                shelf={shelfs[activeShelf]}
+                activeProductHandler={activeProductHandler}
+                barcodeHandler={barcodeHandler}
+                productHandler={productHandler}
+              />
+            </Content>
+          )}
+        />
+
+        <Route
+          path={`/${barcode}/${activeProductId}`}
+          render={() => (
+            <Content>
+              <Product shelf={shelfs[activeShelf]} product={product} />
+            </Content>
+          )}
+        />
+
         <Menu />
       </div>
     </Router>
   );
 }
-
+// /
 export default App;
