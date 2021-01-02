@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AddSlot from "../slot/addSlot";
 
 function AddProduct(props) {
-  const { shelfs, setShelfs, activeShelf, setAdding } = props;
+  const { shelfs, setShelfs, active, setProduct } = props;
   const newShelfHandler = () => {
     //1.kysy hyllynumero kunnes antaa numeron tai painaa peruuta
     var shelfNumber = prompt(`Adding action missing..`);
@@ -13,11 +13,7 @@ function AddProduct(props) {
   return (
     <div>
       <AddShelf shelfs={shelfs} setShelfs={setShelfs} />
-      <AddSlot
-        shelfs={shelfs}
-        activeShelf={activeShelf}
-        setAdding={setAdding}
-      />
+      <AddSlot shelfs={shelfs} active={active} setProduct={setProduct} />
 
       <h2>Product:</h2>
       <button

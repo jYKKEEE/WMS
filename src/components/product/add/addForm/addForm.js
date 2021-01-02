@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./addForm.module.scss";
 
 function AddForm(props) {
-  const { setAdding } = props;
+  const { setProduct } = props;
 
   const [name, setName] = useState("");
   const [id, setId] = useState("");
@@ -19,9 +19,19 @@ function AddForm(props) {
   const addingHandler = () => {
     //GenerateID()
     if (name !== "" && id !== 0) {
-      setAdding({ active: true, id: parseInt(id), name: name });
+      setProduct((...prevState) => ({
+        ...prevState,
+        add: true,
+        id: parseInt(id),
+        name: name,
+      }));
     } else {
-      setAdding({ active: false, id: 0, name: "" });
+      setProduct((...prevState) => ({
+        ...prevState,
+        add: false,
+        id: 0,
+        name: "",
+      }));
       alert(`NOT ADDING! plz go back, missing (name) or (Id)`);
     }
   };

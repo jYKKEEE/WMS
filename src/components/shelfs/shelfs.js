@@ -14,10 +14,13 @@ import { Link } from "react-router-dom";
   };*/
 
 function Shelfs(props) {
-  const { shelfs, setActiveShelf, adding, setAdding } = props;
+  const { shelfs, setActive, product, setProduct } = props;
 
   const activeShelfHandler = (id) => {
-    setActiveShelf(id);
+    setActive((prevState) => ({
+      ...prevState,
+      shelf: id,
+    }));
   };
 
   const output = shelfs.map((shelf, index) => (
@@ -34,7 +37,7 @@ function Shelfs(props) {
     </Link>
   ));
 
-  if (adding.active) {
+  if (product.add) {
     return (
       <div>
         {output}
@@ -42,7 +45,10 @@ function Shelfs(props) {
           <p>Select shelf to add</p>
           <button
             onClick={() => {
-              setAdding({ active: false });
+              setProduct((prevState) => ({
+                ...prevState,
+                add: false,
+              }));
             }}
           >
             cancel add

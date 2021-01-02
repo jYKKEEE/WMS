@@ -12,11 +12,12 @@ import styles from "./addSlot.module.scss";
       },*/
 
 function AddSlot(props) {
-  const { shelfs, setAdding, activeShelf } = props;
+  const { shelfs, setProduct, active } = props;
 
+  const handle = () => {};
   const addSlot = () => {
     console.log(`check`);
-    shelfs[activeShelf].slots.push({
+    shelfs[active.shelf].slots.push({
       barcode: Math.ceil(Math.random() * 9999999999),
       level: 0,
       slot: 5,
@@ -31,7 +32,10 @@ function AddSlot(props) {
       <Link to={`/shelfs`}>
         <button
           onClick={() => {
-            setAdding({ edit: true });
+            setProduct((prevState) => ({
+              ...prevState,
+              addSlot: true,
+            }));
           }}
         >
           Add a new Slot

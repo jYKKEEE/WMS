@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 function addButton(props) {
-  const { adding } = props;
+  const { product } = props;
   return (
     <Link to="/add">
       <div

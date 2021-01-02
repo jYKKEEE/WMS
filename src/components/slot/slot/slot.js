@@ -2,7 +2,7 @@ import styles from "./slot.module.scss";
 import AddButton from "../../product/add/addButton";
 
 function Slot(props) {
-  const { level, slot, products, barcode, adding, setAdding } = props;
+  const { level, slot, products, barcode, product, setProduct } = props;
 
   const addingOutput = (
     <div className={styles.product}>
@@ -15,12 +15,12 @@ function Slot(props) {
         <div className={styles.product_date}>{barcode}</div>
         <div className={styles.product_timespan}>{products}</div>
         <div className={styles.product_receiver}>
-          <AddButton adding={adding}></AddButton>
+          <AddButton product={product}></AddButton>
         </div>
         <div className={styles.product_average}></div>
         <button
           onClick={() => {
-            setAdding({ active: false });
+            setProduct((...prevState) => ({ ...prevState, add: false }));
           }}
         >
           cancel
@@ -29,7 +29,7 @@ function Slot(props) {
     </div>
   );
 
-  if (adding.active) {
+  if (product.add) {
     return <div>{addingOutput}</div>;
   } else {
     return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import styles from "./app.module.scss";
 import Header from "../header";
@@ -119,22 +119,24 @@ function App() {
   // localStorage.setItem("hyllyt", JSON.stringify([]));*/
 
   const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
-  const [activeShelf, setActiveShelf] = useState(0);
-  const [activeProductId, setActiveProductId] = useState(0);
-  const [barcode, setBarcode] = useState(0);
-  const [product, setProduct] = useState({});
+  const [active, setActive] = useState({ shelf: 0, productId: 0, barcode: 0 });
   const [filter, setFilter] = useState("");
-  const [adding, setAdding] = useState({
+  const [product, setProduct] = useState({
     edit: false,
-    active: false, //muokkaa tää add iksi
+    add: false,
+    addSlot: false,
     id: 0,
     name: "",
+    level: 0,
+    slot: 0,
   });
 
-  console.log(`adding: ${adding.active}`);
-  console.log(`active Shelf: ${activeShelf}`);
-  console.log(`active barcode: ${barcode}`);
-  console.log(`active Product: ${activeProductId}`);
+  console.log(`product add: ${product.add}`);
+  console.log(`product addSlot: ${product.addSlot}`);
+  console.log(`product edit: ${product.edit}`);
+  console.log(`active Product: ${product.name} ja ${product.id}`);
+  console.log(`active Shelf: ${active.shelf}`);
+  console.log(`active barcode: ${active.barcode}`);
   console.log(`filter: ${filter}`);
 
   return (
@@ -148,8 +150,8 @@ function App() {
               <AddPage
                 shelfs={shelfs}
                 setShelfs={setShelfs}
-                activeShelf={activeShelf}
-                setAdding={setAdding}
+                active={active}
+                setProduct={setProduct}
               />
             </Content>
           )}
@@ -169,35 +171,33 @@ function App() {
           render={() => (
             <Content>
               <Shelfs
-                adding={adding}
-                setAdding={setAdding}
+                product={product}
+                setProduct={setProduct}
                 shelfs={shelfs}
-                setActiveShelf={setActiveShelf}
+                setActive={setActive}
               />
             </Content>
           )}
         />
         <Route
-          path={`/shelfs/${activeShelf + 1}`}
+          path={`/shelfs/${active.shelf + 1}`}
           exact
           render={() => (
             <Content>
               <Slots
-                shelf={shelfs[activeShelf]}
-                setActiveProductId={setActiveProductId}
-                setBarcode={setBarcode}
+                shelf={shelfs[active.shelf]}
+                setActive={setActive}
+                product={product}
                 setProduct={setProduct}
-                adding={adding}
-                setAdding={setAdding}
               />
             </Content>
           )}
         />
         <Route
-          path={`/${barcode}/${activeProductId}`}
+          path={`/${active.barcode}/${active.productId}`}
           render={() => (
             <Content>
-              <Product shelf={shelfs[activeShelf]} product={product} />
+              <Product shelf={shelfs[active.shelf]} product={product} />
             </Content>
           )}
         />
@@ -206,7 +206,7 @@ function App() {
           exact
           render={() => (
             <Content>
-              <AddForm setAdding={setAdding} />
+              <AddForm setProduct={setProduct} />
             </Content>
           )}
         />

@@ -1,6 +1,7 @@
 import Slot from "../slot/slot";
 import AddSlot from "../slot/addSlot";
 import styles from "./slots.module.scss";
+import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 
 /*var shelf = {
@@ -15,26 +16,30 @@ import { Link, useRouteMatch } from "react-router-dom";
   };*/
 
 function Slots(props) {
-  const {
-    shelf,
-    setActiveProductId,
-    setBarcode,
-    setProduct,
-    adding,
-    addSlot,
-    setAdding,
-  } = props;
+  const { shelf, setActive, product, addSlot, setProduct } = props;
   let match = useRouteMatch();
 
   //funktiot joilla muutetaan tiloja
-  const activeProductHandler = (id) => {
-    setActiveProductId(id);
+  const productIdHandler = (id) => {
+    setActive((prevState) => ({
+      ...prevState,
+      productId: id,
+    }));
   };
   const barcodeHandler = (barcode) => {
-    setBarcode(barcode);
+    setActive((prevState) => ({
+      ...prevState,
+      barcode: barcode,
+    }));
   };
-  const productHandler = (product) => {
-    setProduct(product);
+  const productHandler = (id, name, level, slot) => {
+    setProduct((prevState) => ({
+      ...prevState,
+      id: id,
+      name: name,
+      level: level,
+      slot: slot,
+    }));
   };
 
   //ota jokainen hyllypaikka omaan taulukkoonsa
@@ -42,19 +47,19 @@ function Slots(props) {
   const slots = shelf.slots.map((slot, index) => (
     <Slot
       key={index}
-      adding={adding}
+      product={product}
       level={slot.level}
       addSlot={addSlot}
       slot={slot.slot}
-      setAdding={setAdding}
+      setProduct={setProduct}
       barcode={slot.barcode}
       products={slot.products.map((product, index) => (
         <Link
           key={product.id}
           to={`/${slot.barcode}/${product.id}`}
           onClick={() => {
-            productHandler(product);
-            activeProductHandler(product.id);
+            productHandler(product.id, product.name, slot.level, slot.slot);
+            productIdHandler(product.id);
             barcodeHandler(slot.barcode);
           }}
         >
