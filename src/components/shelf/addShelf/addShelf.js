@@ -3,6 +3,7 @@ function AddShelf(props) {
 
   const nextFreeShelfNum = () => {
     const array = [];
+
     shelfs.map((shelf) => array.push(parseInt(shelf.id)));
     array.sort((a, b) => a - b);
     for (let i = 0; i < array.length; i++) {
@@ -26,8 +27,12 @@ function AddShelf(props) {
         addNewShell = false;
         return false;
       }
-      //valitse hylly uusiks jos käyttäjä syötti kirjaimen
-      if (isNaN(parseInt(shelfNumber))) {
+      // jos varastoon tyhjä ja käyttäjä antaa hyllylle numeron(Int) niin ei suoriteta testejä...
+      if (shelfs.length === 0 && !isNaN(parseInt(shelfNumber))) {
+        addNewShell = true;
+      }
+      //...muuten: valitse hylly uusiks jos käyttäjä syötti kirjaimen
+      else if (isNaN(parseInt(shelfNumber))) {
         addNewShell = false;
         shelfNumber = prompt(
           `Try again!\nGive number to new shelf: `,
@@ -72,12 +77,14 @@ function AddShelf(props) {
             jos käyttäjä painaa cancel, peruutetaan kaikki. jos syöttää kirjaimen ni ei tehä mitää-
             DONELLA VIIMEISTELLÄÄN LISÄYS */
       var newShelf = { id: shelfNumber, slots: [] };
+
       setShelfs(shelfs.concat(newShelf));
     }
   }; // <-- TOIMII 100%
 
   return (
     <div>
+      <h2>Shelf:</h2>
       <button
         onClick={() => {
           newShelfHandler();

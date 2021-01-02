@@ -3,7 +3,7 @@ import styles from "./search.module.scss";
 import Content from "../content";
 
 function Search(props) {
-  const { filter, setFilter } = props;
+  const { shelfs, filter, setFilter } = props;
 
   const onChangeEvent = (e) => {
     console.log(`${filter}`);
@@ -14,8 +14,9 @@ function Search(props) {
     <div>
       <Content>
         <form>
-          <input value={filter} onChange={onChangeEvent} />
+          name: <input value={filter} onChange={onChangeEvent} />
         </form>
+        output
       </Content>
     </div>
   );

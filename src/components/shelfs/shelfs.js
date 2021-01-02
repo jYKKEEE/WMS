@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
   };*/
 
 function Shelfs(props) {
-  const { shelfs, setActiveShelf } = props;
+  const { shelfs, setActiveShelf, adding } = props;
 
   const activeShelfHandler = (id) => {
     setActiveShelf(id);
@@ -32,6 +32,18 @@ function Shelfs(props) {
       </Content>
     </Link>
   ));
-  return <div>{output}</div>;
+
+  if (adding) {
+    return (
+      <div>
+        {output}
+        <div>
+          <p>Select shelf to add</p>
+        </div>
+      </div>
+    );
+  } else {
+    return <div>{output}</div>;
+  }
 }
 export default Shelfs;

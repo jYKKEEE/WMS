@@ -9,7 +9,9 @@ import AddShelf from "../shelf/addShelf";
 import Shelfs from "../shelfs";
 import Menu from "../menu";
 import Slots from "../slots";
-import Product from "../product";
+import Product from "../product/product";
+import AddProduct from "../product/add";
+import AddForm from "../product/add/addForm";
 
 function App() {
   var hylly1 = {
@@ -109,6 +111,13 @@ function App() {
       },
     ],
   };
+  /*var varasto = [];
+ localStorage.setItem("hyllyt", JSON.stringify(varasto));
+
+  let hyllyt = localStorage.getItem("hyllyt");
+
+  hyllyt = hyllyt ? JSON.parse(hyllyt) : [];
+  // localStorage.setItem("hyllyt", JSON.stringify([]));*/
 
   const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
   const [activeShelf, setActiveShelf] = useState(0);
@@ -116,7 +125,12 @@ function App() {
   const [barcode, setBarcode] = useState(0);
   const [product, setProduct] = useState({});
   const [filter, setFilter] = useState("");
+  const [adding, setAdding] = useState(false);
 
+  function allProducts() {
+    const allSlots = shelfs.map((slots) => {});
+  }
+  console.log(`adding: ${adding}`);
   console.log(`active Shelf: ${activeShelf}`);
   console.log(`active barcode: ${barcode}`);
   console.log(`active Product: ${activeProductId}`);
@@ -131,7 +145,7 @@ function App() {
           render={() => (
             <Content>
               <AddShelf shelfs={shelfs} setShelfs={setShelfs} />
-              <button>Add Product</button>
+              <AddProduct />
             </Content>
           )}
         />
@@ -140,7 +154,7 @@ function App() {
           exact
           render={() => (
             <Content>
-              <Search filter={filter} setFilter={setFilter} />
+              <Search shelfs={shelfs} filter={filter} setFilter={setFilter} />
             </Content>
           )}
         />
@@ -149,7 +163,11 @@ function App() {
           exact
           render={() => (
             <Content>
-              <Shelfs shelfs={shelfs} setActiveShelf={setActiveShelf} />
+              <Shelfs
+                adding={adding}
+                shelfs={shelfs}
+                setActiveShelf={setActiveShelf}
+              />
             </Content>
           )}
         />
@@ -163,6 +181,7 @@ function App() {
                 setActiveProductId={setActiveProductId}
                 setBarcode={setBarcode}
                 setProduct={setProduct}
+                adding={adding}
               />
             </Content>
           )}
@@ -172,6 +191,15 @@ function App() {
           render={() => (
             <Content>
               <Product shelf={shelfs[activeShelf]} product={product} />
+            </Content>
+          )}
+        />
+        <Route
+          path={"/addform"}
+          exact
+          render={() => (
+            <Content>
+              <AddForm setAdding={setAdding} />
             </Content>
           )}
         />
