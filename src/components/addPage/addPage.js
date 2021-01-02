@@ -1,8 +1,9 @@
-import styles from "./addProduct.module.scss";
-
+import styles from "./addPage.module.scss";
+import AddShelf from "../shelf/addShelf";
 import { Link } from "react-router-dom";
 
 function AddProduct(props) {
+  const { shelfs, setShelfs } = props;
   const newShelfHandler = () => {
     //1.kysy hyllynumero kunnes antaa numeron tai painaa peruuta
     var shelfNumber = prompt(`Adding action missing..`);
@@ -10,6 +11,7 @@ function AddProduct(props) {
   };
   return (
     <div>
+      <AddShelf shelfs={shelfs} setShelfs={setShelfs} />
       <h2>Product:</h2>
       <button
         onClick={() => {

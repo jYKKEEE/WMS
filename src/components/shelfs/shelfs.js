@@ -1,3 +1,4 @@
+import styles from "./shelfs.module.scss";
 import Content from "../content";
 import Shelf from "../shelf";
 import { Link } from "react-router-dom";
@@ -13,7 +14,7 @@ import { Link } from "react-router-dom";
   };*/
 
 function Shelfs(props) {
-  const { shelfs, setActiveShelf, adding } = props;
+  const { shelfs, setActiveShelf, adding, setAdding } = props;
 
   const activeShelfHandler = (id) => {
     setActiveShelf(id);
@@ -33,12 +34,19 @@ function Shelfs(props) {
     </Link>
   ));
 
-  if (adding) {
+  if (adding.active) {
     return (
       <div>
         {output}
         <div>
           <p>Select shelf to add</p>
+          <button
+            onClick={() => {
+              setAdding({ active: false });
+            }}
+          >
+            cancel add
+          </button>
         </div>
       </div>
     );

@@ -11,7 +11,7 @@ function Product(props) {
         products: [{ id: 64534, name: "jalka" }],},*/
 
   // slotInfo on hyllypaikka jossa product sijaitsee
-  const slotInfo = shelf.slots.map((slot, index) => {});
+  //const slotInfo = shelf.slots.map((slot, index) => {});
   console.log(`product: ${product.name}`);
 
   //product on käsiteltävä tuote joka tulostetaan

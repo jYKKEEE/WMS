@@ -19,10 +19,10 @@ function AddForm(props) {
 
   const addingHandler = () => {
     //GenerateID()
-    if (name !== "" && id !== "") {
-      setAdding(true);
+    if (name !== "" && id !== 0) {
+      setAdding({ active: true, id: parseInt(id), name: name });
     } else {
-      setAdding(false);
+      setAdding({ active: false, id: 0, name: "" });
       alert(`NOT ADDING! plz go back, missing (name) or (Id)`);
     }
   };

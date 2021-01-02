@@ -1,4 +1,5 @@
 import Slot from "../slot/slot";
+import AddSlot from "../slot/addSlot";
 import styles from "./slots.module.scss";
 import { Link } from "react-router-dom";
 
@@ -14,7 +15,14 @@ import { Link } from "react-router-dom";
   };*/
 
 function Slots(props) {
-  const { shelf, setActiveProductId, setBarcode, setProduct, adding } = props;
+  const {
+    shelf,
+    setActiveProductId,
+    setBarcode,
+    setProduct,
+    adding,
+    setAdding,
+  } = props;
 
   //funktiot joilla muutetaan tiloja
   const activeProductHandler = (id) => {
@@ -35,6 +43,7 @@ function Slots(props) {
       adding={adding}
       level={slot.level}
       slot={slot.slot}
+      setAdding={setAdding}
       barcode={slot.barcode}
       products={slot.products.map((product, index) => (
         <Link
@@ -58,7 +67,7 @@ function Slots(props) {
     <div>
       <div className={styles.products_header}> Shelf {shelf.id}</div>
       {slots}
-      <button>add a new Slot</button>
+      <AddSlot />
     </div>
   );
 }

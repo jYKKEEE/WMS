@@ -5,12 +5,11 @@ import styles from "./app.module.scss";
 import Header from "../header";
 import Content from "../content";
 import Search from "../search";
-import AddShelf from "../shelf/addShelf";
 import Shelfs from "../shelfs";
 import Menu from "../menu";
 import Slots from "../slots";
 import Product from "../product/product";
-import AddProduct from "../product/add";
+import AddPage from "../addPage";
 import AddForm from "../product/add/addForm";
 
 function App() {
@@ -125,12 +124,12 @@ function App() {
   const [barcode, setBarcode] = useState(0);
   const [product, setProduct] = useState({});
   const [filter, setFilter] = useState("");
-  const [adding, setAdding] = useState(false);
+  const [adding, setAdding] = useState({ active: false, id: 0, name: "" });
 
   function allProducts() {
     const allSlots = shelfs.map((slots) => {});
   }
-  console.log(`adding: ${adding}`);
+  console.log(`adding: ${adding.active}`);
   console.log(`active Shelf: ${activeShelf}`);
   console.log(`active barcode: ${barcode}`);
   console.log(`active Product: ${activeProductId}`);
@@ -144,8 +143,7 @@ function App() {
           path="/add"
           render={() => (
             <Content>
-              <AddShelf shelfs={shelfs} setShelfs={setShelfs} />
-              <AddProduct />
+              <AddPage shelfs={shelfs} setShelfs={setShelfs} />
             </Content>
           )}
         />
@@ -165,6 +163,7 @@ function App() {
             <Content>
               <Shelfs
                 adding={adding}
+                setAdding={setAdding}
                 shelfs={shelfs}
                 setActiveShelf={setActiveShelf}
               />
@@ -182,6 +181,7 @@ function App() {
                 setBarcode={setBarcode}
                 setProduct={setProduct}
                 adding={adding}
+                setAdding={setAdding}
               />
             </Content>
           )}
