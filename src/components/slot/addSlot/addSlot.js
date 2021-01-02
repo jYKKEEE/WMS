@@ -1,5 +1,5 @@
 import { Add } from "@material-ui/icons";
-
+import { Link } from "react-router-dom";
 import styles from "./addSlot.module.scss";
 
 /* var hylly1 = {
@@ -12,16 +12,32 @@ import styles from "./addSlot.module.scss";
       },*/
 
 function AddSlot(props) {
-  const { shelf, setShelf, activeShelf } = props;
+  const { shelfs, setAdding, activeShelf } = props;
+
+  const addSlot = () => {
+    console.log(`check`);
+    shelfs[activeShelf].slots.push({
+      barcode: Math.ceil(Math.random() * 9999999999),
+      level: 0,
+      slot: 5,
+      products: [],
+    });
+  };
+  // console.log(`${shelf[activeShelf]}  ${shelf[activeShelf].slots}`);
 
   return (
-    <button
-      onClick={() => {
-        alert(`toiminto puuttuu!`);
-      }}
-    >
-      Add a new Slot
-    </button>
+    <div>
+      <h2>Slots:</h2>
+      <Link to={`/shelfs`}>
+        <button
+          onClick={() => {
+            setAdding({ edit: true });
+          }}
+        >
+          Add a new Slot
+        </button>
+      </Link>
+    </div>
   );
 }
 export default AddSlot;

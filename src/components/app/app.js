@@ -124,11 +124,13 @@ function App() {
   const [barcode, setBarcode] = useState(0);
   const [product, setProduct] = useState({});
   const [filter, setFilter] = useState("");
-  const [adding, setAdding] = useState({ active: false, id: 0, name: "" });
+  const [adding, setAdding] = useState({
+    edit: false,
+    active: false, //muokkaa tää add iksi
+    id: 0,
+    name: "",
+  });
 
-  function allProducts() {
-    const allSlots = shelfs.map((slots) => {});
-  }
   console.log(`adding: ${adding.active}`);
   console.log(`active Shelf: ${activeShelf}`);
   console.log(`active barcode: ${barcode}`);
@@ -143,7 +145,12 @@ function App() {
           path="/add"
           render={() => (
             <Content>
-              <AddPage shelfs={shelfs} setShelfs={setShelfs} />
+              <AddPage
+                shelfs={shelfs}
+                setShelfs={setShelfs}
+                activeShelf={activeShelf}
+                setAdding={setAdding}
+              />
             </Content>
           )}
         />
