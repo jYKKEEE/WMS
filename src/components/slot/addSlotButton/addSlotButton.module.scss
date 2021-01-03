@@ -1,0 +1,90 @@
+@import "../../../assets/styles/config.scss";
+
+.inputs {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+}
+.form {
+  width: 20%; /* viivan leveys  */
+  position: relative;
+  height: 50px; /* viivan sijainti korkeus suunnnassa*/
+  overflow: hidden;
+}
+.form input {
+  background-color: rgba(51, 51, 51, 0);
+  width: 100%;
+  height: 100%;
+  color: rgb(0, 0, 0);
+  padding-top: 20px;
+  border: none;
+  outline: none;
+}
+.form label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid black;
+}
+
+.form label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -4px; /* muuta aktivoituna viivan paksuutta */
+  height: 100%;
+  width: 100%;
+  border-bottom: -1px solid #5fa8d3; /* muuta aktivoituna viivan väriä*/
+  transform: translateX(-100%);
+  transition: trasform 0.3s ease;
+}
+
+.content_name {
+  position: absolute;
+  bottom: 3px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.form input:focus + .label_name .content_name,
+.form input:valid + .label_name .content_name {
+  /* muuta aktivoituna Name väri ja koko */
+  transform: translateY(-110%);
+  font-size: 14px;
+  color: #2f00d8;
+}
+
+.form input:focus + .label_name::after,
+.form input:valid + .label_name::after {
+  transform: translateX(0%);
+}
+
+.content_shell {
+  position: absolute;
+  bottom: 3px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+.form input:focus + .label_shell .content_shell,
+.form input:valid + .label_shell .content_shell {
+  /* muuta aktivoituna Name väri ja koko */
+  transform: translateY(-110%);
+  font-size: 14px;
+  color: #2f00d8;
+}
+
+.form input:focus + .label_shell::after,
+.form input:valid + .label_shell::after {
+  transform: translateX(0%);
+}
+.addbutton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+  margin-top: 10px; /*tällä liikutetaan alaspäin*/
+}
