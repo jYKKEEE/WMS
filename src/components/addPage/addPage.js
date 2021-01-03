@@ -13,6 +13,7 @@ function AddProduct(props) {
   return (
     <div>
       <AddShelf shelfs={shelfs} setShelfs={setShelfs} />
+      <h2>Slots:</h2>
       <AddSlot shelfs={shelfs} active={active} setProduct={setProduct} />
 
       <h2>Product:</h2>

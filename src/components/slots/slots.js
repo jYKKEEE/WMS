@@ -3,6 +3,7 @@ import AddSlot from "../slot/addSlot";
 import styles from "./slots.module.scss";
 import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
+import AddSlotButton from "../slot/addSlotButton/addSlotButton";
 
 /*var shelf = {
     id: 1,
@@ -16,7 +17,8 @@ import { Link, useRouteMatch } from "react-router-dom";
   };*/
 
 function Slots(props) {
-  const { shelf, setActive, product, addSlot, setProduct } = props;
+  //HUOM shelf = tällähetkellä aktiivinen hylly eli (shelf[active.shelf])
+  const { shelf, setActive, product, setProduct } = props;
   let match = useRouteMatch();
 
   //funktiot joilla muutetaan tiloja
@@ -49,7 +51,6 @@ function Slots(props) {
       key={index}
       product={product}
       level={slot.level}
-      addSlot={addSlot}
       slot={slot.slot}
       setProduct={setProduct}
       barcode={slot.barcode}
@@ -77,16 +78,8 @@ function Slots(props) {
 
       {slots}
       <Link to={`${match.url}`}>
-        <button
-          onClick={() => {
-            /*lisää annettuun hyllyyn slotti!!*/
-            addSlot();
-          }}
-        >
-          lisää
-        </button>
+        <AddSlotButton shelf={shelf} />
       </Link>
-      <AddSlot addSlot={addSlot} />
     </div>
   );
 }

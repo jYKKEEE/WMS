@@ -15,20 +15,11 @@ function AddSlot(props) {
   const { shelfs, setProduct, active } = props;
 
   const handle = () => {};
-  const addSlot = () => {
-    console.log(`check`);
-    shelfs[active.shelf].slots.push({
-      barcode: Math.ceil(Math.random() * 9999999999),
-      level: 0,
-      slot: 5,
-      products: [],
-    });
-  };
+
   // console.log(`${shelf[activeShelf]}  ${shelf[activeShelf].slots}`);
 
   return (
     <div>
-      <h2>Slots:</h2>
       <Link to={`/shelfs`}>
         <button
           onClick={() => {
@@ -44,4 +35,5 @@ function AddSlot(props) {
     </div>
   );
 }
+
 export default AddSlot;

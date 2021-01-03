@@ -3,16 +3,6 @@ import Content from "../content";
 import Shelf from "../shelf";
 import { Link } from "react-router-dom";
 
-/*var hylly1 = {
-    id: 1,
-    slots: [{
-        barcode: Math.random() * 9999999,
-        level: 0,
-        slot: 1,
-        products: [new Product("kala"), new Product("kissa")],},
-],
-  };*/
-
 function Shelfs(props) {
   const { shelfs, setActive, product, setProduct } = props;
 
@@ -42,17 +32,19 @@ function Shelfs(props) {
       <div>
         {output}
         <div>
-          <p>Select shelf to add</p>
-          <button
-            onClick={() => {
-              setProduct((prevState) => ({
-                ...prevState,
-                add: false,
-              }));
-            }}
-          >
-            cancel add
-          </button>
+          <p>Select shelf to add a product</p>
+
+          <Cancel setProduct={setProduct} />
+        </div>
+      </div>
+    );
+  } else if (product.addSlot) {
+    return (
+      <div>
+        {output}
+        <div>
+          <p>Select shelf to add a new slot</p>
+          <Cancel setProduct={setProduct} />
         </div>
       </div>
     );
@@ -60,4 +52,27 @@ function Shelfs(props) {
     return <div>{output}</div>;
   }
 }
+export function Cancel({ setProduct }) {
+  const cancelAdding = () => {
+    setProduct((prevState) => ({
+      ...prevState,
+      add: false,
+      addSlot: false,
+    }));
+  };
+  return (
+    <div>
+      <Link to="add">
+        <button
+          onClick={() => {
+            cancelAdding();
+          }}
+        >
+          Cancel adding
+        </button>
+      </Link>
+    </div>
+  );
+}
+
 export default Shelfs;
