@@ -13,23 +13,32 @@ const AddSlotButton = (props) => {
   const handleSlotChange = (e) => {
     setSlot(e.target.value);
   };
-  const shelfSlotInUse = () => {
+  /* Testit hyllypaikan lisäykselle palauttaa TRUE, 
+  jos annettu hyllyslotti jo käytössä */
+  const shelfSlotAddingTests = () => {
     var bool = false;
     for (let i = 0; i < shelf.slots.length; i++) {
+      //Boolean testit: katsoo onko hyllyssä jo annettu hyllyslotti
       var test1 = shelf.slots[i].level === parseInt(level);
       var test2 = shelf.slots[i].slot === parseInt(slot);
-
-      if (test1 === true && test2 === true) {
-        console.log(`läpi!`);
+      //Jos true niin hyllyssä slotti jo käytössä!!
+      if (test1 && test2) {
         bool = true;
-        //Jos true niin slotti jo käytössä!!
+      }
+      // Jos jompikumpi input kenttä tyhjänä
+      if (level === "" || slot === "") {
+        bool = true;
+      }
+      //Jos käyttäjä syöttää tekstiä
+      if (isNaN(parseInt(level)) || isNaN(parseInt(slot))) {
+        bool = true;
       }
     }
     return bool;
   };
 
   const newSlot = () => {
-    if (!shelfSlotInUse()) {
+    if (!shelfSlotAddingTests()) {
       shelf.slots.push({
         barcode: Math.ceil(Math.random() * 9999999999),
         level: parseInt(level),
@@ -37,7 +46,7 @@ const AddSlotButton = (props) => {
         products: [],
       });
     } else {
-      alert(`Failed!\nShelfslot: level:${level},slot:${slot} in use. `);
+      alert(`Failed to add level:( ${level} ),slot: ( ${slot} ).`);
     }
   };
 
