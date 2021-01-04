@@ -45,6 +45,7 @@ const AddSlotButton = (props) => {
         slot: parseInt(slot),
         products: [],
       });
+      shelf.slots.sort((a, b) => a.slot - b.slot);
     } else {
       alert(`Failed to add level:( ${level} ),slot: ( ${slot} ).`);
     }
@@ -52,19 +53,6 @@ const AddSlotButton = (props) => {
 
   return (
     <div className={styles.inputs}>
-      <div className={styles.form}>
-        <input
-          value={level}
-          onChange={handleLevelChange}
-          type="text"
-          name="shellNum"
-          autoComplete="off"
-          required
-        />
-        <label htmlFor="shellNum" className={styles.label_shell}>
-          <span className={styles.content_shell}>Level:</span>
-        </label>
-      </div>
       <div className={styles.form}>
         <input
           value={slot}
@@ -78,7 +66,22 @@ const AddSlotButton = (props) => {
           <span className={styles.content_name}>Slot:</span>
         </label>
       </div>
+      <div className={styles.form}>
+        <input
+          value={level}
+          onChange={handleLevelChange}
+          type="text"
+          name="shellNum"
+          autoComplete="off"
+          required
+        />
+        <label htmlFor="shellNum" className={styles.label_shell}>
+          <span className={styles.content_shell}>Level:</span>
+        </label>
+      </div>
+
       <button
+        className={styles.addButton}
         onClick={() => {
           newSlot();
         }}

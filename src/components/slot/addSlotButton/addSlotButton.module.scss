@@ -1,13 +1,14 @@
 @import "../../../assets/styles/config.scss";
 
 .inputs {
+  padding-left: 2cm;
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
   align-items: center;
 }
 .form {
-  width: 20%; /* viivan leveys  */
+  width: 10%; /* viivan leveys  */
   position: relative;
   height: 50px; /* viivan sijainti korkeus suunnnassa*/
   overflow: hidden;
@@ -81,10 +82,10 @@
 .form input:valid + .label_shell::after {
   transform: translateX(0%);
 }
-.addbutton {
+.addButton {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: space-around;
-  margin-top: 10px; /*tällä liikutetaan alaspäin*/
+  align-content: space-between;
+  margin-top: 23px; /*tällä liikutetaan alaspäin*/
 }

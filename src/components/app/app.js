@@ -11,6 +11,7 @@ import Slots from "../slots";
 import Product from "../product/product";
 import AddPage from "../addPage";
 import AddForm from "../product/add/addForm";
+import Notification from "../notification";
 
 function App() {
   var hylly1 = {
@@ -121,6 +122,7 @@ function App() {
   const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
   const [active, setActive] = useState({ shelf: 0, productId: 0, barcode: 0 });
   const [filter, setFilter] = useState("");
+  const [message, setMessage] = useState("");
   const [product, setProduct] = useState({
     edit: false,
     add: false,
@@ -131,6 +133,13 @@ function App() {
     slot: 0,
   });
 
+  const messageHandler = (message) => {
+    setMessage(message);
+    setTimeout(() => {
+      setMessage("");
+    }, 3500);
+  };
+
   console.log(`product add: ${product.add}`);
   console.log(`product addSlot: ${product.addSlot}`);
   console.log(`product edit: ${product.edit}`);
@@ -138,6 +147,7 @@ function App() {
   console.log(`active Shelf: ${active.shelf}`);
   console.log(`active barcode: ${active.barcode}`);
   console.log(`filter: ${filter}`);
+  console.log(`filter: ${message}`);
 
   return (
     <Router>
@@ -152,7 +162,9 @@ function App() {
                 setShelfs={setShelfs}
                 active={active}
                 setProduct={setProduct}
+                messageHandler={messageHandler}
               />
+              <Notification message={message} setMessage={setMessage} />
             </Content>
           )}
         />
@@ -189,6 +201,7 @@ function App() {
                 setActive={setActive}
                 product={product}
                 setProduct={setProduct}
+                messageHandler={messageHandler}
               />
             </Content>
           )}

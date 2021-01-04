@@ -62,7 +62,7 @@ export function Cancel({ setProduct }) {
   };
   return (
     <div>
-      <Link to="add">
+      <Link to="/add">
         <button
           onClick={() => {
             cancelAdding();

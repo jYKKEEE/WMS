@@ -2,29 +2,39 @@ import styles from "./slot.module.scss";
 import AddButton from "../../product/add/addButton";
 
 function Slot(props) {
-  const { level, slot, products, barcode, product, setProduct } = props;
+  const {
+    level,
+    slot,
+    products,
+    barcode,
+    product,
+    setProduct,
+    messageHandler,
+    shelf,
+  } = props;
 
   const addingOutput = (
     <div className={styles.product}>
       <div className={styles.product_data}>
         <div
           className={styles.product_type}
-        >{`level: ${level}, slot:${slot}`}</div>
+        >{` slot:${slot}, level: ${level}`}</div>
 
         <div className={styles.product_amount}>Products:</div>
         <div className={styles.product_date}>{barcode}</div>
         <div className={styles.product_timespan}>{products}</div>
         <div className={styles.product_receiver}>
-          <AddButton product={product}></AddButton>
+          <AddButton
+            product={product}
+            shelf={shelf}
+            setProduct={setProduct}
+            messageHandler={messageHandler}
+            level={level}
+            slot={slot}
+          ></AddButton>
+          {/*Add to this slot -nappi */}
         </div>
         <div className={styles.product_average}></div>
-        <button
-          onClick={() => {
-            setProduct((...prevState) => ({ ...prevState, add: false }));
-          }}
-        >
-          cancel
-        </button>
       </div>
     </div>
   );
@@ -37,7 +47,7 @@ function Slot(props) {
         <div className={styles.product_data}>
           <div
             className={styles.product_type}
-          >{`level: ${level}, slot:${slot}`}</div>
+          >{` slot:${slot}, level: ${level}`}</div>
           <div className={styles.product_amount}>Products:</div>
           <div className={styles.product_date}>{barcode}</div>
           <div className={styles.product_timespan}>{products}</div>

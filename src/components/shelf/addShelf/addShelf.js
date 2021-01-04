@@ -1,5 +1,5 @@
 function AddShelf(props) {
-  const { shelfs, setShelfs } = props;
+  const { shelfs, setShelfs, messageHandler } = props;
 
   const nextFreeShelfNum = () => {
     const array = [];
@@ -79,6 +79,7 @@ function AddShelf(props) {
       var newShelf = { id: shelfNumber, slots: [] };
 
       setShelfs(shelfs.concat(newShelf));
+      messageHandler(`Added shelf ${newShelf.id} to warehouse`);
     }
   }; // <-- TOIMII 100%
 
