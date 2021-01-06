@@ -14,7 +14,7 @@ function Slots(props) {
     product,
     setProduct,
     messageHandler,
-    deleteProduct,
+    deleteSlot,
   } = props;
 
   //funktiot joilla muutetaan tiloja
@@ -45,6 +45,7 @@ function Slots(props) {
     <Slot
       key={index}
       active={active}
+      deleteSlot={deleteSlot}
       product={product}
       level={slot.level}
       slot={slot.slot}

@@ -15,7 +15,6 @@ const AddSlotButton = (props) => {
   /* Testit hyllypaikan lisäykselle palauttaa TRUE, 
   jos annettu hyllyslotti jo käytössä */
   const shelfSlotAddingTests = () => {
-    console.log(`valuet :!?! ${parseInt(level)}, ${slot}`);
     var bool = false;
     for (let i = 0; i < shelf.slots.length; i++) {
       //Boolean testit: katsoo onko hyllyssä jo annettu hyllyslotti
@@ -38,7 +37,6 @@ const AddSlotButton = (props) => {
   };
 
   const newSlot = () => {
-    console.log(`tessssst:! ${shelfSlotAddingTests()}`);
     if (shelfSlotAddingTests() === false) {
       addSlot({
         barcode: Math.ceil(Math.random() * 9999999999),

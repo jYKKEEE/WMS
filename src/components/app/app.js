@@ -156,7 +156,18 @@ function App() {
     setActive((prevState) => ({ ...prevState, deleteShelf: false }));
     setMessage(`Shelf ${shelfNumber} deleted permanetly.`);
   };
-  const deleteSlot = () => {};
+  const deleteSlot = (slot, level) => {
+    var index = shelfs[active.shelf].slots.map((mapSlot, index) => {
+      if (mapSlot.slot === slot && mapSlot.level === level) {
+        return index;
+      }
+    });
+    setShelfs(
+      (prevState) => [...prevState],
+      shelfs[active.shelf].slots.splice(index, 1)
+    );
+    setActive((prevState) => ({ ...prevState, deleteSlot: false }));
+  };
 
   const deleteProduct = () => {
     var taulu = shelfs[active.shelf];
@@ -247,6 +258,7 @@ function App() {
               <Slots
                 shelf={shelfs[active.shelf]}
                 active={active}
+                deleteSlot={deleteSlot}
                 addSlot={addSlot}
                 setActive={setActive}
                 product={product}

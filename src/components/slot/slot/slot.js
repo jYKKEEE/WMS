@@ -11,6 +11,7 @@ function Slot(props) {
     product,
     setActive,
     messageHandler,
+    deleteSlot,
     shelf,
   } = props;
 
@@ -39,9 +40,34 @@ function Slot(props) {
       </div>
     </div>
   );
+  const deleteOutput = (
+    <div className={styles.product}>
+      <div className={styles.product_data}>
+        <div
+          className={styles.product_type}
+        >{` slot:${slot}, level: ${level}`}</div>
+
+        <div className={styles.product_amount}>Products:</div>
+        <div className={styles.product_date}>{barcode}</div>
+        <div className={styles.product_timespan}>{products}</div>
+        <div className={styles.product_receiver}>
+          <button
+            onClick={() => {
+              deleteSlot(slot, level);
+            }}
+          >
+            Delete this slot
+          </button>
+        </div>
+        <div className={styles.product_average}></div>
+      </div>
+    </div>
+  );
 
   if (active.add) {
     return <div>{addingOutput}</div>;
+  } else if (active.deleteSlot) {
+    return <div>{deleteOutput}</div>;
   } else {
     return (
       <div className={styles.product}>
