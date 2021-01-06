@@ -17,8 +17,9 @@ function AddShelf(props) {
   const newShelfHandler = () => {
     console.log(nextFreeShelfNum());
     var shelfNum = nextFreeShelfNum();
+    /* otin tän toiminnallisuuden pois kun sotki asioita tässä vaiheessa..
     //1.kysy hyllynumero kunnes antaa numeron tai painaa peruuta
-    /*var shelfNumber = prompt(`Give number to a new shelf:`, nextFreeShelfNum());
+    var shelfNumber = prompt(`Give number to a new shelf:`, nextFreeShelfNum());
     // addNewShell true:lla pääsee läpi false ei tee mitään
     var addNewShell = true;
 
@@ -79,7 +80,7 @@ function AddShelf(props) {
             DONELLA VIIMEISTELLÄÄN LISÄYS */
     var newShelf = { id: shelfNum, slots: [] };
 
-    setShelfs(shelfs.concat(newShelf));
+    setShelfs(shelfs.concat(newShelf).sort((a, b) => a.id - b.id));
     messageHandler(`Added shelf ${newShelf.id} to warehouse`);
   }; // <-- TOIMII 100%
 
