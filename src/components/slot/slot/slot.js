@@ -5,10 +5,11 @@ function Slot(props) {
   const {
     level,
     slot,
+    active,
     products,
     barcode,
     product,
-    setProduct,
+    setActive,
     messageHandler,
     shelf,
   } = props;
@@ -27,7 +28,7 @@ function Slot(props) {
           <AddButton
             product={product}
             shelf={shelf}
-            setProduct={setProduct}
+            setActive={setActive}
             messageHandler={messageHandler}
             level={level}
             slot={slot}
@@ -39,7 +40,7 @@ function Slot(props) {
     </div>
   );
 
-  if (product.add) {
+  if (active.add) {
     return <div>{addingOutput}</div>;
   } else {
     return (

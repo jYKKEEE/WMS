@@ -1,9 +1,8 @@
-import { InsertDriveFileTwoTone } from "@material-ui/icons";
 import { useState } from "react";
 import styles from "./addSlotButton.module.scss";
 
 const AddSlotButton = (props) => {
-  const { shelf } = props;
+  const { shelf, addSlot } = props;
   const [level, setLevel] = useState("");
   const [slot, setSlot] = useState("");
 
@@ -16,6 +15,7 @@ const AddSlotButton = (props) => {
   /* Testit hyllypaikan lisäykselle palauttaa TRUE, 
   jos annettu hyllyslotti jo käytössä */
   const shelfSlotAddingTests = () => {
+    console.log(`valuet :!?! ${parseInt(level)}, ${slot}`);
     var bool = false;
     for (let i = 0; i < shelf.slots.length; i++) {
       //Boolean testit: katsoo onko hyllyssä jo annettu hyllyslotti
@@ -23,31 +23,31 @@ const AddSlotButton = (props) => {
       var test2 = shelf.slots[i].slot === parseInt(slot);
       //Jos true niin hyllyssä slotti jo käytössä!!
       if (test1 && test2) {
-        bool = true;
+        return (bool = true);
       }
-      // Jos jompikumpi input kenttä tyhjänä
-      if (level === "" || slot === "") {
-        bool = true;
-      }
-      //Jos käyttäjä syöttää tekstiä
-      if (isNaN(parseInt(level)) || isNaN(parseInt(slot))) {
-        bool = true;
-      }
+    }
+    // Jos jompikumpi input kenttä tyhjänä
+    if (level === "" || slot === "") {
+      return (bool = true);
+    }
+    //Jos käyttäjä syöttää tekstiä
+    if (isNaN(parseInt(level)) || isNaN(parseInt(slot))) {
+      return (bool = true);
     }
     return bool;
   };
 
   const newSlot = () => {
-    if (!shelfSlotAddingTests()) {
-      shelf.slots.push({
+    console.log(`tessssst:! ${shelfSlotAddingTests()}`);
+    if (shelfSlotAddingTests() === false) {
+      addSlot({
         barcode: Math.ceil(Math.random() * 9999999999),
         level: parseInt(level),
         slot: parseInt(slot),
         products: [],
       });
-      shelf.slots.sort((a, b) => a.slot - b.slot);
     } else {
-      alert(`Failed to add level:( ${level} ),slot: ( ${slot} ).`);
+      alert(`Failed to add slot: ( ${slot} ), level:( ${level} ).`);
     }
   };
 
@@ -81,6 +81,7 @@ const AddSlotButton = (props) => {
       </div>
 
       <button
+        disabled={shelfSlotAddingTests()}
         className={styles.addButton}
         onClick={() => {
           newSlot();

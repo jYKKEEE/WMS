@@ -1,7 +1,8 @@
 import styles from "./product.module.scss";
+import { Link } from "react-router-dom";
 
 function Product(props) {
-  const { shelf, product } = props;
+  const { product, deleteProduct, messageHandler } = props;
 
   /*slots: [
       {
@@ -16,8 +17,19 @@ function Product(props) {
     <div className={styles.product}>
       <div className={styles.product_data}>
         <div className={styles.product_type}>nimi : {product.name}</div>
-        <div className={styles.product_amount}>id : {product.id}</div>
-        <div className={styles.product_date}></div>
+        <div className={styles.product_amount}>
+          <Link to="/add">
+            <button
+              onClick={() => {
+                deleteProduct();
+                messageHandler(`Product " ${product.name} " deleted!`);
+              }}
+            >
+              delete
+            </button>
+          </Link>
+        </div>
+        <div className={styles.product_date}> id : {product.id}</div>
         <div className={styles.product_timespan}></div>
         <div className={styles.product_receiver}></div>
         <div className={styles.product_average}> </div>

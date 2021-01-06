@@ -16,8 +16,9 @@ function AddShelf(props) {
 
   const newShelfHandler = () => {
     console.log(nextFreeShelfNum());
+    var shelfNum = nextFreeShelfNum();
     //1.kysy hyllynumero kunnes antaa numeron tai painaa peruuta
-    var shelfNumber = prompt(`Give number to a new shelf:`, nextFreeShelfNum());
+    /*var shelfNumber = prompt(`Give number to a new shelf:`, nextFreeShelfNum());
     // addNewShell true:lla pääsee läpi false ei tee mitään
     var addNewShell = true;
 
@@ -40,7 +41,7 @@ function AddShelf(props) {
         );
       } else {
         /*kysytään hyllyn numeroa niin kauan kunnes 
-            painetaan cancel tai löytyy numero joka ei ole käytössä*/
+            painetaan cancel tai löytyy numero joka ei ole käytössä
         let i = 0;
         while (true) {
           if (isNaN(parseInt(shelfNumber))) {
@@ -49,7 +50,7 @@ function AddShelf(props) {
           }
           /* -katotaan löytyykö annettu hylly jo numero varastosta
                  -valitaan hyllynumero uusiks jos valittu oli jo käytössä.
-                 -iin arvo nollaan(0) ja suoritetaan testit alusta*/
+                 -iin arvo nollaan(0) ja suoritetaan testit alusta
 
           if (parseInt(shelfs[i].id) === parseInt(shelfNumber)) {
             addNewShell = false;
@@ -76,16 +77,14 @@ function AddShelf(props) {
       /*luodaan lista "levels" josta tulee hyllyn tasojen määrä
             jos käyttäjä painaa cancel, peruutetaan kaikki. jos syöttää kirjaimen ni ei tehä mitää-
             DONELLA VIIMEISTELLÄÄN LISÄYS */
-      var newShelf = { id: shelfNumber, slots: [] };
+    var newShelf = { id: shelfNum, slots: [] };
 
-      setShelfs(shelfs.concat(newShelf));
-      messageHandler(`Added shelf ${newShelf.id} to warehouse`);
-    }
+    setShelfs(shelfs.concat(newShelf));
+    messageHandler(`Added shelf ${newShelf.id} to warehouse`);
   }; // <-- TOIMII 100%
 
   return (
     <div>
-      <h2>Shelf:</h2>
       <button
         onClick={() => {
           newShelfHandler();

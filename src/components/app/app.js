@@ -9,9 +9,11 @@ import Shelfs from "../shelfs";
 import Menu from "../menu";
 import Slots from "../slots";
 import Product from "../product/product";
-import AddPage from "../addPage";
+import AddPage from "../addPage/addPage";
 import AddForm from "../product/add/addForm";
 import Notification from "../notification";
+import AddSlotButton from "../slot/addSlotButton";
+import Cancel from "../addPage/cancelAdding";
 
 function App() {
   var hylly1 = {
@@ -120,18 +122,56 @@ function App() {
   // localStorage.setItem("hyllyt", JSON.stringify([]));*/
 
   const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
-  const [active, setActive] = useState({ shelf: 0, productId: 0, barcode: 0 });
-  const [filter, setFilter] = useState("");
-  const [message, setMessage] = useState("");
-  const [product, setProduct] = useState({
+  const [active, setActive] = useState({
+    shelf: 0,
+    productId: 0,
+    barcode: 0,
+    deleteProduct: false,
+    deleteSlot: false,
+    deleteShelf: false,
     edit: false,
     add: false,
     addSlot: false,
+  });
+  const [filter, setFilter] = useState("");
+  const [message, setMessage] = useState("");
+  const [product, setProduct] = useState({
     id: 0,
     name: "",
     level: 0,
     slot: 0,
   });
+
+  const addSlot = (slot) => {
+    setShelfs(
+      (prevState) => [...prevState],
+      shelfs[active.shelf].slots.push(slot)
+    );
+  };
+  const deleteShelf = (index) => {
+    const shelfNumber = shelfs[index].id;
+    var newShelfs = shelfs;
+    newShelfs.splice(index, 1);
+    setShelfs(newShelfs);
+    setActive((prevState) => ({ ...prevState, deleteShelf: false }));
+    setMessage(`Shelf ${shelfNumber} deleted permanetly.`);
+  };
+  const deleteSlot = () => {};
+
+  const deleteProduct = () => {
+    var taulu = shelfs[active.shelf];
+    taulu.slots.map((slot, index) => {
+      if (active.id === slot.id) {
+        slot.products.splice(index, 1);
+        //slot.splice(indeksi, montaPoistetaan);
+        console.log(`poisto?`);
+      }
+
+      return null;
+    });
+    setActive((prevState) => ({ ...prevState, deleteProduct: false }));
+    setShelfs((prevState) => [...prevState], (shelfs[active.shelf] = taulu));
+  };
 
   const messageHandler = (message) => {
     setMessage(message);
@@ -140,14 +180,19 @@ function App() {
     }, 3500);
   };
 
-  console.log(`product add: ${product.add}`);
-  console.log(`product addSlot: ${product.addSlot}`);
-  console.log(`product edit: ${product.edit}`);
+  console.log(`product add: ${active.add}`);
+  console.log(`product addSlot: ${active.addSlot}`);
+  console.log(`product edit: ${active.edit}`);
+  console.log(`active deleteProduct: ${active.deleteProduct}`);
+  console.log(`active deleteslot: ${active.deleteSlot}`);
+  console.log(`active deleteshelf: ${active.deleteShelf}`);
   console.log(`active Product: ${product.name} ja ${product.id}`);
   console.log(`active Shelf: ${active.shelf}`);
   console.log(`active barcode: ${active.barcode}`);
+  console.log(`active slot: ${product.slot}`);
+  console.log(`active level: ${product.level}`);
   console.log(`filter: ${filter}`);
-  console.log(`filter: ${message}`);
+  console.log(`message: ${message}`);
 
   return (
     <Router>
@@ -162,6 +207,7 @@ function App() {
                 setShelfs={setShelfs}
                 active={active}
                 setProduct={setProduct}
+                setActive={setActive}
                 messageHandler={messageHandler}
               />
               <Notification message={message} setMessage={setMessage} />
@@ -183,11 +229,13 @@ function App() {
           render={() => (
             <Content>
               <Shelfs
-                product={product}
-                setProduct={setProduct}
                 shelfs={shelfs}
+                active={active}
                 setActive={setActive}
+                messageHandler={messageHandler}
+                deleteShelf={deleteShelf}
               />
+              <Cancel active={active} setActive={setActive} />
             </Content>
           )}
         />
@@ -198,11 +246,17 @@ function App() {
             <Content>
               <Slots
                 shelf={shelfs[active.shelf]}
+                active={active}
+                addSlot={addSlot}
                 setActive={setActive}
                 product={product}
                 setProduct={setProduct}
+                setShelfs={setShelfs}
+                deleteProduct={deleteProduct}
                 messageHandler={messageHandler}
               />
+              <AddSlotButton shelf={shelfs[active.shelf]} addSlot={addSlot} />
+              <Cancel active={active} setActive={setActive} />
             </Content>
           )}
         />
@@ -210,7 +264,12 @@ function App() {
           path={`/${active.barcode}/${active.productId}`}
           render={() => (
             <Content>
-              <Product shelf={shelfs[active.shelf]} product={product} />
+              <Product
+                deleteProduct={deleteProduct}
+                product={product}
+                messageHandler={messageHandler}
+              />
+              <Cancel active={active} setActive={setActive} />
             </Content>
           )}
         />
@@ -219,7 +278,12 @@ function App() {
           exact
           render={() => (
             <Content>
-              <AddForm setProduct={setProduct} />
+              <AddForm
+                messageHandler={messageHandler}
+                setActive={setActive}
+                setProduct={setProduct}
+              />
+              <Cancel active={active} setActive={setActive} />
             </Content>
           )}
         />

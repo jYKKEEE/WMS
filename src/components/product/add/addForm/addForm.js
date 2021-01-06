@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./addForm.module.scss";
 
 function AddForm(props) {
-  const { setProduct } = props;
+  const { setProduct, setActive } = props;
 
   const [name, setName] = useState("");
   const [id, setId] = useState("");
@@ -18,24 +18,31 @@ function AddForm(props) {
 
   const addingHandler = () => {
     //GenerateID()
-    if (name !== "" && id !== 0) {
-      setProduct((...prevState) => ({
+    if (name !== "" && id !== "" && !isNaN(parseInt(id))) {
+      setProduct((prevState) => ({
         ...prevState,
-        add: true,
         id: parseInt(id),
         name: name,
       }));
-    } else {
-      setProduct((...prevState) => ({
+      setActive((prevState) => ({
         ...prevState,
-        add: false,
+        add: true,
+      }));
+      return true;
+    } else {
+      setProduct((prevState) => ({
+        ...prevState,
         id: 0,
         name: "",
       }));
-      alert(`NOT ADDING! plz go back, missing (name) or (Id)`);
+      setActive((prevState) => ({
+        ...prevState,
+        add: false,
+      }));
+      return false;
     }
-  };
-  return (
+  }; //<<-- return true jos tuote syötetty oikein eli id numero ja tuotteella nimi
+  const output = (
     <div>
       <div className={styles.inputs}>
         <div className={styles.form}>
@@ -67,9 +74,12 @@ function AddForm(props) {
         <div>
           <Link to="/shelfs">
             <button
+              disabled={name === "" || isNaN(parseInt(id))}
               type="submit"
               className={styles.addbutton}
-              onClick={addingHandler}
+              onClick={() => {
+                addingHandler();
+              }}
             >
               next
             </button>
@@ -78,6 +88,7 @@ function AddForm(props) {
       </div>
     </div>
   );
+  return <div>{output}</div>;
 }
 
 export default AddForm;

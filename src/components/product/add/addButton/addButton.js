@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import messageHandler from "../../../notification/notification.js";
 function addButton(props) {
-  const { product, setProduct, shelf, level, slot, messageHandler } = props;
+  const { product, setActive, shelf, level, slot, messageHandler } = props;
 
   /*var hylly1 = {
     id: 1,
@@ -13,7 +13,7 @@ function addButton(props) {
         products: [{ id: 65464, name: "jalka" }],
       },*/
   const handleProductState = () => {
-    setProduct((prevState) => ({
+    setActive((prevState) => ({
       ...prevState,
       add: false,
       edit: false,

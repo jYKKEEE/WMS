@@ -6,3 +6,8 @@
   font-size: $products-fontsize;
   border-bottom: 1px solid $product-border;
 }
+.productslist {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}

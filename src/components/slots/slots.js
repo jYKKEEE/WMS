@@ -1,27 +1,21 @@
 import Slot from "../slot/slot";
-import AddSlot from "../slot/addSlot";
+
 import styles from "./slots.module.scss";
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
-import AddSlotButton from "../slot/addSlotButton/addSlotButton";
-import { Cancel } from "../shelfs/shelfs.js";
-import { AddIcCallRounded } from "@material-ui/icons";
-
-/*var shelf = {
-    id: 1,
-    slots: [{
-        barcode: Math.random() * 9999999,
-        level: 0,
-        slot: 1,
-        products: [{id: 1,
-            name: "kissa",}],},
-],
-  };*/
+import { Link } from "react-router-dom";
+import Cancel from "../addPage/cancelAdding";
 
 function Slots(props) {
   //HUOM shelf = tällähetkellä aktiivinen hylly eli (shelf[active.shelf])
-  const { shelf, setActive, product, setProduct, messageHandler } = props;
-  let match = useRouteMatch();
+  const {
+    shelf,
+    active,
+    setActive,
+    product,
+    setProduct,
+    messageHandler,
+    deleteProduct,
+  } = props;
 
   //funktiot joilla muutetaan tiloja
   const productIdHandler = (id) => {
@@ -50,52 +44,48 @@ function Slots(props) {
   const slots = shelf.slots.map((slot, index) => (
     <Slot
       key={index}
+      active={active}
       product={product}
       level={slot.level}
       slot={slot.slot}
       shelf={shelf}
       messageHandler={messageHandler}
-      setProduct={setProduct}
+      setActive={setActive}
       barcode={slot.barcode}
       products={slot.products.map((product, index) => (
-        <Link
-          key={product.id}
-          to={`/${slot.barcode}/${product.id}`}
-          onClick={() => {
-            productHandler(product.id, product.name, slot.level, slot.slot);
-            productIdHandler(product.id);
-            barcodeHandler(slot.barcode);
-          }}
-        >
-          <p key={index}>
-            {product.name} ({index + 1})
-          </p>
-        </Link>
+        <>
+          <Link
+            key={product.id}
+            to={`/${slot.barcode}/${product.id}`}
+            onClick={() => {
+              productHandler(product.id, product.name, slot.level, slot.slot);
+              productIdHandler(product.id);
+              barcodeHandler(slot.barcode);
+            }}
+          >
+            <div key={index} className={styles.productslist}>
+              {product.name} ({index + 1})
+            </div>
+          </Link>
+        </>
       ))}
     />
   ));
 
-  if (product.add) {
+  if (active.add) {
     return (
       <div>
         <div className={styles.products_header}> Shelf {shelf.id}</div>
 
         {slots}
-        <Cancel setProduct={setProduct} />
-        <Link to={`${match.url}`}>
-          <AddSlotButton shelf={shelf} />
-        </Link>
+        <Cancel active={active} setActive={setActive} />
       </div>
     );
   }
   return (
     <div>
       <div className={styles.products_header}> Shelf {shelf.id}</div>
-
       {slots}
-      <Link to={`${match.url}`}>
-        <AddSlotButton shelf={shelf} />
-      </Link>
     </div>
   );
 }
