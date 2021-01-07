@@ -33,7 +33,7 @@ function Shelfs(props) {
       return (
         <Link
           key={shelf.id}
-          to={`shelfs/${shelf.id}`}
+          to={`shelfs/${index}`}
           onClick={() => {
             activeShelfHandler(index);
           }}

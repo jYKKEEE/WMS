@@ -251,7 +251,7 @@ function App() {
           )}
         />
         <Route
-          path={`/shelfs/${active.shelf + 1}`}
+          path={`/shelfs/${active.shelf}`}
           exact
           render={() => (
             <Content>
