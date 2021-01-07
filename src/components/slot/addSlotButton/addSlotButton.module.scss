@@ -3,12 +3,12 @@
 .inputs {
   padding-left: 2%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
 }
 .form {
-  width: 10%; /* viivan leveys  */
+  width: 25%; /* viivan leveys  */
   position: relative;
   height: 50px; /* viivan sijainti korkeus suunnnassa*/
   overflow: hidden;
@@ -36,7 +36,7 @@
   content: "";
   position: absolute;
   left: 0px;
-  bottom: 0px; /* muuta aktivoituna viivan paksuutta */
+  bottom: -3px; /* muuta aktivoituna viivan paksuutta */
   height: 100%;
   width: 100%;
   border-bottom: -1px solid #5fa8d3; /* muuta aktivoituna viivan väriä*/
@@ -54,7 +54,7 @@
 .form input:focus + .label_name .content_name,
 .form input:valid + .label_name .content_name {
   /* muuta aktivoituna Name väri ja koko */
-  transform: translateY(-110%);
+  transform: translateY(-100%);
   font-size: 14px;
   color: #2f00d8;
 }
@@ -73,7 +73,7 @@
 .form input:focus + .label_shell .content_shell,
 .form input:valid + .label_shell .content_shell {
   /* muuta aktivoituna Name väri ja koko */
-  transform: translateY(-110%);
+  transform: translateY(-100%);
   font-size: 14px;
   color: #2f00d8;
 }
@@ -87,5 +87,5 @@
   flex-direction: column;
   justify-content: center;
   align-content: space-between;
-  margin-top: 23px; /*tällä liikutetaan alaspäin*/
+  margin-top: 31px; /*tällä liikutetaan alaspäin*/
 }

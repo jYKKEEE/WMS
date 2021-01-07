@@ -20,10 +20,12 @@ function App() {
     id: 1,
     slots: [
       {
-        barcode: Math.ceil(Math.random() * 9999999999),
+        barcode: 8512758022,
         level: 0,
         slot: 1,
-        products: [{ id: 65464, name: "jalka" }],
+        products: [
+          { id: 65464, name: "jalka", barcode: 8512758022, level: 0, slot: 1 },
+        ],
       },
     ],
   };
@@ -31,40 +33,58 @@ function App() {
     id: 2,
     slots: [
       {
-        barcode: Math.ceil(Math.random() * 9999999999),
+        barcode: 1630990742,
         level: 0,
         slot: 1,
         products: [
           {
             id: 87659,
             name: "kissa",
+            barcode: 1630990742,
+            level: 0,
+            slot: 1,
           },
           {
             id: 34523,
             name: "kivi",
+            barcode: 1630990742,
+            level: 0,
+            slot: 1,
           },
           {
             id: 87657,
             name: "koira",
+            barcode: 1630990742,
+            level: 0,
+            slot: 1,
           },
         ],
       },
       {
-        barcode: Math.ceil(Math.random() * 9999999999),
+        barcode: 3377625525,
         level: 3,
         slot: 2,
         products: [
           {
             id: 23464,
             name: "rotta",
+            barcode: 3377625525,
+            level: 3,
+            slot: 2,
           },
           {
             id: 34523,
             name: "kivi",
+            barcode: 3377625525,
+            level: 3,
+            slot: 2,
           },
           {
             id: 18765,
             name: "kallio",
+            barcode: 3377625525,
+            level: 3,
+            slot: 2,
           },
         ],
       },
@@ -74,40 +94,58 @@ function App() {
     id: 3,
     slots: [
       {
-        barcode: Math.ceil(Math.random() * 9999999999),
+        barcode: 9723898802,
         level: 0,
         slot: 1,
         products: [
           {
             id: 72341,
             name: "pena",
+            barcode: 9723898802,
+            level: 0,
+            slot: 1,
           },
           {
             id: 37654,
             name: "timo",
+            barcode: 9723898802,
+            level: 0,
+            slot: 1,
           },
           {
             id: 49823,
             name: "ville",
+            barcode: 9723898802,
+            level: 0,
+            slot: 1,
           },
         ],
       },
       {
         level: 1,
         slot: 2,
-        barcode: Math.ceil(Math.random() * 9999999999),
+        barcode: 9800815975,
         products: [
           {
             id: 26457,
             name: "kitta",
+            level: 1,
+            slot: 2,
+            barcode: 9800815975,
           },
           {
             id: 72345,
             name: "jyri",
+            level: 1,
+            slot: 2,
+            barcode: 9800815975,
           },
           {
             id: 29864,
             name: "jasu",
+            level: 1,
+            slot: 2,
+            barcode: 9800815975,
           },
         ],
       },
@@ -142,6 +180,17 @@ function App() {
     slot: 0,
   });
 
+  const productsToList = () => {
+    var array = [];
+    shelfs.map((shelf) => {
+      shelf.slots.map((slot) => {
+        slot.products.map((product) => array.push(product));
+      });
+    });
+    console.log(`${array.length}`);
+    return array;
+  };
+
   const addSlot = (slot) => {
     setShelfs(
       (prevState) => [...prevState],
@@ -154,7 +203,7 @@ function App() {
     newShelfs.splice(index, 1);
     setShelfs(newShelfs);
     setActive((prevState) => ({ ...prevState, deleteShelf: false }));
-    setMessage(`Shelf ${shelfNumber} deleted permanetly.`);
+    messageHandler(`Shelf ${shelfNumber} deleted permanetly.`);
   };
   const deleteSlot = (slot, level) => {
     var index = shelfs[active.shelf].slots.map((mapSlot, index) => {
@@ -167,6 +216,7 @@ function App() {
       shelfs[active.shelf].slots.splice(index, 1)
     );
     setActive((prevState) => ({ ...prevState, deleteSlot: false }));
+    messageHandler(`slot ${slot}, level:${level} deleted permanetly.`);
   };
 
   const deleteProduct = () => {
@@ -210,9 +260,24 @@ function App() {
       <div className={styles.app}>
         <Header />
         <Route
+          path="/"
+          exact
+          render={() => (
+            <Content>
+              <Search
+                productsToList={productsToList}
+                shelfs={shelfs}
+                filter={filter}
+                setFilter={setFilter}
+              />
+            </Content>
+          )}
+        />
+        <Route
           path="/add"
           render={() => (
             <Content>
+              <Notification message={message} />
               <AddPage
                 shelfs={shelfs}
                 setShelfs={setShelfs}
@@ -221,16 +286,6 @@ function App() {
                 setActive={setActive}
                 messageHandler={messageHandler}
               />
-              <Notification message={message} setMessage={setMessage} />
-            </Content>
-          )}
-        />
-        <Route
-          path="/"
-          exact
-          render={() => (
-            <Content>
-              <Search shelfs={shelfs} filter={filter} setFilter={setFilter} />
             </Content>
           )}
         />
@@ -269,6 +324,7 @@ function App() {
               />
               <AddSlotButton shelf={shelfs[active.shelf]} addSlot={addSlot} />
               <Cancel active={active} setActive={setActive} />
+              <Notification message={message} />
             </Content>
           )}
         />

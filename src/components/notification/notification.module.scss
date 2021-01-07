@@ -1,0 +1,30 @@
+.msg {
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  text-decoration-color: blue;
+  .h1 {
+    max-width: 300px;
+
+    .span {
+      width: 100%;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(55, 20, 151, 0) 50%,
+        rgb(27, 9, 129) 50%,
+        rgb(16, 9, 83) 60%,
+        rgba(33, 20, 104, 0) 60%
+      );
+      background-size: 0 100%;
+      background-repeat: no-repeat;
+      transition: 250ms linear;
+    }
+
+    // Demo animation
+    span:hover {
+      background-size: 100% 100%;
+    }
+  }
+}

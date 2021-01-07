@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./addSlotButton.module.scss";
+import Button from "../../button";
 
 const AddSlotButton = (props) => {
   const { shelf, addSlot } = props;
@@ -64,6 +65,7 @@ const AddSlotButton = (props) => {
           <span className={styles.content_name}>Slot:</span>
         </label>
       </div>
+
       <div className={styles.form}>
         <input
           value={level}
@@ -78,15 +80,15 @@ const AddSlotButton = (props) => {
         </label>
       </div>
 
-      <button
-        disabled={shelfSlotAddingTests()}
-        className={styles.addButton}
-        onClick={() => {
-          newSlot();
-        }}
-      >
-        add slot
-      </button>
+      <div className={styles.addButton}>
+        <Button
+          text={"Add slot"}
+          link={""}
+          action={() => {
+            newSlot();
+          }}
+        />
+      </div>
     </div>
   );
 };

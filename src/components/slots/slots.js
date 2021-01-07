@@ -56,6 +56,7 @@ function Slots(props) {
       products={slot.products.map((product, index) => (
         <>
           <Link
+            style={{ textDecoration: "none", textDecorationColor: "blue" }}
             key={product.id}
             to={`/${slot.barcode}/${product.id}`}
             onClick={() => {
@@ -79,7 +80,7 @@ function Slots(props) {
         <div className={styles.products_header}> Shelf {shelf.id}</div>
 
         {slots}
-        <Cancel active={active} setActive={setActive} />
+        <div className={styles.cancel}></div>
       </div>
     );
   }

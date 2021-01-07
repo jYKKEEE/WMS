@@ -1,55 +1,40 @@
 import styles from "./delete.module.scss";
-import { Link } from "react-router-dom";
+import Button from "../../button";
 
 function Delete({ setActive }) {
-  /*const setDeleteShelf = () =>{
-        setActive(prevstate => ...prevstate, delete)
-    }
-    const setDelete = () =>{
-        setActive(prevstate => ...prevstate, delete)
-    }
-    const setDelete = () =>{
-        setActive(prevstate => ...prevstate, delete)
-    }*/
-
   return (
     <div className={styles.buttons}>
-      <Link to="/shelfs">
-        <button
-          onClick={() => {
-            setActive((prevState) => ({
-              ...prevState,
-              deleteShelf: true,
-            }));
-          }}
-        >
-          Shelfs
-        </button>
-      </Link>
-      <Link to="/shelfs">
-        <button
-          onClick={() => {
-            setActive((prevState) => ({
-              ...prevState,
-              deleteSlot: true,
-            }));
-          }}
-        >
-          Slots
-        </button>
-      </Link>
-      <Link to="/shelfs">
-        <button
-          onClick={() => {
-            setActive((prevState) => ({
-              ...prevState,
-              deleteProduct: true,
-            }));
-          }}
-        >
-          Products
-        </button>
-      </Link>
+      <Button
+        text={"Shelfs"}
+        link={"/shelfs"}
+        action={() => {
+          setActive((prevState) => ({
+            ...prevState,
+            deleteShelf: true,
+          }));
+        }}
+      />
+      <Button
+        text={"Slots"}
+        link={"/shelfs"}
+        action={() => {
+          setActive((prevState) => ({
+            ...prevState,
+            deleteSlot: true,
+          }));
+        }}
+      />
+
+      <Button
+        text={"Products"}
+        link={"/shelfs"}
+        action={() => {
+          setActive((prevState) => ({
+            ...prevState,
+            deleteProduct: true,
+          }));
+        }}
+      />
     </div>
   );
 }

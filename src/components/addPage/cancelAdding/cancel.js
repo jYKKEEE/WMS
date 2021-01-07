@@ -1,5 +1,5 @@
 import styles from "./cancel.module.scss";
-import { Link } from "react-router-dom";
+import Button from "../../button";
 
 function Cancel({ active, setActive }) {
   const cancel = () => {
@@ -23,16 +23,14 @@ function Cancel({ active, setActive }) {
     active.addSlot
   ) {
     return (
-      <div>
-        <Link to="/add">
-          <button
-            onClick={() => {
-              cancel();
-            }}
-          >
-            Cancel
-          </button>
-        </Link>
+      <div className={styles.cancel}>
+        <Button
+          text={"Cancel"}
+          link={"/add"}
+          action={() => {
+            cancel();
+          }}
+        />
       </div>
     );
   } else {

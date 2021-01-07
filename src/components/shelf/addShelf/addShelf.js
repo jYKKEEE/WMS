@@ -1,3 +1,4 @@
+import Button from "../../button";
 function AddShelf(props) {
   const { shelfs, setShelfs, messageHandler } = props;
 
@@ -81,18 +82,12 @@ function AddShelf(props) {
     var newShelf = { id: shelfNum, slots: [] };
 
     setShelfs(shelfs.concat(newShelf).sort((a, b) => a.id - b.id));
-    messageHandler(`Added shelf ${newShelf.id} to warehouse`);
+    messageHandler(`Shelf number: ${newShelf.id} added`);
   }; // <-- TOIMII 100%
 
   return (
     <div>
-      <button
-        onClick={() => {
-          newShelfHandler();
-        }}
-      >
-        Add new shelf
-      </button>
+      <Button text={"Add Shelfs"} link={""} action={newShelfHandler} />
     </div>
   );
 }

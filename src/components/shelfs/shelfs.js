@@ -1,7 +1,6 @@
 import styles from "./shelfs.module.scss";
 import Content from "../content";
 import Shelf from "../shelf/shelf";
-import Cancel from "../addPage/cancelAdding";
 import { Link } from "react-router-dom";
 
 function Shelfs(props) {
@@ -50,7 +49,7 @@ function Shelfs(props) {
     return (
       <div>
         {output}
-        <div>
+        <div className={styles.addText}>
           <p>Select shelf to add a product</p>
         </div>
       </div>
@@ -59,7 +58,7 @@ function Shelfs(props) {
     return (
       <div>
         {output}
-        <div>
+        <div className={styles.addText}>
           <p>Select shelf to add a new slot</p>
         </div>
       </div>
