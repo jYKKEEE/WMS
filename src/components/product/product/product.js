@@ -21,7 +21,7 @@ function Product(props) {
           <Link to="/add">
             <button
               onClick={() => {
-                deleteProduct();
+                deleteProduct(product.id);
                 messageHandler(`Product " ${product.name} " deleted!`);
               }}
             >

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import messageHandler from "../../../notification/notification.js";
+import styles from "./addButton.module.scss";
+import Button from "../../../button";
+
 function addButton(props) {
   const { product, setActive, shelf, level, slot, messageHandler } = props;
 
@@ -30,19 +32,20 @@ function addButton(props) {
   };
 
   return (
-    <Link to="/add">
-      <div
-        onClick={() => {
+    <div className={styles.addButton}>
+      Add product:
+      <Button
+        text={`${product.name}`}
+        link={"/add"}
+        action={() => {
           addProductToSlot();
           handleProductState();
           messageHandler(
             `Added ${product.name} to shelf ${shelf.id}, slot: ${slot} level: ${level}`
           );
         }}
-      >
-        Add to this slot
-      </div>
-    </Link>
+      />
+    </div>
   );
 }
 export default addButton;

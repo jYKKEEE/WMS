@@ -1,5 +1,6 @@
 import styles from "./slot.module.scss";
 import AddButton from "../../product/add/addButton";
+import Button from "../../button";
 
 function Slot(props) {
   const {
@@ -51,13 +52,13 @@ function Slot(props) {
         <div className={styles.product_date}>{barcode}</div>
         <div className={styles.product_timespan}>{products}</div>
         <div className={styles.product_receiver}>
-          <button
-            onClick={() => {
+          <Button
+            text={"Delete this slot"}
+            link={""}
+            action={() => {
               deleteSlot(slot, level);
             }}
-          >
-            Delete this slot
-          </button>
+          />
         </div>
         <div className={styles.product_average}></div>
       </div>

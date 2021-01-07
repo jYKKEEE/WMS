@@ -80,7 +80,6 @@ function Slots(props) {
         <div className={styles.products_header}> Shelf {shelf.id}</div>
 
         {slots}
-        <div className={styles.cancel}></div>
       </div>
     );
   }

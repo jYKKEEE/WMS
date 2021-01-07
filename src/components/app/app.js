@@ -198,40 +198,62 @@ function App() {
     );
   };
   const deleteShelf = (index) => {
-    const shelfNumber = shelfs[index].id;
-    var newShelfs = shelfs;
-    newShelfs.splice(index, 1);
-    setShelfs(newShelfs);
-    setActive((prevState) => ({ ...prevState, deleteShelf: false }));
-    messageHandler(`Shelf ${shelfNumber} deleted permanetly.`);
+    var q = prompt(`Really want to delete?`, `yes`);
+
+    if (q !== null || q === "yes") {
+      const shelfNumber = shelfs[index].id;
+      var newShelfs = shelfs;
+      newShelfs.splice(index, 1);
+      setShelfs(newShelfs);
+      setActive((prevState) => ({ ...prevState, deleteShelf: false }));
+      messageHandler(`Shelf ${shelfNumber} deleted permanetly.`);
+    }
   };
   const deleteSlot = (slot, level) => {
-    var index = shelfs[active.shelf].slots.map((mapSlot, index) => {
-      if (mapSlot.slot === slot && mapSlot.level === level) {
-        return index;
+    var q = prompt(`Really want to delete?`, `yes`);
+
+    if (q !== null || q === "yes") {
+      var index = 0;
+      var slots = shelfs[active.shelf].slots;
+      for (let i = 0; i < shelfs[active.shelf].slots.length; i++) {
+        if (slots[i].slot === slot && slots[i].level === level) {
+          index = i;
+        }
       }
-    });
-    setShelfs(
-      (prevState) => [...prevState],
-      shelfs[active.shelf].slots.splice(index, 1)
-    );
-    setActive((prevState) => ({ ...prevState, deleteSlot: false }));
-    messageHandler(`slot ${slot}, level:${level} deleted permanetly.`);
+      console.log(`poistooon!: ${index}`);
+      setShelfs(
+        (prevState) => [...prevState],
+        shelfs[active.shelf].slots.splice(index, 1)
+      );
+      setActive((prevState) => ({ ...prevState, deleteSlot: false }));
+      messageHandler(`slot ${slot}, level:${level} deleted permanetly.`);
+    }
   };
 
-  const deleteProduct = () => {
-    var taulu = shelfs[active.shelf];
-    taulu.slots.map((slot, index) => {
-      if (active.id === slot.id) {
-        slot.products.splice(index, 1);
-        //slot.splice(indeksi, montaPoistetaan);
-        console.log(`poisto?`);
-      }
+  const deleteProduct = (id) => {
+    var q = prompt(`Really want to delete?`, `yes`);
 
-      return null;
-    });
-    setActive((prevState) => ({ ...prevState, deleteProduct: false }));
-    setShelfs((prevState) => [...prevState], (shelfs[active.shelf] = taulu));
+    if (q !== null || q === "yes") {
+      var taulu = shelfs[active.shelf];
+      taulu.slots.map((mapSlot) => {
+        if (mapSlot.slot === product.slot && mapSlot.level === product.level) {
+          mapSlot.products.map((ware, index) => {
+            if (ware.id === id) {
+              mapSlot.products.splice(index, 1);
+              //slot.splice(indeksi, montaPoistetaan);
+              setActive((prevState) => ({
+                ...prevState,
+                deleteProduct: false,
+              }));
+              setShelfs(
+                (prevState) => [...prevState],
+                (shelfs[active.shelf] = taulu)
+              );
+            }
+          });
+        }
+      });
+    }
   };
 
   const messageHandler = (message) => {
@@ -351,7 +373,6 @@ function App() {
                 setActive={setActive}
                 setProduct={setProduct}
               />
-              <Cancel active={active} setActive={setActive} />
             </Content>
           )}
         />
@@ -360,4 +381,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;
