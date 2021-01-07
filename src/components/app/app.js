@@ -24,7 +24,13 @@ function App() {
         level: 0,
         slot: 1,
         products: [
-          { id: 65464, name: "jalka", barcode: 8512758022, level: 0, slot: 1 },
+          {
+            id: 65464,
+            name: "Autonrengas",
+            barcode: 8512758022,
+            level: 0,
+            slot: 1,
+          },
         ],
       },
     ],
@@ -39,21 +45,28 @@ function App() {
         products: [
           {
             id: 87659,
-            name: "kissa",
+            name: "kissan hiekkaa",
             barcode: 1630990742,
             level: 0,
             slot: 1,
           },
           {
             id: 34523,
-            name: "kivi",
+            name: "kiviä",
+            barcode: 1630990742,
+            level: 0,
+            slot: 1,
+          },
+          {
+            id: 34576,
+            name: "jakoavain",
             barcode: 1630990742,
             level: 0,
             slot: 1,
           },
           {
             id: 87657,
-            name: "koira",
+            name: "vasara",
             barcode: 1630990742,
             level: 0,
             slot: 1,
@@ -67,21 +80,21 @@ function App() {
         products: [
           {
             id: 23464,
-            name: "rotta",
+            name: "nauloja",
             barcode: 3377625525,
             level: 3,
             slot: 2,
           },
           {
             id: 34523,
-            name: "kivi",
+            name: "tietokone",
             barcode: 3377625525,
             level: 3,
             slot: 2,
           },
           {
             id: 18765,
-            name: "kallio",
+            name: "Näyttö",
             barcode: 3377625525,
             level: 3,
             slot: 2,
@@ -100,21 +113,28 @@ function App() {
         products: [
           {
             id: 72341,
-            name: "pena",
+            name: "kirjoja",
             barcode: 9723898802,
             level: 0,
             slot: 1,
           },
           {
             id: 37654,
-            name: "timo",
+            name: "taulu",
             barcode: 9723898802,
             level: 0,
             slot: 1,
           },
           {
             id: 49823,
-            name: "ville",
+            name: "kahvinkeitin",
+            barcode: 9723898802,
+            level: 0,
+            slot: 1,
+          },
+          {
+            id: 49824,
+            name: "näyttötyö",
             barcode: 9723898802,
             level: 0,
             slot: 1,
@@ -128,21 +148,21 @@ function App() {
         products: [
           {
             id: 26457,
-            name: "kitta",
+            name: "kitara",
             level: 1,
             slot: 2,
             barcode: 9800815975,
           },
           {
             id: 72345,
-            name: "jyri",
+            name: "Kitaravahvistin",
             level: 1,
             slot: 2,
             barcode: 9800815975,
           },
           {
             id: 29864,
-            name: "jasu",
+            name: "plektroja",
             level: 1,
             slot: 2,
             barcode: 9800815975,
