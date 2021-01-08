@@ -200,6 +200,12 @@ function App() {
     slot: 0,
   });
 
+  const messageHandler = (message) => {
+    setMessage(message);
+    setTimeout(() => {
+      setMessage("");
+    }, 3500);
+  };
   const productsToList = () => {
     var array = [];
     shelfs.map((shelf) => {
@@ -212,12 +218,13 @@ function App() {
   };
 
   const addSlot = (slot) => {
-    setShelfs(
-      (prevState) => [...prevState],
-      shelfs[active.shelf].slots.push(slot)
-    );
+    shelfs[active.shelf].slots.push(slot);
+    shelfs[active.shelf].slots.sort((a, b) => a.level - b.level);
+    shelfs[active.shelf].slots.sort((a, b) => a.slot - b.slot);
+    setShelfs((prevState) => [...prevState], shelfs[active.shelf].slots);
   };
-  //DELETES
+
+  //DELETET
   const deleteShelf = (index) => {
     var q = prompt(`Really want to delete?`, `yes`);
 
@@ -275,13 +282,6 @@ function App() {
         }
       });
     }
-  };
-
-  const messageHandler = (message) => {
-    setMessage(message);
-    setTimeout(() => {
-      setMessage("");
-    }, 3500);
   };
 
   console.log(`product add: ${active.add}`);

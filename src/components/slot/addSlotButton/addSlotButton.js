@@ -30,11 +30,11 @@ const AddSlotButton = (props) => {
       }
     }
     // Jos jompikumpi input kenttä tyhjänä
-    if (level === "") {
-      messageHandler(`Please insert a number to "level"`);
-      return (bool = true);
-    } else if (slot === "") {
+    if (slot === "") {
       messageHandler(`Please insert a number to "slot"`);
+      return (bool = true);
+    } else if (level === "") {
+      messageHandler(`Please insert a number to "level"`);
       return (bool = true);
     }
 
