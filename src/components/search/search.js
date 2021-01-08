@@ -23,11 +23,11 @@ function Search(props) {
     )
     .map((out, index) => <li key={index}>{out.name}</li>);
 
-  if (output.length < 25) {
+  if (output.length < 16) {
     return (
       <div className={styles.search_table}>
         <h2>Search</h2>
-        name: <input value={filter} onChange={onChangeEvent} />
+        <input value={filter} onChange={onChangeEvent} />
         {output}
       </div>
     );
@@ -35,7 +35,7 @@ function Search(props) {
     return (
       <div className={styles.search_table}>
         <h2>Search</h2>
-        name: <input value={filter} onChange={onChangeEvent} />
+        <input value={filter} onChange={onChangeEvent} />
         <p>Too many products to display</p>
       </div>
     );
