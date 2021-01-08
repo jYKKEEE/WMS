@@ -12,13 +12,13 @@
   padding: $product-padding;
 }
 .product_amount,
-.product_timespan,
-.product_average {
+.product_products {
   text-align: right;
 }
 
-.product_type,
+.product_slot_and_level,
 .product_amount {
   font-weight: bold;
+  font-size: 20px;
   color: $product-text-strong;
 }

@@ -1,20 +1,16 @@
 import styles from "./addPage.module.scss";
-import AddShelf from "../../shelf/addShelf";
-import Button from "../../button/button";
+import AddShelf from "../shelf/addShelf";
+import Button from "../button/button";
 
-function AddProduct(props) {
-  const {
-    shelfs,
-    setShelfs,
-    active,
-    setProduct,
-    messageHandler,
-    setActive,
-  } = props;
+/*AddPage-komponentti sisältää toiminnot lisäämiseen ja poistamiseen.
+<Buttonit> reitittää käyttäjän seuraavin vaiheisiin */
+function AddPage(props) {
+  const { shelfs, setShelfs, setActive, messageHandler } = props;
 
   return (
     <div className={styles.addPage}>
       <h1>Shelf:</h1>
+      {/*AddShelf lisää uuden seuraavan vapaan hyllyn */}
       <AddShelf
         shelfs={shelfs}
         setShelfs={setShelfs}
@@ -46,7 +42,7 @@ function AddProduct(props) {
 
 function Delete({ setActive }) {
   return (
-    <div className={styles.deletebuttons}>
+    <div className={styles.delete_buttons}>
       <Button
         text={"Shelfs"}
         link={"/shelfs"}
@@ -95,5 +91,8 @@ function Delete({ setActive }) {
       />
     </div>
   );
-}
-export default AddProduct;
+} /*<<-- Delete painikkeet omassa komponentissa,
+  jokainen <Button/> muuttaa delete-tiloja nimensä mukaisesti.
+  Omassa komponentissä koodin selkeyttämiseksi.
+*/
+export default AddPage;

@@ -4,6 +4,7 @@ import ShelfsIcon from "@material-ui/icons/ListAlt";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 
+//Alapalkin navigointi toiminnot
 function Menu({ setActive }) {
   const setDeletesToFalse = () => {
     setActive((prevState) => ({
@@ -14,33 +15,20 @@ function Menu({ setActive }) {
     }));
   };
   return (
-    <div className={styles.menu}>
+    <div
+      className={styles.menu}
+      onClick={() => {
+        setDeletesToFalse();
+      }}
+    >
       <Link to="/add">
-        <div
-          onClick={() => {
-            setDeletesToFalse();
-          }}
-        >
-          <AddIcon />
-        </div>
+        <AddIcon />
       </Link>
       <Link to="/">
-        <div
-          onClick={() => {
-            setDeletesToFalse();
-          }}
-        >
-          <SearchIcon />
-        </div>
+        <SearchIcon />
       </Link>
       <Link to="/shelfs">
-        <div
-          onClick={() => {
-            setDeletesToFalse();
-          }}
-        >
-          <ShelfsIcon />
-        </div>
+        <ShelfsIcon />
       </Link>
     </div>
   );

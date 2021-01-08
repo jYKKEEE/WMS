@@ -1,4 +1,4 @@
-@import "../../../assets/styles/config.scss";
+@import "../../assets/styles/config.scss";
 
 .addPage {
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
   flex-direction: column;
 }
-.deletebuttons {
+.delete_buttons {
   display: flex;
   justify-content: space-around;
   flex-direction: column;

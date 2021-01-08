@@ -1,0 +1,17 @@
+@import "../../../assets/styles/config.scss";
+
+.inputs {
+  padding-left: 2%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.addButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+  margin-top: 20px; /*tällä liikutetaan alaspäin*/
+}

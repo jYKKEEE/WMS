@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useParams,
+} from "react-router-dom";
 
 import styles from "./app.module.scss";
 import Header from "../header";
@@ -7,12 +12,12 @@ import Content from "../content";
 import Search from "../search";
 import Shelfs from "../shelfs";
 import Menu from "../menu";
-import Slots from "../slots";
+import Slots from "../slots/slots";
 import Product from "../product/product";
-import AddPage from "../addPage/addPage";
-import AddForm from "../product/add/addForm";
+import AddPage from "../addPage";
+import AddForm from "../product/addForm";
 import Notification from "../notification";
-import AddSlotButton from "../slot/addSlotButton";
+import AddSlotButton from "../slots/addSlotButton";
 import Cancel from "../button/cancelbutton";
 
 function App() {
@@ -199,7 +204,7 @@ function App() {
     level: 0,
     slot: 0,
   });
-
+  //GenerateID()??
   const messageHandler = (message) => {
     setMessage(message);
     setTimeout(() => {
@@ -324,30 +329,30 @@ function App() {
               <AddPage
                 shelfs={shelfs}
                 setShelfs={setShelfs}
-                active={active}
-                setProduct={setProduct}
                 setActive={setActive}
                 messageHandler={messageHandler}
               />
             </Content>
           )}
         />
-        <Route
-          path="/shelfs"
-          exact
-          render={() => (
-            <Content>
-              <Shelfs
-                shelfs={shelfs}
-                active={active}
-                setActive={setActive}
-                messageHandler={messageHandler}
-                deleteShelf={deleteShelf}
-              />
-              <Cancel active={active} setActive={setActive} />
-            </Content>
-          )}
-        />
+        <Switch>
+          <Route
+            path="/shelfs"
+            exact
+            render={() => (
+              <Content>
+                <Shelfs
+                  shelfs={shelfs}
+                  active={active}
+                  setActive={setActive}
+                  messageHandler={messageHandler}
+                  deleteShelf={deleteShelf}
+                />
+                <Cancel active={active} setActive={setActive} />
+              </Content>
+            )}
+          />
+        </Switch>
         <Route
           path={`/shelfs/${active.shelf}`}
           exact
@@ -376,7 +381,7 @@ function App() {
           )}
         />
         <Route
-          path={`/${active.barcode}/${active.productId}`}
+          path={`/${product.id}`}
           render={() => (
             <Content>
               <Product

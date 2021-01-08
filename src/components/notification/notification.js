@@ -1,5 +1,7 @@
 import styles from "./notification.module.scss";
 
+/*Ilmoitus komponentti. tulostaa sille annetun tekstin 
+Viesti tulostetaan app.js rivi ~205 funktiolla messageHandler*/
 function Notification({ message }) {
   if (message === "") {
     return null;

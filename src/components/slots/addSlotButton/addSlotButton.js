@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./addSlotButton.module.scss";
 import Button from "../../button/button";
+import Input from "../../input";
 
 const AddSlotButton = (props) => {
   const { shelf, addSlot, messageHandler } = props;
@@ -62,33 +63,8 @@ const AddSlotButton = (props) => {
 
   return (
     <div className={styles.inputs}>
-      <div className={styles.form}>
-        <input
-          value={slot}
-          onChange={handleSlotChange}
-          type="text"
-          name="shellName"
-          autoComplete="off"
-          required
-        />
-        <label htmlFor="shellName" className={styles.label_name}>
-          <span className={styles.content_name}>Slot:</span>
-        </label>
-      </div>
-
-      <div className={styles.form}>
-        <input
-          value={level}
-          onChange={handleLevelChange}
-          type="text"
-          name="shellNum"
-          autoComplete="off"
-          required
-        />
-        <label htmlFor="shellNum" className={styles.label_shell}>
-          <span className={styles.content_shell}>Level:</span>
-        </label>
-      </div>
+      <Input text={`Slot:`} value={slot} onChange={handleSlotChange} />
+      <Input text={`Level:`} value={level} onChange={handleLevelChange} />
 
       <div className={styles.addButton}>
         <Button

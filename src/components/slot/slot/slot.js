@@ -1,5 +1,5 @@
 import styles from "./slot.module.scss";
-import AddButton from "../../product/add/addButton";
+import AddButton from "../addProductButton";
 import Button from "../../button/button";
 
 function Slot(props) {
@@ -16,16 +16,27 @@ function Slot(props) {
     shelf,
   } = props;
 
-  const addingOutput = (
+  const numberOfProoductsHeader = () => {
+    if (products.length === 0) {
+      return `Products:`;
+    } else if (products.length === 1) {
+      return "Product:";
+    } else {
+      return `${products.length} products:`;
+    }
+  }; /*<-- slotin toinen headeri. 
+  Näyttää slotissa olevien tuotteiden määrän ehdoin.*/
+
+  const productAddingOutput = (
     <div className={styles.product}>
       <div className={styles.product_data}>
         <div
-          className={styles.product_type}
+          className={styles.product_slot_and_level}
         >{` slot:${slot}, level: ${level}`}</div>
 
-        <div className={styles.product_amount}>Products:</div>
-        <div className={styles.product_date}>{barcode}</div>
-        <div className={styles.product_timespan}>{products}</div>
+        <div className={styles.product_amount}>{numberOfProoductsHeader()}</div>
+        <div className={styles.product_barcode}>EAN:{barcode}</div>
+        <div className={styles.product_products}>{products}</div>
         <div className={styles.product_receiver}>
           <AddButton
             product={product}
@@ -37,20 +48,21 @@ function Slot(props) {
           ></AddButton>
           {/*Add to this slot -nappi */}
         </div>
-        <div className={styles.product_average}></div>
       </div>
     </div>
-  );
-  const deleteOutput = (
+  ); /*<<--Jos käyttäjä on lisäämässä tuotetta, lisätään tulosteeseen AddButton,
+  jolla lisätään tuote slottiin*/
+
+  const deleteSlotOutput = (
     <div className={styles.product}>
       <div className={styles.product_data}>
         <div
-          className={styles.product_type}
+          className={styles.product_slot_and_level}
         >{` slot:${slot}, level: ${level}`}</div>
 
-        <div className={styles.product_amount}>Products:</div>
-        <div className={styles.product_date}>{barcode}</div>
-        <div className={styles.product_timespan}>{products}</div>
+        <div className={styles.product_amount}>{numberOfProoductsHeader()}</div>
+        <div className={styles.product_barcode}>EAN:{barcode}</div>
+        <div className={styles.product_products}>{products}</div>
         <div className={styles.product_receiver}>
           <Button
             text={"Delete this slot"}
@@ -60,27 +72,27 @@ function Slot(props) {
             }}
           />
         </div>
-        <div className={styles.product_average}></div>
       </div>
     </div>
-  );
+  ); /*<<-- lisätään tulosteeseen Button jolla poistetaan slotti */
 
   if (active.add) {
-    return <div>{addingOutput}</div>;
+    return <div>{productAddingOutput}</div>;
   } else if (active.deleteSlot) {
-    return <div>{deleteOutput}</div>;
+    return <div>{deleteSlotOutput}</div>;
   } else {
     return (
       <div className={styles.product}>
         <div className={styles.product_data}>
           <div
-            className={styles.product_type}
+            className={styles.product_slot_and_level}
           >{` slot:${slot}, level: ${level}`}</div>
-          <div className={styles.product_amount}>Products:</div>
-          <div className={styles.product_date}>{barcode}</div>
-          <div className={styles.product_timespan}>{products}</div>
+          <div className={styles.product_amount}>
+            {numberOfProoductsHeader()}
+          </div>
+          <div className={styles.product_barcode}>EAN:{barcode}</div>
+          <div className={styles.product_products}>{products}</div>
           <div className={styles.product_receiver}></div>
-          <div className={styles.product_average}></div>
         </div>
       </div>
     );

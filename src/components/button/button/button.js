@@ -1,9 +1,11 @@
-import { StylesProvider } from "@material-ui/core";
-
 import styles from "./button.module.scss";
 import { Link } from "react-router-dom";
+
+/*Buttoni palauttaa nappin, joka suorittaa propseina saadun function.
+mikäli propseina annettu link on urli niin Button toimii myös linkkinä*/
 function Button(props) {
   const { text, link, action } = props;
+
   if (link === "") {
     return (
       <div>

@@ -1,6 +1,7 @@
 import styles from "./cancel.module.scss";
 import Button from "../button";
 
+//Komponentin ideana on tulostua <Button />, jos jokin Add- tai Delete-tiloista on True.
 function Cancel({ active, setActive }) {
   const cancel = () => {
     setActive((prevState) => ({
@@ -12,7 +13,7 @@ function Cancel({ active, setActive }) {
       add: false,
       addSlot: false,
     }));
-  };
+  }; //<-- muuttaa kaikki Delete- ja Add-tilat falseksi.
 
   if (
     active.deleteProduct ||

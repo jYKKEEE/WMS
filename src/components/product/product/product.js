@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 
 function Product(props) {
   const { product, active, deleteProduct, messageHandler } = props;
-
-  /*slots: [
-      {
-        barcode: Math.ceil(Math.random() * 9999999999),
-        level: 0,        
-        slot: 1,        
-        products: [{ id: 64534, name: "jalka" }],},*/
+  /*slots: [{barcode: Math.ceil(Math.random() * 9999999999),
+            level: 0,        
+            slot: 1,        
+            products: [{id: 65464,name: "Autonrengas",barcode: 8512758022,level: 0,slot: 1,}],},*/
 
   console.log(`product: ${product.name}`);
 

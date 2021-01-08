@@ -1,19 +1,9 @@
-import { Link } from "react-router-dom";
 import styles from "./addButton.module.scss";
-import Button from "../../../button/button";
+import Button from "../../button/button";
 
 function addButton(props) {
   const { product, setActive, shelf, level, slot, messageHandler } = props;
 
-  /*var hylly1 = {
-    id: 1,
-    slots: [
-      {
-        barcode: Math.ceil(Math.random() * 9999999999),
-        level: 0,
-        slot: 1,
-        products: [{ id: 65464, name: "jalka" }],
-      },*/
   const handleProductState = () => {
     setActive((prevState) => ({
       ...prevState,

@@ -1,9 +1,8 @@
-import Slot from "../slot/slot";
+import Slot from "../../slot/slot";
 
 import styles from "./slots.module.scss";
 import React from "react";
 import { Link } from "react-router-dom";
-import Cancel from "../button/cancelbutton";
 
 function Slots(props) {
   //HUOM shelf = tällähetkellä aktiivinen hylly eli (shelf[active.shelf])
@@ -58,7 +57,7 @@ function Slots(props) {
           <Link
             style={{ textDecoration: "none", textDecorationColor: "blue" }}
             key={product.id}
-            to={`/${slot.barcode}/${product.id}`}
+            to={`/${product.id}`}
             onClick={() => {
               productHandler(product.id, product.name, slot.level, slot.slot);
               productIdHandler(product.id);
@@ -66,7 +65,7 @@ function Slots(props) {
             }}
           >
             <div key={index} className={styles.productslist}>
-              {product.name} ({index + 1})
+              {product.name}
             </div>
           </Link>
         </>
