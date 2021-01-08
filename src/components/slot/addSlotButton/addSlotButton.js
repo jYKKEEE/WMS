@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./addSlotButton.module.scss";
-import Button from "../../button";
+import Button from "../../button/button";
 
 const AddSlotButton = (props) => {
-  const { shelf, addSlot } = props;
+  const { shelf, addSlot, messageHandler } = props;
   const [level, setLevel] = useState("");
   const [slot, setSlot] = useState("");
 
@@ -23,17 +23,29 @@ const AddSlotButton = (props) => {
       var test2 = shelf.slots[i].slot === parseInt(slot);
       //Jos true niin hyllyssä slotti jo käytössä!!
       if (test1 && test2) {
+        messageHandler(
+          `This shelf allready has a slot:  Slot: ( ${slot} ), Level:( ${level} ). `
+        );
         return (bool = true);
       }
     }
     // Jos jompikumpi input kenttä tyhjänä
-    if (level === "" || slot === "") {
+    if (level === "") {
+      messageHandler(`Please insert a number to "level"`);
+      return (bool = true);
+    } else if (slot === "") {
+      messageHandler(`Please insert a number to "slot"`);
       return (bool = true);
     }
+
     //Jos käyttäjä syöttää tekstiä
     if (isNaN(parseInt(level)) || isNaN(parseInt(slot))) {
+      messageHandler(
+        `Only letter allowed. Slot: ( ${slot} ), Level:( ${level} )."`
+      );
       return (bool = true);
     }
+
     return bool;
   };
 
@@ -45,8 +57,6 @@ const AddSlotButton = (props) => {
         slot: parseInt(slot),
         products: [],
       });
-    } else {
-      alert(`Failed to add slot: ( ${slot} ), level:( ${level} ).`);
     }
   };
 

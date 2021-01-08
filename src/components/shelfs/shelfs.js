@@ -16,17 +16,17 @@ function Shelfs(props) {
   const output = shelfs.map((shelf, index) => {
     if (active.deleteShelf === true) {
       return (
-        <Link
-          key={shelf.id}
-          to={`/add`}
-          onClick={() => {
-            deleteShelf(index);
-          }}
-        >
-          <Content>
+        <Content>
+          <Link
+            key={shelf.id}
+            to={`/add`}
+            onClick={() => {
+              deleteShelf(index);
+            }}
+          >
             <Shelf shelfNum={shelf.id} slots={shelf.slots} />
-          </Content>
-        </Link>
+          </Link>
+        </Content>
       );
     } else {
       return (

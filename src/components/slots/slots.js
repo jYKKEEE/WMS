@@ -3,7 +3,7 @@ import Slot from "../slot/slot";
 import styles from "./slots.module.scss";
 import React from "react";
 import { Link } from "react-router-dom";
-import Cancel from "../addPage/cancelAdding";
+import Cancel from "../button/cancelbutton";
 
 function Slots(props) {
   //HUOM shelf = tällähetkellä aktiivinen hylly eli (shelf[active.shelf])

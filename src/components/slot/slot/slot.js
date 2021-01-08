@@ -1,6 +1,6 @@
 import styles from "./slot.module.scss";
 import AddButton from "../../product/add/addButton";
-import Button from "../../button";
+import Button from "../../button/button";
 
 function Slot(props) {
   const {

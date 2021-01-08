@@ -2,7 +2,7 @@ import styles from "./product.module.scss";
 import { Link } from "react-router-dom";
 
 function Product(props) {
-  const { product, deleteProduct, messageHandler } = props;
+  const { product, active, deleteProduct, messageHandler } = props;
 
   /*slots: [
       {
@@ -18,7 +18,7 @@ function Product(props) {
       <div className={styles.product_data}>
         <div className={styles.product_type}>nimi : {product.name}</div>
         <div className={styles.product_amount}>
-          <Link to="/add">
+          <Link to={`/shelfs/${active.shelf}`}>
             <button
               onClick={() => {
                 deleteProduct(product.id);

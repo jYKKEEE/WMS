@@ -13,7 +13,7 @@ import AddPage from "../addPage/addPage";
 import AddForm from "../product/add/addForm";
 import Notification from "../notification";
 import AddSlotButton from "../slot/addSlotButton";
-import Cancel from "../addPage/cancelAdding";
+import Cancel from "../button/cancelbutton";
 
 function App() {
   var hylly1 = {
@@ -217,6 +217,7 @@ function App() {
       shelfs[active.shelf].slots.push(slot)
     );
   };
+  //DELETES
   const deleteShelf = (index) => {
     var q = prompt(`Really want to delete?`, `yes`);
 
@@ -364,7 +365,11 @@ function App() {
                 deleteProduct={deleteProduct}
                 messageHandler={messageHandler}
               />
-              <AddSlotButton shelf={shelfs[active.shelf]} addSlot={addSlot} />
+              <AddSlotButton
+                shelf={shelfs[active.shelf]}
+                addSlot={addSlot}
+                messageHandler={messageHandler}
+              />
               <Cancel active={active} setActive={setActive} />
               <Notification message={message} />
             </Content>
@@ -376,6 +381,7 @@ function App() {
             <Content>
               <Product
                 deleteProduct={deleteProduct}
+                active={active}
                 product={product}
                 messageHandler={messageHandler}
               />
@@ -396,7 +402,7 @@ function App() {
             </Content>
           )}
         />
-        <Menu />
+        <Menu setActive={setActive} />
       </div>
     </Router>
   );

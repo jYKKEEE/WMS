@@ -1,8 +1,6 @@
 import styles from "./addPage.module.scss";
 import AddShelf from "../../shelf/addShelf";
-import { Link } from "react-router-dom";
-import Button from "../../button";
-import Delete from "../delete";
+import Button from "../../button/button";
 
 function AddProduct(props) {
   const {
@@ -29,6 +27,11 @@ function AddProduct(props) {
         action={() => {
           setActive((prevState) => ({
             ...prevState,
+            deleteProduct: false,
+            deleteSlot: false,
+            deleteShelf: false,
+            edit: false,
+            add: false,
             addSlot: true,
           }));
         }}
@@ -41,4 +44,56 @@ function AddProduct(props) {
   );
 }
 
+function Delete({ setActive }) {
+  return (
+    <div className={styles.deletebuttons}>
+      <Button
+        text={"Shelfs"}
+        link={"/shelfs"}
+        action={() => {
+          setActive((prevState) => ({
+            ...prevState,
+            deleteProduct: false,
+            deleteSlot: false,
+            edit: false,
+            add: false,
+            addSlot: false,
+            deleteShelf: true,
+          }));
+        }}
+      />
+      <Button
+        text={"Slots"}
+        link={"/shelfs"}
+        action={() => {
+          setActive((prevState) => ({
+            ...prevState,
+            deleteProduct: false,
+            edit: false,
+            add: false,
+            addSlot: false,
+            deleteShelf: false,
+            deleteSlot: true,
+          }));
+        }}
+      />
+
+      <Button
+        text={"Products"}
+        link={"/shelfs"}
+        action={() => {
+          setActive((prevState) => ({
+            ...prevState,
+            deleteProduct: true,
+            deleteSlot: false,
+            edit: false,
+            add: false,
+            addSlot: false,
+            deleteShelf: false,
+          }));
+        }}
+      />
+    </div>
+  );
+}
 export default AddProduct;

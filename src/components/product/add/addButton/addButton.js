@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./addButton.module.scss";
-import Button from "../../../button";
+import Button from "../../../button/button";
 
 function addButton(props) {
   const { product, setActive, shelf, level, slot, messageHandler } = props;

@@ -1,5 +1,5 @@
 import styles from "./cancel.module.scss";
-import Button from "../../button";
+import Button from "../button";
 
 function Cancel({ active, setActive }) {
   const cancel = () => {

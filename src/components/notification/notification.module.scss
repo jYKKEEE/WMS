@@ -1,12 +1,13 @@
 .msg {
   display: flex;
-  font-size: 12px;
+  font-size: 9px;
   justify-content: center;
   align-items: center;
   color: rgb(0, 0, 0);
   text-decoration-color: blue;
   .h1 {
-    max-width: 300px;
+    //tekstialueen leveys
+    max-width: 500px;
 
     .span {
       width: 100%;
