@@ -1,17 +1,12 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import styles from "./app.module.scss";
 import Header from "../header";
 import Content from "../content";
 import Search from "../search";
 import Shelfs from "../shelfs";
-import Menu from "../menu";
+import Menu from "../menu/menu";
 import Slots from "../slots/slots";
 import Product from "../product/product";
 import AddPage from "../addPage";
@@ -19,6 +14,7 @@ import AddForm from "../product/addForm";
 import Notification from "../notification";
 import AddSlotButton from "../slots/addSlotButton";
 import Cancel from "../button/cancelbutton";
+import Temp from "../menu/temp";
 
 function App() {
   var hylly1 = {
@@ -196,6 +192,7 @@ function App() {
     add: false,
     addSlot: false,
   });
+  const [temp, setTemp] = useState([]);
   const [filter, setFilter] = useState("");
   const [message, setMessage] = useState("");
   const [product, setProduct] = useState({
@@ -203,8 +200,33 @@ function App() {
     name: "",
     level: 0,
     slot: 0,
+    barcode: 0,
   });
   //GenerateID()??
+
+  const takeProduct = (id) => {
+    var taulu = shelfs[active.shelf];
+    taulu.slots.map((mapSlot) => {
+      if (mapSlot.slot === product.slot && mapSlot.level === product.level) {
+        mapSlot.products.map((ware, index) => {
+          if (ware.id === id) {
+            setTemp(temp.concat(product));
+            mapSlot.products.splice(index, 1);
+            //slot.splice(indeksi, montaPoistetaan);
+            setActive((prevState) => ({
+              ...prevState,
+              deleteProduct: false,
+            }));
+            setShelfs(
+              (prevState) => [...prevState],
+              (shelfs[active.shelf] = taulu)
+            );
+          }
+        });
+      }
+    });
+  };
+
   const messageHandler = (message) => {
     setMessage(message);
     setTimeout(() => {
@@ -307,6 +329,7 @@ function App() {
     <Router>
       <div className={styles.app}>
         <Header />
+
         <Route
           path="/"
           exact
@@ -325,7 +348,6 @@ function App() {
           path="/add"
           render={() => (
             <Content>
-              <Notification message={message} />
               <AddPage
                 shelfs={shelfs}
                 setShelfs={setShelfs}
@@ -335,24 +357,24 @@ function App() {
             </Content>
           )}
         />
-        <Switch>
-          <Route
-            path="/shelfs"
-            exact
-            render={() => (
-              <Content>
-                <Shelfs
-                  shelfs={shelfs}
-                  active={active}
-                  setActive={setActive}
-                  messageHandler={messageHandler}
-                  deleteShelf={deleteShelf}
-                />
-                <Cancel active={active} setActive={setActive} />
-              </Content>
-            )}
-          />
-        </Switch>
+
+        <Route
+          path="/shelfs"
+          exact
+          render={() => (
+            <Content>
+              <Shelfs
+                shelfs={shelfs}
+                active={active}
+                setActive={setActive}
+                messageHandler={messageHandler}
+                deleteShelf={deleteShelf}
+              />
+              <Cancel active={active} setActive={setActive} />
+            </Content>
+          )}
+        />
+
         <Route
           path={`/shelfs/${active.shelf}`}
           exact
@@ -376,7 +398,6 @@ function App() {
                 messageHandler={messageHandler}
               />
               <Cancel active={active} setActive={setActive} />
-              <Notification message={message} />
             </Content>
           )}
         />
@@ -386,6 +407,7 @@ function App() {
             <Content>
               <Product
                 deleteProduct={deleteProduct}
+                takeProduct={takeProduct}
                 active={active}
                 product={product}
                 messageHandler={messageHandler}
@@ -407,6 +429,8 @@ function App() {
             </Content>
           )}
         />
+        <Notification message={message} />
+        <Temp temp={temp} />
         <Menu setActive={setActive} />
       </div>
     </Router>

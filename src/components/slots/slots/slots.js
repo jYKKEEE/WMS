@@ -29,13 +29,14 @@ function Slots(props) {
       barcode: barcode,
     }));
   };
-  const productHandler = (id, name, level, slot) => {
+  const productHandler = (id, name, level, slot, barcode) => {
     setProduct((prevState) => ({
       ...prevState,
       id: id,
       name: name,
       level: level,
       slot: slot,
+      barcode: barcode,
     }));
   };
 
@@ -55,11 +56,17 @@ function Slots(props) {
       products={slot.products.map((product, index) => (
         <>
           <Link
-            style={{ textDecoration: "none", textDecorationColor: "blue" }}
+            style={{ textDecoration: "none" }}
             key={product.id}
             to={`/${product.id}`}
             onClick={() => {
-              productHandler(product.id, product.name, slot.level, slot.slot);
+              productHandler(
+                product.id,
+                product.name,
+                slot.level,
+                slot.slot,
+                slot.barcode
+              );
               productIdHandler(product.id);
               barcodeHandler(slot.barcode);
             }}

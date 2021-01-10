@@ -1,11 +1,11 @@
 $header-background: linear-gradient(to right, #434343 0%, black 100%);
 $header-text: #ffffff;
-$header-height: 4rem;
+$header-height: 4.1rem;
 $header-fontsize: 0.8rem;
 
-$scrollbar-track: linear-gradient(120deg, #a1c4fd 5%, #c2e9fb 100%);
-$scrollbar-thumb: #000000;
-$scrollbar-width: 0.5rem;
+$scrollbar-track: rgba(168, 209, 168, 0);
+$scrollbar-thumb: #000000dc;
+$scrollbar-width: 0.3rem;
 
 $products-fontsize: 1.7rem;
 
@@ -16,9 +16,17 @@ $product-padding: 0.6rem;
 
 $shelf-border: #000000;
 $shelf-text: #999999;
-$shelf-text-strong: #000000;
+$shelf-text-strong: #02031b;
 $shelf-padding: 0.75rem;
 
 $menu-background: linear-gradient(to right, #434343 0%, black 100%);
 $menu-text: #ffffff;
 $menu-height: $header-height;
+
+$temp-background: linear-gradient(
+  to right,
+  rgba(65, 109, 151, 0) 100%,
+  #a1c4fd00 0%
+);
+$temp-text: #ffffff;
+$temp-height: 3rem;

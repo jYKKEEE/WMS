@@ -1,7 +1,8 @@
 @import "../../../assets/styles/config.scss";
 .shelf {
   display: flex;
-  border-bottom: 1px solid $shelf-border;
+  border-top: 3px hidden $shelf-border;
+  border-bottom: 3px hidden $shelf-border;
   color: $product-text;
 }
 

@@ -1,0 +1,15 @@
+@import "../../../assets/styles/config.scss";
+
+.area {
+  background-image: $temp-background;
+  margin: 1%;
+  color: $menu-text;
+  max-height: $menu-height;
+  min-height: $menu-height;
+  position: relative;
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+}

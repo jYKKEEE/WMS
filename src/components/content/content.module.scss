@@ -2,7 +2,7 @@
 .content {
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: $scrollbar-thumb $scrollbar-track;
+  scrollbar-color: $scrollbar-thumb;
   -webkit-overflow-scrolling: touch;
 }
 

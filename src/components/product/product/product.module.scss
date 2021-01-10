@@ -11,13 +11,13 @@
   grid-template-columns: 1fr 1fr;
   padding: $shelf-padding;
 }
-.product_amount,
-.product_timespan,
-.product_average {
+.product_name,
+.product_timespan {
   text-align: right;
+  font-size: 15px;
 }
 
-.product_type,
+.product_name,
 .product_amount {
   font-weight: bold;
   color: $shelf-text-strong;
