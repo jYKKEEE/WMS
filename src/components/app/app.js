@@ -14,9 +14,9 @@ import AddForm from "../product/addForm";
 import Notification from "../notification";
 import AddSlotButton from "../slots/addSlotButton";
 import Cancel from "../button/cancelbutton";
-import Temp from "../menu/temp";
+import TempMenu from "../menu/tempMenu";
 
-function App() {
+const App = () => {
   var hylly1 = {
     id: 1,
     slots: [
@@ -199,7 +199,7 @@ function App() {
     id: 0,
     name: "",
     level: 0,
-    slot: 0,
+    slot: 1,
     barcode: 0,
   });
   //GenerateID()??
@@ -222,8 +222,10 @@ function App() {
               (shelfs[active.shelf] = taulu)
             );
           }
+          return null;
         });
       }
+      return null;
     });
   };
 
@@ -238,7 +240,9 @@ function App() {
     shelfs.map((shelf) => {
       shelf.slots.map((slot) => {
         slot.products.map((product) => array.push(product));
+        return null;
       });
+      return null;
     });
     console.log(`${array.length}`);
     return array;
@@ -305,8 +309,10 @@ function App() {
                 (shelfs[active.shelf] = taulu)
               );
             }
+            return null;
           });
         }
+        return null;
       });
     }
   };
@@ -329,112 +335,109 @@ function App() {
     <Router>
       <div className={styles.app}>
         <Header />
-
-        <Route
-          path="/"
-          exact
-          render={() => (
-            <Content>
+        <Content>
+          <Route
+            path="/"
+            exact
+            render={() => (
               <Search
                 productsToList={productsToList}
                 shelfs={shelfs}
                 filter={filter}
                 setFilter={setFilter}
               />
-            </Content>
-          )}
-        />
-        <Route
-          path="/add"
-          render={() => (
-            <Content>
+            )}
+          />
+
+          <Route
+            path="/add"
+            render={() => (
               <AddPage
                 shelfs={shelfs}
                 setShelfs={setShelfs}
                 setActive={setActive}
                 messageHandler={messageHandler}
               />
-            </Content>
-          )}
-        />
+            )}
+          />
 
-        <Route
-          path="/shelfs"
-          exact
-          render={() => (
-            <Content>
-              <Shelfs
-                shelfs={shelfs}
-                active={active}
-                setActive={setActive}
-                messageHandler={messageHandler}
-                deleteShelf={deleteShelf}
-              />
-              <Cancel active={active} setActive={setActive} />
-            </Content>
-          )}
-        />
+          <Route
+            path="/shelfs"
+            exact
+            render={() => (
+              <>
+                <Shelfs
+                  shelfs={shelfs}
+                  active={active}
+                  setActive={setActive}
+                  messageHandler={messageHandler}
+                  deleteShelf={deleteShelf}
+                />
+                <Cancel active={active} setActive={setActive} />
+              </>
+            )}
+          />
 
-        <Route
-          path={`/shelfs/${active.shelf}`}
-          exact
-          render={() => (
-            <Content>
-              <Slots
-                shelf={shelfs[active.shelf]}
-                active={active}
-                deleteSlot={deleteSlot}
-                addSlot={addSlot}
-                setActive={setActive}
-                product={product}
-                setProduct={setProduct}
-                setShelfs={setShelfs}
-                deleteProduct={deleteProduct}
-                messageHandler={messageHandler}
-              />
-              <AddSlotButton
-                shelf={shelfs[active.shelf]}
-                addSlot={addSlot}
-                messageHandler={messageHandler}
-              />
-              <Cancel active={active} setActive={setActive} />
-            </Content>
-          )}
-        />
-        <Route
-          path={`/${product.id}`}
-          render={() => (
-            <Content>
-              <Product
-                deleteProduct={deleteProduct}
-                takeProduct={takeProduct}
-                active={active}
-                product={product}
-                messageHandler={messageHandler}
-              />
-              <Cancel active={active} setActive={setActive} />
-            </Content>
-          )}
-        />
-        <Route
-          path={"/addform"}
-          exact
-          render={() => (
-            <Content>
+          <Route
+            path="/shelfs/:id"
+            exact
+            render={() => (
+              <>
+                <Slots
+                  shelf={shelfs[active.shelf]}
+                  active={active}
+                  deleteSlot={deleteSlot}
+                  addSlot={addSlot}
+                  setActive={setActive}
+                  product={product}
+                  setProduct={setProduct}
+                  setShelfs={setShelfs}
+                  deleteProduct={deleteProduct}
+                  messageHandler={messageHandler}
+                />
+                <AddSlotButton
+                  shelf={shelfs[active.shelf]}
+                  addSlot={addSlot}
+                  messageHandler={messageHandler}
+                />
+                <Cancel active={active} setActive={setActive} />
+              </>
+            )}
+          />
+          <Route
+            path={`/${product.id}`}
+            render={() => (
+              <>
+                <Product
+                  deleteProduct={deleteProduct}
+                  takeProduct={takeProduct}
+                  active={active}
+                  product={product}
+                  messageHandler={messageHandler}
+                />
+                <Cancel active={active} setActive={setActive} />
+              </>
+            )}
+          />
+          <Route
+            path={"/addform"}
+            exact
+            render={() => (
               <AddForm
                 messageHandler={messageHandler}
                 setActive={setActive}
                 setProduct={setProduct}
               />
-            </Content>
-          )}
-        />
-        <Notification message={message} />
-        <Temp temp={temp} />
+            )}
+          />
+
+          <Notification message={message} />
+        </Content>
+        <TempMenu temp={temp} />
         <Menu setActive={setActive} />
       </div>
     </Router>
   );
-}
+};
 
 export default App;

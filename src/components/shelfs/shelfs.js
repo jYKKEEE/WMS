@@ -1,5 +1,4 @@
 import styles from "./shelfs.module.scss";
-import Content from "../content";
 import Shelf from "../shelf/shelf";
 import { Link } from "react-router-dom";
 

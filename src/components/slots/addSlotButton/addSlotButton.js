@@ -30,15 +30,6 @@ const AddSlotButton = (props) => {
         return (bool = true);
       }
     }
-    // Jos jompikumpi input kenttä tyhjänä
-    if (slot === "") {
-      messageHandler(`Please insert a number to "slot"`);
-      return (bool = true);
-    } else if (level === "") {
-      messageHandler(`Please insert a number to "level"`);
-      return (bool = true);
-    }
-
     //Jos käyttäjä syöttää tekstiä
     if (isNaN(parseInt(level)) || isNaN(parseInt(slot))) {
       messageHandler(
@@ -47,6 +38,17 @@ const AddSlotButton = (props) => {
       return (bool = true);
     }
 
+    // Jos jompikumpi input kenttä tyhjänä tai slot numero 0
+    if (slot === "") {
+      messageHandler(`Please insert a number to "slot"`);
+      return (bool = true);
+    } else if (level === "") {
+      messageHandler(`Please insert a number to "level"`);
+      return (bool = true);
+    } else if (parseInt(slot) < 0) {
+      messageHandler(`Slot number can't be lower than 1`);
+      return (bool = true);
+    }
     return bool;
   };
 

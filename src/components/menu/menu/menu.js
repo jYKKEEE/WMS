@@ -3,7 +3,6 @@ import AddIcon from "@material-ui/icons/Add";
 import ShelfsIcon from "@material-ui/icons/ListAlt";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
-import Temp from "../temp";
 
 //Alapalkin navigointi toiminnot
 function Menu({ temp, setActive }) {

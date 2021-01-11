@@ -1,8 +1,8 @@
 import Button from "../../button/button";
 
-import styles from "./temp.module.scss";
+import styles from "./tempMenu.module.scss";
 
-function Temp({ temp }) {
+function TempMenu({ temp }) {
   const output = temp.map((item) => (
     <div>
       <ul>{item.name}</ul>
@@ -32,4 +32,4 @@ function Temp({ temp }) {
   }
 }
 
-export default Temp;
+export default TempMenu;

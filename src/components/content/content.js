@@ -9,7 +9,7 @@ function Content(props) {
         style={({ textDecoration: "none" }, { color: "white" })}
         to={"/settings"}
       >
-        <SettingsIcon />
+        <SettingsIcon className={styles.icon} />
       </Link>
       {props.children}
     </div>

@@ -40,7 +40,7 @@ function Slots(props) {
     }));
   };
 
-  console.log(`shelf id: ${shelf.id}`);
+  console.log(`shelf id: `);
   const slots = shelf.slots.map((slot, index) => (
     <Slot
       key={index}
@@ -54,28 +54,26 @@ function Slots(props) {
       setActive={setActive}
       barcode={slot.barcode}
       products={slot.products.map((product, index) => (
-        <>
-          <Link
-            style={{ textDecoration: "none" }}
-            key={product.id}
-            to={`/${product.id}`}
-            onClick={() => {
-              productHandler(
-                product.id,
-                product.name,
-                slot.level,
-                slot.slot,
-                slot.barcode
-              );
-              productIdHandler(product.id);
-              barcodeHandler(slot.barcode);
-            }}
-          >
-            <div key={index} className={styles.productslist}>
-              {product.name}
-            </div>
-          </Link>
-        </>
+        <Link
+          key={product.id}
+          style={{ textDecoration: "none" }}
+          to={`/${product.id}`}
+          onClick={() => {
+            productHandler(
+              product.id,
+              product.name,
+              slot.level,
+              slot.slot,
+              slot.barcode
+            );
+            productIdHandler(product.id);
+            barcodeHandler(slot.barcode);
+          }}
+        >
+          <div key={index} className={styles.productslist}>
+            {product.name}
+          </div>
+        </Link>
       ))}
     />
   ));
@@ -84,16 +82,16 @@ function Slots(props) {
     return (
       <div>
         <div className={styles.products_header}> Shelf {shelf.id}</div>
-
+        {slots}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <div className={styles.products_header}> Shelf {shelf.id}</div>
         {slots}
       </div>
     );
   }
-  return (
-    <div>
-      <div className={styles.products_header}> Shelf {shelf.id}</div>
-      {slots}
-    </div>
-  );
 }
 export default Slots;

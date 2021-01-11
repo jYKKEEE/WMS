@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import styles from "./search.module.scss";
-import { Link } from "react-router-dom";
 
 function Search(props) {
   const { filter, setFilter, productsToList } = props;

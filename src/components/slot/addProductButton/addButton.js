@@ -18,6 +18,7 @@ function addButton(props) {
       if (mapSlot.level === level && mapSlot.slot === slot) {
         mapSlot.products.push({ id: product.id, name: product.name });
       }
+      return null;
     });
   };
 
