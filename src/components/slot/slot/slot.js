@@ -1,5 +1,5 @@
 import styles from "./slot.module.scss";
-import AddButton from "../addProductButton";
+import AddProductButton from "../addProductButton";
 import Button from "../../button/button";
 
 function Slot(props) {
@@ -14,6 +14,7 @@ function Slot(props) {
     messageHandler,
     deleteSlot,
     shelf,
+    deleteTempProduct,
   } = props;
 
   const numberOfProoductsHeader = () => {
@@ -38,14 +39,16 @@ function Slot(props) {
         <div className={styles.product_barcode}>EAN:{barcode}</div>
         <div className={styles.product_products}>{products}</div>
         <div className={styles.product_receiver}>
-          <AddButton
+          <AddProductButton
             product={product}
             shelf={shelf}
+            active={active}
             setActive={setActive}
             messageHandler={messageHandler}
             level={level}
             slot={slot}
-          ></AddButton>
+            deleteTempProduct={deleteTempProduct}
+          ></AddProductButton>
           {/*Add to this slot -nappi */}
         </div>
       </div>

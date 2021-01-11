@@ -5,13 +5,14 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 
 //Alapalkin navigointi toiminnot
-function Menu({ temp, setActive }) {
+function Menu({ setActive }) {
   const setDeletesToFalse = () => {
     setActive((prevState) => ({
       ...prevState,
       deleteProduct: false,
       deleteSlot: false,
       deleteShelf: false,
+      temp: false,
     }));
   };
   return (

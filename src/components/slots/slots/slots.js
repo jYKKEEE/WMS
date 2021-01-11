@@ -14,6 +14,7 @@ function Slots(props) {
     setProduct,
     messageHandler,
     deleteSlot,
+    deleteTempProduct,
   } = props;
 
   //funktiot joilla muutetaan tiloja
@@ -48,33 +49,45 @@ function Slots(props) {
       deleteSlot={deleteSlot}
       product={product}
       level={slot.level}
+      deleteTempProduct={deleteTempProduct}
       slot={slot.slot}
       shelf={shelf}
       messageHandler={messageHandler}
       setActive={setActive}
       barcode={slot.barcode}
-      products={slot.products.map((product, index) => (
-        <Link
-          key={product.id}
-          style={{ textDecoration: "none" }}
-          to={`/${product.id}`}
-          onClick={() => {
-            productHandler(
-              product.id,
-              product.name,
-              slot.level,
-              slot.slot,
-              slot.barcode
-            );
-            productIdHandler(product.id);
-            barcodeHandler(slot.barcode);
-          }}
-        >
-          <div key={index} className={styles.productslist}>
-            {product.name}
-          </div>
-        </Link>
-      ))}
+      products={slot.products.map((product, index) => {
+        /*Jos temp tila on TRUE  poistetaan tuotteiden linkitys*/
+        if (active.temp) {
+          return (
+            <div key={index} className={styles.productslist}>
+              {product.name}
+            </div>
+          );
+        } else {
+          return (
+            <Link
+              key={product.id}
+              style={{ textDecoration: "none" }}
+              to={`/${product.id}`}
+              onClick={() => {
+                productHandler(
+                  product.id,
+                  product.name,
+                  slot.level,
+                  slot.slot,
+                  slot.barcode
+                );
+                productIdHandler(product.id);
+                barcodeHandler(slot.barcode);
+              }}
+            >
+              <div key={index} className={styles.productslist}>
+                {product.name}
+              </div>
+            </Link>
+          );
+        }
+      })}
     />
   ));
 

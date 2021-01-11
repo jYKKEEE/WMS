@@ -30,6 +30,7 @@ function AddPage(props) {
             add: false,
             addSlot: true,
           }));
+          messageHandler(`Select shelf to add a new slot`);
         }}
       />
       <h1>Product:</h1>

@@ -15,6 +15,7 @@ import Notification from "../notification";
 import AddSlotButton from "../slots/addSlotButton";
 import Cancel from "../button/cancelbutton";
 import TempMenu from "../menu/tempMenu";
+import TempView from "../tempView";
 
 const App = () => {
   var hylly1 = {
@@ -191,6 +192,7 @@ const App = () => {
     edit: false,
     add: false,
     addSlot: false,
+    temp: false,
   });
   const [temp, setTemp] = useState([]);
   const [filter, setFilter] = useState("");
@@ -203,6 +205,9 @@ const App = () => {
     barcode: 0,
   });
   //GenerateID()??
+  const activeHand = (id) => {
+    setActive((prevState) => ({ ...prevState, productId: id }));
+  };
 
   const takeProduct = (id) => {
     var taulu = shelfs[active.shelf];
@@ -288,7 +293,6 @@ const App = () => {
       messageHandler(`slot ${slot}, level:${level} deleted permanetly.`);
     }
   };
-
   const deleteProduct = (id) => {
     var q = prompt(`Really want to delete?`, `yes`);
 
@@ -316,10 +320,22 @@ const App = () => {
       });
     }
   };
+  const deleteTempProduct = (productId) => {
+    var array = temp;
+    array.map((product, index) => {
+      if (product.id === productId) {
+        array.splice(index, 1);
+        //splice(indeksi, montaPoistetaan);
+      }
+      return null;
+    });
+    setTemp(array);
+  };
 
   console.log(`product add: ${active.add}`);
   console.log(`product addSlot: ${active.addSlot}`);
   console.log(`product edit: ${active.edit}`);
+  console.log(`active temp: ${active.temp}`);
   console.log(`active deleteProduct: ${active.deleteProduct}`);
   console.log(`active deleteslot: ${active.deleteSlot}`);
   console.log(`active deleteshelf: ${active.deleteShelf}`);
@@ -342,6 +358,7 @@ const App = () => {
             render={() => (
               <Search
                 productsToList={productsToList}
+                activeHand={activeHand}
                 shelfs={shelfs}
                 filter={filter}
                 setFilter={setFilter}
@@ -393,6 +410,7 @@ const App = () => {
                   setProduct={setProduct}
                   setShelfs={setShelfs}
                   deleteProduct={deleteProduct}
+                  deleteTempProduct={deleteTempProduct}
                   messageHandler={messageHandler}
                 />
                 <AddSlotButton
@@ -405,13 +423,14 @@ const App = () => {
             )}
           />
           <Route
-            path={`/${product.id}`}
+            path={`/${active.productId}`}
             render={() => (
               <>
                 <Product
                   deleteProduct={deleteProduct}
                   takeProduct={takeProduct}
                   active={active}
+                  setActive={setActive}
                   product={product}
                   messageHandler={messageHandler}
                 />
@@ -430,10 +449,22 @@ const App = () => {
               />
             )}
           />
-
-          <Notification message={message} />
+          <Route
+            path={"/tempview"}
+            exact
+            render={() => (
+              <TempView
+                temp={temp}
+                active={active}
+                setActive={setActive}
+                setProduct={setProduct}
+                messageHandler={messageHandler}
+              />
+            )}
+          />
         </Content>
-        <TempMenu temp={temp} />
+        <Notification message={message} />
+        <TempMenu temp={temp} active={active} setActive={setActive} />
         <Menu setActive={setActive} />
       </div>
     </Router>

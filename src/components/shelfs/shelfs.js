@@ -46,18 +46,14 @@ function Shelfs(props) {
     return (
       <div>
         {output}
-        <div className={styles.addText}>
-          <p>Select shelf to add a product</p>
-        </div>
+        <div className={styles.addText}></div>
       </div>
     );
   } else if (active.addSlot) {
     return (
       <div>
         {output}
-        <div className={styles.addText}>
-          <p>Select shelf to add a new slot</p>
-        </div>
+        <div className={styles.addText}></div>
       </div>
     );
   } else {

@@ -5,7 +5,7 @@ import Input from "../../input";
 
 //AddFormissa määritetään uusi varastoon lisättävä tuote ja linkitetään käyttäjä eteenpäin
 function AddForm(props) {
-  const { setProduct, setActive } = props;
+  const { setProduct, setActive, messageHandler } = props;
 
   const [name, setName] = useState("");
   const [id, setId] = useState("");
@@ -57,6 +57,7 @@ function AddForm(props) {
           className={styles.addbutton}
           onClick={() => {
             addingHandler();
+            messageHandler(`Select shelf to add a product: ${name}`);
           }}
         >
           next

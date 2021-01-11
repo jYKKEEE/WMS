@@ -2,9 +2,9 @@ import Button from "../../button/button";
 
 import styles from "./tempMenu.module.scss";
 
-function TempMenu({ temp }) {
-  const output = temp.map((item) => (
-    <div>
+function TempMenu({ temp, setActive }) {
+  const output = temp.map((item, index) => (
+    <div key={index}>
       <ul>{item.name}</ul>
     </div>
   ));
@@ -16,7 +16,16 @@ function TempMenu({ temp }) {
       <div className={styles.area}>
         Products in hold: {output}
         <div className={styles.view}>
-          <Button text={"view"} link={""} action={() => {}} />
+          <Button
+            text={"view"}
+            link={"/tempview"}
+            action={() => {
+              setActive((prevState) => ({
+                ...prevState,
+                temp: true,
+              }));
+            }}
+          />
         </div>
       </div>
     );
@@ -25,7 +34,13 @@ function TempMenu({ temp }) {
       <div className={styles.area}>
         Products in hold:<ul>{temp.length}</ul>
         <div className={styles.view}>
-          <Button text={"view"} link={""} action={() => {}} />
+          <Button
+            text={"view"}
+            link={"/tempview"}
+            action={() => {
+              setActive((prevState) => ({ ...prevState, temp: true }));
+            }}
+          />
         </div>
       </div>
     );
