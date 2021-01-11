@@ -458,6 +458,7 @@ const App = () => {
                 active={active}
                 setActive={setActive}
                 setProduct={setProduct}
+                deleteTempProduct={deleteTempProduct}
                 messageHandler={messageHandler}
               />
             )}

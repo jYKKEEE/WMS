@@ -2,7 +2,14 @@ import Product from "../product/product";
 import styles from "./tempView.module.scss";
 
 function TempView(props) {
-  const { temp, active, setActive, setProduct, messageHandler } = props;
+  const {
+    temp,
+    active,
+    setActive,
+    setProduct,
+    messageHandler,
+    deleteTempProduct,
+  } = props;
 
   const output = temp.map((product, index) => (
     // product, active, deleteProduct, takeProduct, messageHandler
@@ -13,7 +20,9 @@ function TempView(props) {
       active={active}
       setActive={setActive}
       setProduct={setProduct}
-      deleteProduct={() => {}}
+      deleteProduct={() => {
+        deleteTempProduct(product.id);
+      }}
       messageHandler={messageHandler}
     />
   ));

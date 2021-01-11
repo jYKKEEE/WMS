@@ -47,7 +47,6 @@ function Slot(props) {
             messageHandler={messageHandler}
             level={level}
             slot={slot}
-            deleteTempProduct={deleteTempProduct}
           ></AddProductButton>
           {/*Add to this slot -nappi */}
         </div>

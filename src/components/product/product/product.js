@@ -31,7 +31,7 @@ function Product(props) {
                 deleteProduct(product.id);
                 messageHandler(`Product " ${product.name} " deleted!`);
               }}
-              link={`/onhold`}
+              link={`/tempview`}
             />
             Put Back to shelf
             <Button
