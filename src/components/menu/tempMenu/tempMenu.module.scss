@@ -13,3 +13,21 @@
   justify-content: space-between;
   font-size: 16px;
 }
+
+@keyframes blink {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.dot {
+  animation: blink 3.5s infinite;
+  display: flex;
+  flex-direction: row;
+}

@@ -33,10 +33,9 @@ function AddProductButton(props) {
   if (active.temp) {
     return (
       <div className={styles.addButton}>
-        Add product:
         <Button
-          text={`${product.name}`}
-          link={"/add"}
+          text={"Add here"}
+          link={"/tempview"}
           action={() => {
             addProductToSlot();
             handleProductState();

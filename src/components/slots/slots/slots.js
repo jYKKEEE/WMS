@@ -1,5 +1,6 @@
 import Slot from "../../slot/slot";
 
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import styles from "./slots.module.scss";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -67,7 +68,7 @@ function Slots(props) {
           return (
             <Link
               key={product.id}
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: "", color: "#223" }}
               to={`/${product.id}`}
               onClick={() => {
                 productHandler(
@@ -81,9 +82,7 @@ function Slots(props) {
                 barcodeHandler(slot.barcode);
               }}
             >
-              <div key={index} className={styles.productslist}>
-                {product.name}
-              </div>
+              <div className={styles.products}>{product.name}</div>
             </Link>
           );
         }

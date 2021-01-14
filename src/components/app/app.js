@@ -204,7 +204,14 @@ const App = () => {
     slot: 1,
     barcode: 0,
   });
-  //GenerateID()??
+  //ei toimi ?!?
+  const shelfIsEmpty = (index) => {
+    var out = 0;
+    shelfs[index].slots.map((slot) => {
+      out += slot.products.length;
+    });
+    return out === 0;
+  };
   const activeHand = (id) => {
     setActive((prevState) => ({ ...prevState, productId: id }));
   };
@@ -238,7 +245,7 @@ const App = () => {
     setMessage(message);
     setTimeout(() => {
       setMessage("");
-    }, 3500);
+    }, 3200);
   };
   const productsToList = () => {
     var array = [];
@@ -389,6 +396,7 @@ const App = () => {
                   setActive={setActive}
                   messageHandler={messageHandler}
                   deleteShelf={deleteShelf}
+                  shelfIsEmpty={shelfIsEmpty}
                 />
                 <Cancel active={active} setActive={setActive} />
               </>

@@ -1,4 +1,5 @@
 import styles from "./slot.module.scss";
+
 import AddProductButton from "../addProductButton";
 import Button from "../../button/button";
 
@@ -25,7 +26,7 @@ function Slot(props) {
     } else {
       return `${products.length} products:`;
     }
-  }; /*<-- slotin toinen headeri. 
+  }; /*<-- slotin toinen(oikea yläkulma) headeri. 
   Näyttää slotissa olevien tuotteiden määrän ehdoin.*/
 
   const productAddingOutput = (
@@ -34,21 +35,22 @@ function Slot(props) {
         <div
           className={styles.product_slot_and_level}
         >{` slot:${slot}, level: ${level}`}</div>
-
         <div className={styles.product_amount}>{numberOfProoductsHeader()}</div>
         <div className={styles.product_barcode}>EAN:{barcode}</div>
         <div className={styles.product_products}>{products}</div>
         <div className={styles.product_receiver}>
+          {`From temp: '${product.name}'`}
+          {/*Add to this slot-nappi, ilmestyy kun add state on true -->components\slot\addProductButton*/}
           <AddProductButton
             product={product}
             shelf={shelf}
             active={active}
+            deleteTempProduct={deleteTempProduct}
             setActive={setActive}
             messageHandler={messageHandler}
             level={level}
             slot={slot}
           ></AddProductButton>
-          {/*Add to this slot -nappi */}
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ function TempMenu({ temp, setActive }) {
   } else if (temp.length < 3) {
     return (
       <div className={styles.area}>
-        Products in hold: {output}
+        Products in hold:<p className={styles.dot}> {output}</p>
         <div className={styles.view}>
           <Button
             text={"view"}
@@ -32,7 +32,8 @@ function TempMenu({ temp, setActive }) {
   } else {
     return (
       <div className={styles.area}>
-        Products in hold:<ul>{temp.length}</ul>
+        Products in hold:
+        <p className={styles.dot}>{temp.length}</p>
         <div className={styles.view}>
           <Button
             text={"view"}

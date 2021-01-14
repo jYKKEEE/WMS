@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 .button {
-  width: 121px;
-  height: 24px;
+  width: 115px; //} napin koon säätö
+  height: 23px; //}
   background: #f3f0f1;
   position: relative;
   background: #f3f0f1;
@@ -14,7 +14,7 @@
   span {
     line-height: 25px;
     font-family: "Montserrat", sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: semibold;
   }
   &:nth-child(1) {
