@@ -78,7 +78,7 @@ function Slots(props) {
             <Link
               key={product.id}
               style={{ textDecoration: "", color: "#223" }}
-              to={`/${product.id}`}
+              to={`/product/${product.id}`}
               onClick={() => {
                 productHandler(
                   product.id,

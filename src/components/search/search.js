@@ -1,7 +1,7 @@
 import styles from "./search.module.scss";
 import { Link } from "react-router-dom";
 function Search(props) {
-  const { filter, setFilter, productsToList } = props;
+  const { filter, setFilter, productsToList, handleStatesByProductId } = props;
 
   const onChangeEvent = (e) => {
     console.log(`${filter}`);
@@ -22,8 +22,11 @@ function Search(props) {
     .map((out, index) => (
       <Link
         key={index}
-        to={`/${out.id}`}
+        to={`/product/${out.id}`}
         style={{ textDecoration: "none", color: "black" }}
+        onClick={() => {
+          handleStatesByProductId(out.id);
+        }}
       >
         <li key={index}>{out.name}</li>
       </Link>

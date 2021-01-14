@@ -188,7 +188,7 @@ const App = () => {
 
   const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
   const [active, setActive] = useState({
-    shelf: 1,
+    shelf: 0,
     productId: 0,
     barcode: 0,
     deleteProduct: false,
@@ -209,8 +209,32 @@ const App = () => {
     slot: 1,
     barcode: 0,
   });
-  //ei toimi ?!?
 
+  /* muuttaa myös tilat tuotteen mukaan.
+  käytetään product ja search komponenteissä parametsiksi annetaan esim mäpätty tai urlista napattu :id.
+   */
+
+  const handleStatesByProductId = (productId) => {
+    var bool = false;
+    shelfs.map((shelf) =>
+      shelf.slots.map((mapSlot) => {
+        mapSlot.products.map((product) => {
+          if (product.id === productId) {
+            setActive((prevState) => ({ ...prevState, shelf: shelf.id - 1 }));
+            setProduct({
+              id: product.id,
+              name: product.name,
+              level: product.level,
+              slot: product.slot,
+              barcode: product.barcode,
+            });
+            bool = true;
+          }
+        });
+      })
+    );
+    return bool;
+  };
   const shelfIsEmpty = (index) => {
     var out = 0;
     shelfs[index].slots.map((slot) => {
@@ -223,8 +247,8 @@ const App = () => {
   };
 
   const takeProduct = (id) => {
-    var taulu = shelfs[active.shelf];
-    taulu.slots.map((mapSlot) => {
+    var array = shelfs[active.shelf];
+    array.slots.map((mapSlot) => {
       if (mapSlot.slot === product.slot && mapSlot.level === product.level) {
         mapSlot.products.map((ware, index) => {
           if (ware.id === id) {
@@ -237,7 +261,7 @@ const App = () => {
             }));
             setShelfs(
               (prevState) => [...prevState],
-              (shelfs[active.shelf] = taulu)
+              (shelfs[active.shelf] = array)
             );
           }
           return null;
@@ -362,7 +386,6 @@ const App = () => {
 
   return (
     <Router>
-      <meta name="apple-mobile-web-app-capable" content="yes" />
       <div className={styles.app}>
         <Header />
         <Content>
@@ -376,6 +399,7 @@ const App = () => {
                 shelfs={shelfs}
                 filter={filter}
                 setFilter={setFilter}
+                handleStatesByProductId={handleStatesByProductId}
               />
             )}
           />
@@ -438,7 +462,8 @@ const App = () => {
             )}
           />
           <Route
-            path={`/${active.productId}`}
+            path={`/product/:id`}
+            exact
             render={() => (
               <>
                 <Product
@@ -448,6 +473,7 @@ const App = () => {
                   setActive={setActive}
                   product={product}
                   messageHandler={messageHandler}
+                  handleStatesByProductId={handleStatesByProductId}
                 />
                 <Cancel active={active} setActive={setActive} />
               </>
@@ -477,12 +503,6 @@ const App = () => {
                 messageHandler={messageHandler}
               />
             )}
-          />
-
-          <Route
-            path={"/pagenotfound"}
-            exact
-            render={() => <div>Page not found!</div>}
           />
         </Content>
         <Notification message={message} />

@@ -13,12 +13,16 @@
 }
 .product_name,
 .product_timespan {
-  text-align: right;
-  font-size: 20px;
+  text-align: center;
+  font-size: 25px;
 }
 
 .product_name,
 .product_amount {
   font-weight: bold;
   color: $shelf-text-strong;
+}
+.badState {
+  display: flex;
+  justify-content: center;
 }
