@@ -1,5 +1,5 @@
 import styles from "./search.module.scss";
-
+import { Link } from "react-router-dom";
 function Search(props) {
   const { filter, setFilter, productsToList } = props;
 
@@ -19,7 +19,15 @@ function Search(props) {
     .filter((product) =>
       product.name.toLowerCase().includes(filter.toLowerCase())
     )
-    .map((out, index) => <li key={index}>{out.name}</li>);
+    .map((out, index) => (
+      <Link
+        key={index}
+        to={`/${out.id}`}
+        style={{ textDecoration: "none", color: "black" }}
+      >
+        <li key={index}>{out.name}</li>
+      </Link>
+    ));
 
   if (output.length < 16) {
     return (

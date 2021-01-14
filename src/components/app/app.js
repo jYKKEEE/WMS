@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 
 import styles from "./app.module.scss";
 import Header from "../header";
@@ -183,7 +188,7 @@ const App = () => {
 
   const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
   const [active, setActive] = useState({
-    shelf: 0,
+    shelf: 1,
     productId: 0,
     barcode: 0,
     deleteProduct: false,
@@ -205,6 +210,7 @@ const App = () => {
     barcode: 0,
   });
   //ei toimi ?!?
+
   const shelfIsEmpty = (index) => {
     var out = 0;
     shelfs[index].slots.map((slot) => {
@@ -356,6 +362,7 @@ const App = () => {
 
   return (
     <Router>
+      <meta name="apple-mobile-web-app-capable" content="yes" />
       <div className={styles.app}>
         <Header />
         <Content>
@@ -409,7 +416,7 @@ const App = () => {
             render={() => (
               <>
                 <Slots
-                  shelf={shelfs[active.shelf]}
+                  shelfs={shelfs}
                   active={active}
                   deleteSlot={deleteSlot}
                   addSlot={addSlot}
@@ -470,6 +477,12 @@ const App = () => {
                 messageHandler={messageHandler}
               />
             )}
+          />
+
+          <Route
+            path={"/pagenotfound"}
+            exact
+            render={() => <div>Page not found!</div>}
           />
         </Content>
         <Notification message={message} />

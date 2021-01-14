@@ -1,6 +1,5 @@
 import styles from "./shelfs.module.scss";
 import Shelf from "../shelf/shelf";
-import Button from "../button/button";
 import { Link } from "react-router-dom";
 
 function Shelfs(props) {
@@ -56,9 +55,9 @@ function Shelfs(props) {
         <Link
           style={{ textDecoration: "none" }}
           key={shelf.id}
-          to={`shelfs/${index}`}
+          to={`shelfs/${shelf.id}`}
           onClick={() => {
-            activeShelfHandler(index);
+            activeShelfHandler(index + 1);
           }}
         >
           <Shelf shelfNum={shelf.id} slots={shelf.slots} />

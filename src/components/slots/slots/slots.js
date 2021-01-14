@@ -3,12 +3,12 @@ import Slot from "../../slot/slot";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import styles from "./slots.module.scss";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, Route } from "react-router-dom";
 
 function Slots(props) {
   //HUOM shelf = tällähetkellä aktiivinen hylly eli (shelf[active.shelf])
   const {
-    shelf,
+    shelfs,
     active,
     setActive,
     product,
@@ -17,6 +17,14 @@ function Slots(props) {
     deleteSlot,
     deleteTempProduct,
   } = props;
+
+  let { id } = useParams();
+
+  if (parseInt(id) < 1 || isNaN(id) || id > shelfs.length) {
+    id = 1;
+  }
+
+  console.log(`:id on :!:!:!${id}`);
 
   //funktiot joilla muutetaan tiloja
   const productIdHandler = (id) => {
@@ -28,6 +36,7 @@ function Slots(props) {
   const barcodeHandler = (barcode) => {
     setActive((prevState) => ({
       ...prevState,
+      shelf: id - 1,
       barcode: barcode,
     }));
   };
@@ -43,7 +52,7 @@ function Slots(props) {
   };
 
   console.log(`shelf id: `);
-  const slots = shelf.slots.map((slot, index) => (
+  const slots = shelfs[parseInt(id) - 1].slots.map((slot, index) => (
     <Slot
       key={index}
       active={active}
@@ -52,7 +61,7 @@ function Slots(props) {
       level={slot.level}
       deleteTempProduct={deleteTempProduct}
       slot={slot.slot}
-      shelf={shelf}
+      shelf={shelfs[parseInt(id) - 1]}
       messageHandler={messageHandler}
       setActive={setActive}
       barcode={slot.barcode}
@@ -93,14 +102,14 @@ function Slots(props) {
   if (active.add) {
     return (
       <div>
-        <div className={styles.products_header}> Shelf {shelf.id}</div>
+        <div className={styles.products_header}> Shelf {parseInt(id)}</div>
         {slots}
       </div>
     );
   } else {
     return (
       <div>
-        <div className={styles.products_header}> Shelf {shelf.id}</div>
+        <div className={styles.products_header}> Shelf {parseInt(id)}</div>
         {slots}
       </div>
     );
