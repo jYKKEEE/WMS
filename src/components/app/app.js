@@ -263,6 +263,7 @@ const App = () => {
               (prevState) => [...prevState],
               (shelfs[active.shelf] = array)
             );
+            console.log(`take product works!`);
           }
           return null;
         });

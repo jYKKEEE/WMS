@@ -15,7 +15,7 @@ function Shelfs(props) {
   const activeShelfHandler = (id) => {
     setActive((prevState) => ({
       ...prevState,
-      shelf: id,
+      shelf: id - 1,
     }));
   };
 

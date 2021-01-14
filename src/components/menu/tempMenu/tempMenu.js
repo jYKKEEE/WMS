@@ -15,7 +15,7 @@ function TempMenu({ temp, setActive }) {
     return (
       <div className={styles.area}>
         Products in hold:<div className={styles.dot}> {output}</div>
-        <div className={styles.view}>
+        <div className={styles.button}>
           <Button
             text={"view"}
             link={"/tempview"}
