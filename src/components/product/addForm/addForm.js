@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./addForm.module.scss";
+
 import Input from "../../input";
 
 //AddFormissa määritetään uusi varastoon lisättävä tuote ja linkitetään käyttäjä eteenpäin
 function AddForm(props) {
-  const { setProduct, setActive, messageHandler } = props;
+  const { messageHandler, setProduct, setActive } = props;
 
   const [name, setName] = useState("");
   const [id, setId] = useState("");

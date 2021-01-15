@@ -1,4 +1,5 @@
 import styles from "./cancel.module.scss";
+
 import Button from "../button";
 
 //Komponentin ideana on tulostua <Button />, jos jokin Add- tai Delete-tiloista on True.

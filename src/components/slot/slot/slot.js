@@ -1,32 +1,24 @@
+import { Link } from "react-router-dom";
+
 import styles from "./slot.module.scss";
 
 import AddProductButton from "../addProductButton";
-import { Link } from "react-router-dom";
 import Button from "../../button/button";
 
 function Slot(props) {
   const {
-    level,
-    slot,
     active,
-    products,
     barcode,
-    product,
-    setActive,
-    messageHandler,
     deleteSlot,
-    shelf,
     deleteTempProduct,
+    level,
+    messageHandler,
+    product,
+    products,
+    shelf,
+    slot,
+    setActive,
   } = props;
-
-  const addProductToSlot = () => {
-    shelf.slots.map((mapSlot) => {
-      if (mapSlot.level === level && mapSlot.slot === slot) {
-        mapSlot.products.push({ id: product.id, name: product.name });
-      }
-      return null;
-    });
-  };
 
   const numberOfProoductsHeader = () => {
     if (products.length === 0) {

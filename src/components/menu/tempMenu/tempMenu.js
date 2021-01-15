@@ -1,6 +1,6 @@
-import Button from "../../button/button";
-
 import styles from "./tempMenu.module.scss";
+
+import Button from "../../button/button";
 
 function TempMenu({ temp, setActive }) {
   const output = temp.map((item, index) => (

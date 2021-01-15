@@ -1,15 +1,16 @@
-import styles from "./shelfs.module.scss";
-import Shelf from "../shelf/shelf";
 import { Link } from "react-router-dom";
+import styles from "./shelfs.module.scss";
+
+import Shelf from "../shelf/shelf";
 
 function Shelfs(props) {
   const {
-    shelfs,
-    setActive,
     active,
     deleteShelf,
     messageHandler,
+    shelfs,
     shelfIsEmpty,
+    setActive,
   } = props;
 
   const activeShelfHandler = (id) => {

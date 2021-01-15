@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styles from "./addSlotButton.module.scss";
-import Button from "../../button/button";
+
+import Button from "../button";
 import Input from "../../input";
 
 const AddSlotButton = (props) => {
-  const { shelf, addSlot, messageHandler } = props;
+  const { addSlot, messageHandler, shelf } = props;
   const [level, setLevel] = useState("");
   const [slot, setSlot] = useState("");
 

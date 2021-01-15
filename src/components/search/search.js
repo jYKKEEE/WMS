@@ -1,19 +1,13 @@
-import styles from "./search.module.scss";
 import { Link } from "react-router-dom";
+import styles from "./search.module.scss";
+
 function Search(props) {
-  const { filter, setFilter, productsToList, handleStatesByProductId } = props;
+  const { filter, handleStatesByProductId, productsToList, setFilter } = props;
 
   const onChangeEvent = (e) => {
     console.log(`${filter}`);
     setFilter(e.target.value);
   };
-
-  /*var hylly1 = {
-    id: 1,
-    slots: [{ barcode: Math.ceil(Math.random() * 9999999999),
-        level: 0,
-        slot: 1,
-        products: [{ id: 65464, name: "jalka" }], },*/
 
   const output = productsToList()
     .filter((product) =>
@@ -32,7 +26,7 @@ function Search(props) {
       </Link>
     ));
 
-  if (output.length < 16) {
+  if (output.length < 25) {
     return (
       <div className={styles.search_table}>
         <h2>Search</h2>

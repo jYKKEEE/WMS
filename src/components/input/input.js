@@ -1,7 +1,7 @@
 import styles from "./input.module.scss";
 
 const Input = (props) => {
-  const { text, value, onChange } = props;
+  const { onChange, text, value } = props;
   return (
     <div className={styles.form}>
       <input

@@ -1,6 +1,7 @@
 import styles from "./content.module.scss";
-import SettingsIcon from "@material-ui/icons/Settings";
 import { Link } from "react-router-dom";
+
+import SettingsIcon from "@material-ui/icons/Settings";
 
 function Content(props) {
   return (

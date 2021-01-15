@@ -1,24 +1,21 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import styles from "./app.module.scss";
-import Header from "../header";
-import Content from "../content";
-import Search from "../search";
-import Shelfs from "../shelfs";
-import Menu from "../menu/menu";
-import Slots from "../slots/slots";
-import Product from "../product/product";
+
+//Komponentit
 import AddPage from "../addPage";
 import AddForm from "../product/addForm";
-import Notification from "../notification";
-import AddSlotButton from "../slots/addSlotButton";
+import AddSlotButton from "../button/addSlotButton";
 import Cancel from "../button/cancelbutton";
+import Content from "../content";
+import Header from "../header";
+import Menu from "../menu/menu";
+import Notification from "../notification";
+import Product from "../product/product";
+import Shelfs from "../shelfs";
+import Slots from "../slots/slots";
+import Settings from "../settings";
+import Search from "../search";
 import TempMenu from "../menu/tempMenu";
 import TempView from "../tempView";
 
@@ -52,28 +49,28 @@ const App = () => {
         products: [
           {
             id: 87659,
-            name: "kissan hiekkaa",
+            name: "Kissan hiekkaa",
             barcode: 1630990742,
             level: 0,
             slot: 1,
           },
           {
             id: 34523,
-            name: "kiviä",
+            name: "Kiviä",
             barcode: 1630990742,
             level: 0,
             slot: 1,
           },
           {
             id: 34576,
-            name: "jakoavain",
+            name: "Jakoavain",
             barcode: 1630990742,
             level: 0,
             slot: 1,
           },
           {
             id: 87657,
-            name: "vasara",
+            name: "Vasara",
             barcode: 1630990742,
             level: 0,
             slot: 1,
@@ -87,14 +84,14 @@ const App = () => {
         products: [
           {
             id: 23464,
-            name: "nauloja",
+            name: "Nauloja",
             barcode: 3377625525,
             level: 3,
             slot: 2,
           },
           {
             id: 34523,
-            name: "tietokone",
+            name: "Tietokone",
             barcode: 3377625525,
             level: 3,
             slot: 2,
@@ -120,28 +117,28 @@ const App = () => {
         products: [
           {
             id: 72341,
-            name: "kirjoja",
+            name: "Kirjoja",
             barcode: 9723898802,
             level: 0,
             slot: 1,
           },
           {
             id: 37654,
-            name: "taulu",
+            name: "Taulu",
             barcode: 9723898802,
             level: 0,
             slot: 1,
           },
           {
             id: 49823,
-            name: "kahvinkeitin",
+            name: "Kahvinkeitin",
             barcode: 9723898802,
             level: 0,
             slot: 1,
           },
           {
             id: 49824,
-            name: "näyttötyö",
+            name: "Näyttötyö",
             barcode: 9723898802,
             level: 0,
             slot: 1,
@@ -155,7 +152,7 @@ const App = () => {
         products: [
           {
             id: 26457,
-            name: "kitara",
+            name: "Kitara",
             level: 1,
             slot: 2,
             barcode: 9800815975,
@@ -169,7 +166,7 @@ const App = () => {
           },
           {
             id: 29864,
-            name: "plektroja",
+            name: "Plektroja",
             level: 1,
             slot: 2,
             barcode: 9800815975,
@@ -188,15 +185,15 @@ const App = () => {
 
   const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
   const [active, setActive] = useState({
-    shelf: 0,
-    productId: 0,
+    add: false,
+    addSlot: false,
     barcode: 0,
     deleteProduct: false,
     deleteSlot: false,
     deleteShelf: false,
     edit: false,
-    add: false,
-    addSlot: false,
+    shelf: 0,
+    productId: 0,
     temp: false,
   });
   const [temp, setTemp] = useState([]);
@@ -205,9 +202,9 @@ const App = () => {
   const [product, setProduct] = useState({
     id: 0,
     name: "",
+    barcode: 0,
     level: 0,
     slot: 1,
-    barcode: 0,
   });
 
   /* muuttaa myös tilat tuotteen mukaan.
@@ -229,8 +226,11 @@ const App = () => {
               barcode: product.barcode,
             });
             bool = true;
+            return null;
           }
+          return null;
         });
+        return null;
       })
     );
     return bool;
@@ -238,9 +238,7 @@ const App = () => {
   // shelfIsEmpty parametriksi annetaan mäpätty shelfs indeksi
   const shelfIsEmpty = (index) => {
     var out = 0;
-    shelfs[index].slots.map((slot) => {
-      out += slot.products.length;
-    });
+    shelfs[index].slots.map((slot) => (out += slot.products.length));
     return out === 0;
   }; //<-- katsoo onko hyllyssä tuotteita.
 
@@ -397,11 +395,11 @@ const App = () => {
             exact
             render={() => (
               <Search
+                filter={filter}
+                handleStatesByProductId={handleStatesByProductId}
                 productsToList={productsToList}
                 shelfs={shelfs}
-                filter={filter}
                 setFilter={setFilter}
-                handleStatesByProductId={handleStatesByProductId}
               />
             )}
           />
@@ -410,74 +408,11 @@ const App = () => {
             path="/add"
             render={() => (
               <AddPage
-                shelfs={shelfs}
-                setShelfs={setShelfs}
-                setActive={setActive}
                 messageHandler={messageHandler}
+                shelfs={shelfs}
+                setActive={setActive}
+                setShelfs={setShelfs}
               />
-            )}
-          />
-
-          <Route
-            path="/shelfs"
-            exact
-            render={() => (
-              <>
-                <Shelfs
-                  shelfs={shelfs}
-                  active={active}
-                  setActive={setActive}
-                  messageHandler={messageHandler}
-                  deleteShelf={deleteShelf}
-                  shelfIsEmpty={shelfIsEmpty}
-                />
-                <Cancel active={active} setActive={setActive} />
-              </>
-            )}
-          />
-
-          <Route
-            path="/shelfs/:id"
-            exact
-            render={() => (
-              <>
-                <Slots
-                  shelfs={shelfs}
-                  active={active}
-                  deleteSlot={deleteSlot}
-                  addSlot={addSlot}
-                  setActive={setActive}
-                  product={product}
-                  setProduct={setProduct}
-                  setShelfs={setShelfs}
-                  deleteTempProduct={deleteTempProduct}
-                  messageHandler={messageHandler}
-                />
-                <AddSlotButton
-                  shelf={shelfs[active.shelf]}
-                  addSlot={addSlot}
-                  messageHandler={messageHandler}
-                />
-                <Cancel active={active} setActive={setActive} />
-              </>
-            )}
-          />
-          <Route
-            path={`/product/:id`}
-            exact
-            render={() => (
-              <>
-                <Product
-                  deleteProduct={deleteProduct}
-                  takeProduct={takeProduct}
-                  active={active}
-                  setActive={setActive}
-                  product={product}
-                  messageHandler={messageHandler}
-                  handleStatesByProductId={handleStatesByProductId}
-                />
-                <Cancel active={active} setActive={setActive} />
-              </>
             )}
           />
           <Route
@@ -492,6 +427,69 @@ const App = () => {
             )}
           />
           <Route
+            path="/shelfs"
+            exact
+            render={() => (
+              <>
+                <Shelfs
+                  active={active}
+                  deleteShelf={deleteShelf}
+                  messageHandler={messageHandler}
+                  shelfs={shelfs}
+                  shelfIsEmpty={shelfIsEmpty}
+                  setActive={setActive}
+                />
+                <Cancel active={active} setActive={setActive} />
+              </>
+            )}
+          />
+
+          <Route
+            path="/shelfs/:id"
+            exact
+            render={() => (
+              <>
+                <Slots
+                  active={active}
+                  addSlot={addSlot}
+                  deleteSlot={deleteSlot}
+                  deleteTempProduct={deleteTempProduct}
+                  messageHandler={messageHandler}
+                  shelfs={shelfs}
+                  product={product}
+                  setActive={setActive}
+                  setProduct={setProduct}
+                  setShelfs={setShelfs}
+                />
+                <AddSlotButton
+                  addSlot={addSlot}
+                  messageHandler={messageHandler}
+                  shelf={shelfs[active.shelf]}
+                />
+                <Cancel active={active} setActive={setActive} />
+              </>
+            )}
+          />
+          <Route
+            path={`/product/:id`}
+            exact
+            render={() => (
+              <>
+                <Product
+                  active={active}
+                  deleteProduct={deleteProduct}
+                  handleStatesByProductId={handleStatesByProductId}
+                  messageHandler={messageHandler}
+                  product={product}
+                  setActive={setActive}
+                  takeProduct={takeProduct}
+                />
+                <Cancel active={active} setActive={setActive} />
+              </>
+            )}
+          />
+
+          <Route
             path={"/tempview"}
             exact
             render={() => (
@@ -505,6 +503,7 @@ const App = () => {
               />
             )}
           />
+          <Route path={"/settings"} exact render={() => <Settings />} />
         </Content>
         <Notification message={message} />
         <TempMenu temp={temp} active={active} setActive={setActive} />

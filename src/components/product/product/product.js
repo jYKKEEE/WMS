@@ -1,18 +1,19 @@
-import styles from "./product.module.scss";
-import Button from "../../button/button";
 import { useParams } from "react-router-dom";
+import styles from "./product.module.scss";
+
+import Button from "../../button/button";
 
 // tuotteen näkymä
 function Product(props) {
   const {
-    product,
     active,
     deleteProduct,
-    takeProduct,
     messageHandler,
+    handleStatesByProductId,
+    product,
     setActive,
     setProduct,
-    handleStatesByProductId,
+    takeProduct,
   } = props;
 
   let { id } = useParams();
@@ -21,10 +22,7 @@ function Product(props) {
     handleStatesByProductId(id);
     console.log(`states changed on comp: product`);
   }
-  /*slots: [{barcode: Math.ceil(Math.random() * 9999999999),
-            level: 0,        
-            slot: 1,        
-            products: [{id: 65464,name: "Autonrengas",barcode: 8512758022,level: 0,slot: 1,}],},*/
+
   if (product.id === 0 && product.barcode === 0) {
     return (
       <div className={styles.badState}>

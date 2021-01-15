@@ -1,11 +1,12 @@
 import styles from "./addPage.module.scss";
+
 import AddShelf from "../shelf/addShelf";
 import Button from "../button/button";
 
 /*AddPage-komponentti sisältää toiminnot lisäämiseen ja poistamiseen.
 <Buttonit> reitittää käyttäjän seuraavin vaiheisiin */
 function AddPage(props) {
-  const { shelfs, setShelfs, setActive, messageHandler } = props;
+  const { messageHandler, shelfs, setActive, setShelfs } = props;
 
   return (
     <div className={styles.addPage}>

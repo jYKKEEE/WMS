@@ -1,21 +1,19 @@
-import Slot from "../../slot/slot";
-
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import { Link, useParams } from "react-router-dom";
 import styles from "./slots.module.scss";
-import React from "react";
-import { Link, useParams, Route } from "react-router-dom";
+
+import Slot from "../../slot/slot";
 
 function Slots(props) {
   //HUOM shelf = tällähetkellä aktiivinen hylly eli (shelf[active.shelf])
   const {
-    shelfs,
     active,
-    setActive,
-    product,
-    setProduct,
-    messageHandler,
     deleteSlot,
     deleteTempProduct,
+    messageHandler,
+    product,
+    shelfs,
+    setActive,
+    setProduct,
   } = props;
 
   let { id } = useParams();
@@ -56,15 +54,15 @@ function Slots(props) {
     <Slot
       key={index}
       active={active}
-      deleteSlot={deleteSlot}
-      product={product}
-      level={slot.level}
-      deleteTempProduct={deleteTempProduct}
-      slot={slot.slot}
-      shelf={shelfs[parseInt(id) - 1]}
-      messageHandler={messageHandler}
-      setActive={setActive}
       barcode={slot.barcode}
+      deleteSlot={deleteSlot}
+      deleteTempProduct={deleteTempProduct}
+      level={slot.level}
+      messageHandler={messageHandler}
+      product={product}
+      shelf={shelfs[parseInt(id) - 1]}
+      slot={slot.slot}
+      setActive={setActive}
       products={slot.products.map((product, index) => {
         /*Jos temp tila on TRUE  poistetaan tuotteiden linkitys*/
         if (active.temp) {
