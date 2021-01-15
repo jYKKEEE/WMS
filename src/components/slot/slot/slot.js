@@ -1,6 +1,7 @@
 import styles from "./slot.module.scss";
 
 import AddProductButton from "../addProductButton";
+import { Link } from "react-router-dom";
 import Button from "../../button/button";
 
 function Slot(props) {
@@ -18,9 +19,27 @@ function Slot(props) {
     deleteTempProduct,
   } = props;
 
+  const addProductToSlot = () => {
+    shelf.slots.map((mapSlot) => {
+      if (mapSlot.level === level && mapSlot.slot === slot) {
+        mapSlot.products.push({ id: product.id, name: product.name });
+      }
+      return null;
+    });
+  };
+
   const numberOfProoductsHeader = () => {
     if (products.length === 0) {
-      return `Products:`;
+      return (
+        <div className={styles.addProducts}>
+          <Link
+            style={{ textDecoration: "", color: "#000000" }}
+            to={"/addform"}
+          >
+            Products:
+          </Link>
+        </div>
+      );
     } else if (products.length === 1) {
       return "Product:";
     } else {
@@ -39,7 +58,6 @@ function Slot(props) {
         <div className={styles.product_barcode}>EAN:{barcode}</div>
         <div className={styles.product_products}>{products}</div>
         <div className={styles.product_receiver}>
-          {`From temp: '${product.name}'`}
           {/*Add to this slot-nappi, ilmestyy kun add state on true -->components\slot\addProductButton*/}
           <AddProductButton
             product={product}
@@ -80,7 +98,7 @@ function Slot(props) {
     </div>
   ); /*<<-- lisätään tulosteeseen Button jolla poistetaan slotti */
 
-  if (active.add) {
+  if (active.add || active.temp) {
     return <div>{productAddingOutput}</div>;
   } else if (active.deleteSlot) {
     return <div>{deleteSlotOutput}</div>;

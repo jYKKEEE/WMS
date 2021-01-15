@@ -21,13 +21,14 @@ function Cancel({ active, setActive }) {
     active.deleteShelf ||
     active.edit ||
     active.add ||
-    active.addSlot
+    active.addSlot ||
+    active.temp
   ) {
     return (
       <div className={styles.cancel}>
         <Button
           text={"Cancel"}
-          link={"/add"}
+          link={"/"}
           action={() => {
             cancel();
           }}

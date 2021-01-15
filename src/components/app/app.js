@@ -235,16 +235,14 @@ const App = () => {
     );
     return bool;
   };
+  // shelfIsEmpty parametriksi annetaan mäpätty shelfs indeksi
   const shelfIsEmpty = (index) => {
     var out = 0;
     shelfs[index].slots.map((slot) => {
       out += slot.products.length;
     });
     return out === 0;
-  };
-  const activeHand = (id) => {
-    setActive((prevState) => ({ ...prevState, productId: id }));
-  };
+  }; //<-- katsoo onko hyllyssä tuotteita.
 
   const takeProduct = (id) => {
     var array = shelfs[active.shelf];
@@ -271,13 +269,15 @@ const App = () => {
       return null;
     });
   };
-
+  //messageHandler hallitsee Notifications-komponentin tulostetta, parametriksi merkkijono / mj muuttuja.
   const messageHandler = (message) => {
     setMessage(message);
     setTimeout(() => {
       setMessage("");
     }, 3200);
   };
+
+  //productsToList ottaa koko varaston tuotteet yhdelle listalle ...components\search
   const productsToList = () => {
     var array = [];
     shelfs.map((shelf) => {
@@ -291,6 +291,7 @@ const App = () => {
     return array;
   };
 
+  // addSlot lisää uuden hyllypaikan
   const addSlot = (slot) => {
     shelfs[active.shelf].slots.push(slot);
     shelfs[active.shelf].slots.sort((a, b) => a.level - b.level);
@@ -396,7 +397,6 @@ const App = () => {
             render={() => (
               <Search
                 productsToList={productsToList}
-                activeHand={activeHand}
                 shelfs={shelfs}
                 filter={filter}
                 setFilter={setFilter}
