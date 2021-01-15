@@ -45,7 +45,7 @@ const AddSlotButton = (props) => {
     } else if (level === "") {
       messageHandler(`Please insert a number to "level"`);
       return (bool = true);
-    } else if (parseInt(slot) < 0) {
+    } else if (parseInt(slot) < 1) {
       messageHandler(`Slot number can't be lower than 1`);
       return (bool = true);
     }
