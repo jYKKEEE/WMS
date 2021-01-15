@@ -3,8 +3,9 @@ import Button from "../../button/button";
 
 function AddProductButton(props) {
   const {
-    product,
     active,
+    barcode,
+    product,
     setActive,
     shelf,
     level,
@@ -16,6 +17,7 @@ function AddProductButton(props) {
   const handleProductState = () => {
     setActive((prevState) => ({
       ...prevState,
+      barcode: barcode,
       deleteProduct: false,
       deleteSlot: false,
       deleteShelf: false,
@@ -29,7 +31,13 @@ function AddProductButton(props) {
   const addProductToSlot = () => {
     shelf.slots.map((mapSlot) => {
       if (mapSlot.level === level && mapSlot.slot === slot) {
-        mapSlot.products.push({ id: product.id, name: product.name });
+        mapSlot.products.push({
+          id: product.id,
+          name: product.name,
+          barcode: barcode,
+          slot: mapSlot.slot,
+          level: mapSlot.level,
+        });
       }
       return null;
     });

@@ -68,10 +68,11 @@ function Slot(props) {
         <div className={styles.product_receiver}>
           {/*Add to this slot-nappi, ilmestyy kun add state on true -->components\slot\addProductButton*/}
           <AddProductButton
+            active={active}
+            barcode={barcode}
+            deleteTempProduct={deleteTempProduct}
             product={product}
             shelf={shelf}
-            active={active}
-            deleteTempProduct={deleteTempProduct}
             setActive={setActive}
             messageHandler={messageHandler}
             level={level}

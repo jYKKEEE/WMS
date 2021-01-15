@@ -250,7 +250,7 @@ const App = () => {
       if (mapSlot.slot === product.slot && mapSlot.level === product.level) {
         mapSlot.products.map((ware, index) => {
           if (ware.id === id) {
-            setTemp(temp.concat(product));
+            setTemp(temp.concat(ware));
             mapSlot.products.splice(index, 1);
             //slot.splice(indeksi, montaPoistetaan);
             setActive((prevState) => ({
