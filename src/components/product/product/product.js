@@ -34,94 +34,88 @@ function Product(props) {
   }
   if (active.temp) {
     return (
-      <div className={styles.product}>
-        <div className={styles.product_data}>
-          Remove from warehouse
-          <Button
-            text={"Remove"}
-            action={() => {
-              deleteProduct(product.id);
-              messageHandler(`Product " ${product.name} " deleted!`);
-            }}
-            link={`/tempview`}
-          />
-          Put Back to shelf
-          <Button
-            text={"Return"}
-            action={() => {
-              setActive((prevState) => ({
-                ...prevState,
-                add: true,
-                temp: true,
-              }));
-              setProduct({
-                id: product.id,
-                name: product.name,
-                level: product.level,
-                slot: product.slot,
-                barcode: product.barcode,
-              });
-              messageHandler(`Select shelf for '${product.name}'`);
-            }}
-            link={`/shelfs`}
-          />
-          <div></div>
-          <div className={styles.product_name}></div>
-          <div className={styles.product_date}></div>
-          <div className={styles.product_timespan}>
-            <ul>{product.name}</ul>
-            <ul>id: {product.id}</ul>
-            <ul>EAN: {product.barcode}</ul>
+      <div>
+        <div className={styles.product}>
+          <div className={styles.product_data}>
+            <div className={styles.product_nameTemp}>
+              <h2>{product.name}</h2>
+            </div>
+            <div className={styles.buttons}>
+              <Button
+                text={"Remove"}
+                action={() => {
+                  deleteProduct(product.id);
+                  messageHandler(`Product " ${product.name} " deleted!`);
+                }}
+                link={`/tempview`}
+              />
+              <Button
+                text={"Return"}
+                action={() => {
+                  setActive((prevState) => ({
+                    ...prevState,
+                    add: true,
+                    temp: true,
+                  }));
+                  setProduct({
+                    id: product.id,
+                    name: product.name,
+                    level: product.level,
+                    slot: product.slot,
+                    barcode: product.barcode,
+                  });
+                  messageHandler(`Select shelf for '${product.name}'`);
+                }}
+                link={`/shelfs`}
+              />
+            </div>
+
+            <div className={styles.product_date}></div>
+            <div className={styles.product_timespan}>
+              <ul>{product.name}</ul>
+              <ul>id: {product.id}</ul>
+              <ul>EAN: {product.barcode}</ul>
+            </div>
+            <div className={styles.product_receiver}></div>
+            <div className={styles.product_average}></div>
           </div>
-          <div className={styles.product_receiver}></div>
-          <div className={styles.product_average}></div>
-        </div>
-      </div>
-    );
-  } else if (active.deleteProduct) {
-    return (
-      <div className={styles.product}>
-        <div className={styles.product_data}>
-          <div></div>
-          <div className={styles.product_name}>{product.name}</div>
-          <div className={styles.product_date}>
-            <Button
-              text={"Delete"}
-              action={() => {
-                deleteProduct(product.id);
-                messageHandler(`Product " ${product.name} " deleted!`);
-              }}
-              link={`/shelfs/${active.shelf}`}
-            />
-          </div>
-          <div className={styles.product_timespan}>id: {product.id}</div>
-          <div className={styles.product_receiver}>
-            barcode: {product.barcode}
-          </div>
-          <div className={styles.product_average}></div>
         </div>
       </div>
     );
   } else {
     return (
-      <div className={styles.product}>
-        <div className={styles.product_data}>
-          <div></div>
-          <div className={styles.product_name}>{product.name}</div>
-          <div className={styles.product_date}>
-            <Button
-              text={"Take"}
-              action={() => {
-                takeProduct(product.id);
+      <div>
+        <div className={styles.product}>
+          <div className={styles.product_name}>
+            <h1>{product.name}</h1>
+          </div>
+          <div className={styles.product_data}>
+            <ul>id: {product.id}</ul>
+            <ul
+              onMouseOver={() => {
+                console.log(`EAN: ${product.barcode}`);
               }}
-              link={`/shelfs/${active.shelf}`}
-            />
+            >
+              EAN:{product.barcode}
+            </ul>
           </div>
-          <div className={styles.product_timespan}>id: {product.id}</div>
-          <div className={styles.product_receiver}>
-            barcode: {product.barcode}
-          </div>
-          <div className={styles.product_average}></div>
+        </div>
+        <div className={styles.buttons}>
+          <Button
+            text={"Take"}
+            action={() => {
+              console.log(`TAKE id: ${product.id}`);
+              takeProduct(product.id);
+            }}
+            link={`/shelfs/${active.shelf + 1}`}
+          />
+          <Button
+            text={"Delete"}
+            action={() => {
+              deleteProduct(product.id);
+            }}
+            link={`/shelfs/${active.shelf + 1}`}
+          />
         </div>
       </div>
     );

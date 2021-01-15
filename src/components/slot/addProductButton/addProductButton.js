@@ -16,9 +16,13 @@ function AddProductButton(props) {
   const handleProductState = () => {
     setActive((prevState) => ({
       ...prevState,
-      add: false,
+      deleteProduct: false,
+      deleteSlot: false,
+      deleteShelf: false,
       edit: false,
+      add: false,
       addSlot: false,
+      temp: false,
     }));
   };
 
@@ -39,7 +43,16 @@ function AddProductButton(props) {
           link={"/tempview"}
           action={() => {
             addProductToSlot();
-            handleProductState();
+            setActive((prevState) => ({
+              ...prevState,
+              deleteProduct: false,
+              deleteSlot: false,
+              deleteShelf: false,
+              edit: false,
+              add: false,
+              addSlot: false,
+              temp: true,
+            }));
             deleteTempProduct(product.id);
             messageHandler(
               `Moved ${product.name} to shelf ${shelf.id}, slot: ${slot} level: ${level} from temp`

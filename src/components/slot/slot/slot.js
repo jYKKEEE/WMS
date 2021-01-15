@@ -55,7 +55,15 @@ function Slot(props) {
           className={styles.product_slot_and_level}
         >{` slot:${slot}, level: ${level}`}</div>
         <div className={styles.product_amount}>{numberOfProoductsHeader()}</div>
-        <div className={styles.product_barcode}>EAN:{barcode}</div>
+        <div className={styles.product_barcode}>
+          <div
+            onClick={() => {
+              console.log(`EAN:`);
+            }}
+          >
+            EAN:{barcode}
+          </div>
+        </div>
         <div className={styles.product_products}>{products}</div>
         <div className={styles.product_receiver}>
           {/*Add to this slot-nappi, ilmestyy kun add state on true -->components\slot\addProductButton*/}

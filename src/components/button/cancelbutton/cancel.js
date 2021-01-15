@@ -12,6 +12,7 @@ function Cancel({ active, setActive }) {
       edit: false,
       add: false,
       addSlot: false,
+      temp: false,
     }));
   }; //<-- muuttaa kaikki Delete- ja Add-tilat falseksi.
 

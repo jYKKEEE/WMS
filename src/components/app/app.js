@@ -334,7 +334,7 @@ const App = () => {
   };
   const deleteProduct = (id) => {
     var q = prompt(`Really want to delete?`, `yes`);
-
+    console.log(`vastaus: ${q}`);
     if (q !== null || q === "yes") {
       var taulu = shelfs[active.shelf];
       taulu.slots.map((mapSlot) => {
@@ -351,6 +351,7 @@ const App = () => {
                 (prevState) => [...prevState],
                 (shelfs[active.shelf] = taulu)
               );
+              messageHandler(`Product " ${product.name} " deleted!`);
             }
             return null;
           });
@@ -449,7 +450,6 @@ const App = () => {
                   product={product}
                   setProduct={setProduct}
                   setShelfs={setShelfs}
-                  deleteProduct={deleteProduct}
                   deleteTempProduct={deleteTempProduct}
                   messageHandler={messageHandler}
                 />

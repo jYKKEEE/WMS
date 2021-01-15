@@ -12,6 +12,8 @@ function Menu({ setActive }) {
       deleteProduct: false,
       deleteSlot: false,
       deleteShelf: false,
+      temp: false,
+      add: false,
     }));
   };
   return (
