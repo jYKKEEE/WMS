@@ -8,13 +8,14 @@ const AddSlotButton = (props) => {
   const { addSlot, messageHandler, shelf } = props;
   const [level, setLevel] = useState("");
   const [slot, setSlot] = useState("");
-
+  // inputtien valuen lukeminen
   const handleLevelChange = (e) => {
     setLevel(e.target.value);
   };
   const handleSlotChange = (e) => {
     setSlot(e.target.value);
   };
+
   /* Testit hyllypaikan lisäykselle palauttaa TRUE, 
   jos annettu hyllyslotti jo käytössä */
   const shelfSlotAddingTests = () => {
@@ -53,8 +54,9 @@ const AddSlotButton = (props) => {
     return bool;
   };
 
+  // newSlot käyttää propseina saatua addSlot funktiota, joka lisää varastoon parametrien mukaisen hyllypaikan
   const newSlot = () => {
-    if (shelfSlotAddingTests() === false) {
+    if (!shelfSlotAddingTests()) {
       addSlot({
         barcode: Math.ceil(Math.random() * 9999999999),
         level: parseInt(level),

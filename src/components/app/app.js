@@ -355,7 +355,9 @@ const App = () => {
         if (slot.barcode === productBarcode) {
           out = shelf.id;
         }
+        return null;
       });
+      return null;
     });
     return out;
   };

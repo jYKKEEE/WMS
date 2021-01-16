@@ -2,7 +2,7 @@ import styles from "./cancel.module.scss";
 
 import Button from "../button";
 
-//Komponentin ideana on tulostua <Button />, jos jokin Add- tai Delete-tiloista on True.
+//Komponentin ideana on tulostaa <Button /> joka peruuttaa "lisäys tilan", jos jokin Add- tai Delete-tiloista on True.
 function Cancel({ active, setActive }) {
   const cancel = () => {
     setActive((prevState) => ({

@@ -41,7 +41,8 @@ function AddPage(props) {
     </div>
   );
 }
-
+/*sivun Delete osio luettavuuden takia eri komponentissä.
+kunkin painikkeen mukaan vaihdetaan deletemuokkastiloja shelf,slot,product */
 function Delete({ setActive }) {
   return (
     <div className={styles.delete_buttons}>

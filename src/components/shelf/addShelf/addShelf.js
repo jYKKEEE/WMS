@@ -1,5 +1,6 @@
 import Button from "../../button/button";
 
+//palauttaa Buttonin joka luo uuden hyllyn ja ilmoittaa käyttäjälle luonnista messagehandlerilla
 function AddShelf(props) {
   const { shelfs, setShelfs, messageHandler } = props;
 
@@ -16,10 +17,12 @@ function AddShelf(props) {
     return array.length + 1;
   }; // <-- palauttaa seuraavan vapaan hyllynumeron
 
+  /*newShelfHandler luo uuden hyllyn varastoon. 
+  tarkistaa nextFreeShelfNum funktion avulla seuraavan vapaan numeron.*/
   const newShelfHandler = () => {
     console.log(nextFreeShelfNum());
     var shelfNum = nextFreeShelfNum();
-    /* otin tän toiminnallisuuden pois kun sotki asioita tässä vaiheessa..
+    /* tämä toiminnallisuus käyttöön jos useampi tai isompi varasto. pyytää käyttäjää määrittämään itse hyllynumeron
     //1.kysy hyllynumero kunnes antaa numeron tai painaa peruuta
     var shelfNumber = prompt(`Give number to a new shelf:`, nextFreeShelfNum());
     // addNewShell true:lla pääsee läpi false ei tee mitään
@@ -84,7 +87,7 @@ function AddShelf(props) {
 
     setShelfs(shelfs.concat(newShelf).sort((a, b) => a.id - b.id));
     messageHandler(`Shelf number: ${newShelf.id} added`);
-  }; // <-- TOIMII 100%
+  }; // <-- TOIMII
 
   return (
     <div>

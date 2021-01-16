@@ -2,6 +2,9 @@ import styles from "./tempMenu.module.scss";
 
 import Button from "../../button/button";
 
+/*TempMenu: alaruudun tilapäis säilö tuotteille.
+  Tempmenu näkyy JOS temp tilassa on tuotteita ja näkymä vaihtuu tuotteiden määrän mukaan.
+  View buttonilla siirrytään varsinaiseen temp-näkymään*/
 function TempMenu({ temp, setActive }) {
   const output = temp.map((item, index) => (
     <div key={index}>

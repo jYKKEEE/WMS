@@ -5,9 +5,9 @@ import AddIcon from "@material-ui/icons/Add";
 import ShelfsIcon from "@material-ui/icons/ListAlt";
 import SearchIcon from "@material-ui/icons/Search";
 
-//Alapalkin navigointi toiminnot
+//Alapalkin navigointi toiminnot. Jokainen iconi muuttaa muokkaus tilat FALSEksi
 function Menu({ setActive }) {
-  const setDeletesToFalse = () => {
+  const setActiveStatesToFalse = () => {
     setActive((prevState) => ({
       ...prevState,
       deleteProduct: false,
@@ -22,7 +22,7 @@ function Menu({ setActive }) {
       <div
         className={styles.menu}
         onClick={() => {
-          setDeletesToFalse();
+          setActiveStatesToFalse();
         }}
       >
         <Link

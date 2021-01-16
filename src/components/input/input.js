@@ -1,5 +1,6 @@
 import styles from "./input.module.scss";
 
+// tyylitelty input kenttä
 const Input = (props) => {
   const { onChange, text, value } = props;
   return (

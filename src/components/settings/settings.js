@@ -1,6 +1,6 @@
 import styles from "./settings.module.scss";
 
-function Settings(props) {
+function Settings() {
   return (
     <div className={styles.settings}>
       <div>
