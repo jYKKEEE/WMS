@@ -11,6 +11,7 @@ function Product(props) {
     messageHandler,
     handleStatesByProductId,
     product,
+    returnShelfNum,
     setActive,
     setProduct,
     takeProduct,
@@ -70,9 +71,22 @@ function Product(props) {
 
             <div className={styles.product_date}></div>
             <div className={styles.product_timespan}>
-              <ul>{product.name}</ul>
               <ul>id: {product.id}</ul>
-              <ul>EAN: {product.barcode}</ul>
+              <ul>
+                Previous
+                <button
+                  onClick={() => {
+                    messageHandler(
+                      `${product.name} were in shelf${returnShelfNum(
+                        product.barcode
+                      )}: slot: ${product.slot}, level:${product.level} `
+                    );
+                  }}
+                >
+                  EAN
+                </button>
+                :{product.barcode}
+              </ul>
             </div>
             <div className={styles.product_receiver}></div>
             <div className={styles.product_average}></div>
@@ -90,7 +104,7 @@ function Product(props) {
           <div className={styles.product_data}>
             <ul>id: {product.id}</ul>
             <ul
-              onMouseOver={() => {
+              onClick={() => {
                 console.log(`EAN: ${product.barcode}`);
               }}
             >
@@ -100,6 +114,13 @@ function Product(props) {
         </div>
         <div className={styles.buttons}>
           <Button
+            text={"Delete"}
+            action={() => {
+              deleteProduct(product.id);
+            }}
+            link={`/shelfs/${active.shelf + 1}`}
+          />
+          <Button
             text={"Take"}
             action={() => {
               console.log(`TAKE id: ${product.id}`);
@@ -108,11 +129,15 @@ function Product(props) {
             link={`/shelfs/${active.shelf + 1}`}
           />
           <Button
-            text={"Delete"}
+            text={"Locate"}
             action={() => {
-              deleteProduct(product.id);
+              messageHandler(
+                `Find ${product.name} @ Shelf${active.shelf + 1}: slot:${
+                  product.slot
+                },level:${product.level}.`
+              );
             }}
-            link={`/shelfs/${active.shelf + 1}`}
+            link={""}
           />
         </div>
       </div>

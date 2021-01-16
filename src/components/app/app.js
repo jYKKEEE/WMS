@@ -338,10 +338,19 @@ const App = () => {
     slot: 1,
   });
 
-  /* muuttaa myös tilat tuotteen mukaan.
-  käytetään product ja search komponenteissä parametsiksi annetaan esim mäpätty tai urlista napattu :id.
-   */
+  const returnShelfNum = (productBarcode) => {
+    var out = null;
+    shelfs.map((shelf) => {
+      shelf.slots.map((slot) => {
+        if (slot.barcode === productBarcode) {
+          out = shelf.id;
+        }
+      });
+    });
+    return out;
+  };
 
+  /*handleStatesByProductId parametri ottaa vastaan luvun jonka mukaan etsi varastosta tuotteen ja asettaa tilat tuotteen speksejä vastaaviksi*/
   const handleStatesByProductId = (productId) => {
     var bool = false;
     shelfs.map((shelf) =>
@@ -365,7 +374,7 @@ const App = () => {
       })
     );
     return bool;
-  };
+  }; //<-- käytetaan search komponentissä
   // shelfIsEmpty parametriksi annetaan mäpätty shelfs indeksi
   const shelfIsEmpty = (index) => {
     var out = 0;
@@ -373,6 +382,7 @@ const App = () => {
     return out === 0;
   }; //<-- katsoo onko hyllyssä tuotteita.
 
+  //takeProduct ottaa hyllystä id:tä vastaavan tuotteen ja siirtää temp "hyllyyn"
   const takeProduct = (id) => {
     var array = shelfs[active.shelf];
     array.slots.map((mapSlot) => {
@@ -628,6 +638,7 @@ const App = () => {
                 temp={temp}
                 active={active}
                 setActive={setActive}
+                returnShelfNum={returnShelfNum}
                 setProduct={setProduct}
                 deleteTempProduct={deleteTempProduct}
                 messageHandler={messageHandler}

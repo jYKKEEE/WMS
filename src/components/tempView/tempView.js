@@ -7,6 +7,7 @@ function TempView(props) {
     active,
     deleteTempProduct,
     messageHandler,
+    returnShelfNum,
     setActive,
     setProduct,
     temp,
@@ -22,6 +23,7 @@ function TempView(props) {
         deleteTempProduct(product.id);
       }}
       messageHandler={messageHandler}
+      returnShelfNum={returnShelfNum}
       product={product}
       setActive={setActive}
       setProduct={setProduct}
