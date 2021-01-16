@@ -75,6 +75,7 @@ function Product(props) {
               <ul>
                 Previous
                 <button
+                  className={styles.ean}
                   onClick={() => {
                     messageHandler(
                       `${product.name} were in shelf${returnShelfNum(

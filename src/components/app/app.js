@@ -461,6 +461,7 @@ const App = () => {
       messageHandler(`Shelf ${shelfNumber} deleted permanetly.`);
     }
   };
+  //kun deleteSlot-tila true, jokainen hyllypaikka saa käyttöön tämän function. paramenteinä mäpätut slot ja level
   const deleteSlot = (slot, level) => {
     var q = prompt(`Really want to delete?`, `yes`);
 
@@ -481,6 +482,7 @@ const App = () => {
       messageHandler(`slot ${slot}, level:${level} deleted permanetly.`);
     }
   };
+  //kun deleteProduct-tila true product komponentti saa deleteProduct funktion ja poistaa tuotteen annetulla id:llä
   const deleteProduct = (id) => {
     var q = prompt(`Really want to delete?`, `yes`);
     console.log(`vastaus: ${q}`);
@@ -509,6 +511,7 @@ const App = () => {
       });
     }
   };
+  // deleteTempProduct parametriksi poistettavan tuotteen id ja poistaa sen temp[] tilasta
   const deleteTempProduct = (productId) => {
     var array = temp;
     array.map((product, index) => {
