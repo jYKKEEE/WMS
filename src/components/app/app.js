@@ -306,13 +306,6 @@ const App = () => {
       },
     ],
   };
-  /*var varasto = [];
- localStorage.setItem("hyllyt", JSON.stringify(varasto));
-
-  let hyllyt = localStorage.getItem("hyllyt");
-
-  hyllyt = hyllyt ? JSON.parse(hyllyt) : [];
-  // localStorage.setItem("hyllyt", JSON.stringify([]));*/
 
   const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3, hylly4]);
   const [active, setActive] = useState({
@@ -338,6 +331,23 @@ const App = () => {
     slot: 1,
   });
 
+  /* console.log(`product add: ${active.add}`);
+  console.log(`product addSlot: ${active.addSlot}`);
+  console.log(`product edit: ${active.edit}`);
+  console.log(`active temp: ${active.temp}`);
+  console.log(`active deleteProduct: ${active.deleteProduct}`);
+  console.log(`active deleteslot: ${active.deleteSlot}`);
+  console.log(`active deleteshelf: ${active.deleteShelf}`);
+  console.log(`active Product: ${product.name} ja ${product.id}`);
+  console.log(`active Shelf: ${active.shelf}`);
+  console.log(`active barcode: ${active.barcode}`);
+  console.log(`active slot: ${product.slot}`);
+  console.log(`active level: ${product.level}`);
+  console.log(`filter: ${filter}`);
+  console.log(`message: ${message}`);*/
+
+  /*returnShelfNum parametriksi tuotteen barcode-jäsen niin palauttaa hyllyn numeron.
+  käytetään tempview komponentissa jotta käyttäjä tietää tuotteen edellisen hylly paikan */
   const returnShelfNum = (productBarcode) => {
     var out = null;
     shelfs.map((shelf) => {
@@ -400,7 +410,7 @@ const App = () => {
               (prevState) => [...prevState],
               (shelfs[active.shelf] = array)
             );
-            console.log(`take product works!`);
+            // console.log(`take product works!`);
           }
           return null;
         });
@@ -510,21 +520,6 @@ const App = () => {
     });
     setTemp(array);
   };
-
-  console.log(`product add: ${active.add}`);
-  console.log(`product addSlot: ${active.addSlot}`);
-  console.log(`product edit: ${active.edit}`);
-  console.log(`active temp: ${active.temp}`);
-  console.log(`active deleteProduct: ${active.deleteProduct}`);
-  console.log(`active deleteslot: ${active.deleteSlot}`);
-  console.log(`active deleteshelf: ${active.deleteShelf}`);
-  console.log(`active Product: ${product.name} ja ${product.id}`);
-  console.log(`active Shelf: ${active.shelf}`);
-  console.log(`active barcode: ${active.barcode}`);
-  console.log(`active slot: ${product.slot}`);
-  console.log(`active level: ${product.level}`);
-  console.log(`filter: ${filter}`);
-  console.log(`message: ${message}`);
 
   return (
     <Router>
