@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import styles from "./addForm.module.scss";
 
 import Input from "../../input";
@@ -48,22 +49,23 @@ function AddForm(props) {
 
   return (
     <div className={styles.inputs}>
-      <Input text={`Product id:`} value={id} onChange={handleId} />
+      <Input text={`Product id:`} value={id} onChange={handleId} />{" "}
       <Input text={`Product name:`} value={name} onChange={handleName} />
-
-      <Link to="/shelfs">
-        <button
-          disabled={name === "" || isNaN(parseInt(id))}
-          type="submit"
-          className={styles.addbutton}
-          onClick={() => {
-            addingHandler();
-            messageHandler(`Select shelf to add a product: ${name}`);
-          }}
-        >
-          next
-        </button>
-      </Link>
+      <div className={styles.buttons}>
+        <Link to="/shelfs">
+          <button
+            disabled={name === "" || isNaN(parseInt(id))}
+            type="submit"
+            className={styles.addbutton}
+            onClick={() => {
+              addingHandler();
+              messageHandler(`Select shelf to add a product: ${name}`);
+            }}
+          >
+            next
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

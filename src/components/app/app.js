@@ -231,6 +231,81 @@ const App = () => {
       },
     ],
   };
+  var hylly4 = {
+    id: 4,
+    slots: [
+      {
+        barcode: 8512751234,
+        slot: 1,
+        level: 0,
+        products: [
+          {
+            id: 98765,
+            name: "Polkupyörän runko",
+            barcode: 8512751234,
+            slot: 1,
+            level: 0,
+          },
+          {
+            id: 67654,
+            name: "Polkupyörän rengas",
+            barcode: 8512751234,
+            slot: 1,
+            level: 0,
+          },
+          {
+            id: 66543,
+            name: "Ohjaustanko",
+            barcode: 8512751234,
+            slot: 1,
+            level: 0,
+          },
+        ],
+      },
+      {
+        barcode: 8512751235,
+        level: 0,
+        slot: 2,
+        products: [
+          {
+            id: 61234,
+            name: "Polkimet",
+            barcode: 8512751235,
+            level: 0,
+            slot: 2,
+          },
+        ],
+      },
+      {
+        barcode: 8512751238,
+        level: 1,
+        slot: 2,
+        products: [
+          {
+            id: 64321,
+            name: "Jarruvaijeri",
+            barcode: 8512751238,
+            level: 1,
+            slot: 2,
+          },
+          {
+            id: 54321,
+            name: "Takavalo",
+            barcode: 8512751238,
+            level: 1,
+            slot: 2,
+          },
+          {
+            id: 99875,
+            name: "Polkupyörän ketjut",
+            barcode: 8512751238,
+            level: 1,
+            slot: 2,
+          },
+        ],
+      },
+    ],
+  };
   /*var varasto = [];
  localStorage.setItem("hyllyt", JSON.stringify(varasto));
 
@@ -239,7 +314,7 @@ const App = () => {
   hyllyt = hyllyt ? JSON.parse(hyllyt) : [];
   // localStorage.setItem("hyllyt", JSON.stringify([]));*/
 
-  const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3]);
+  const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3, hylly4]);
   const [active, setActive] = useState({
     add: false,
     addSlot: false,
