@@ -25,15 +25,71 @@ const App = () => {
     slots: [
       {
         barcode: 8512758022,
-        level: 0,
         slot: 1,
+        level: 0,
         products: [
           {
             id: 65464,
             name: "Autonrengas",
             barcode: 8512758022,
+            slot: 1,
+            level: 0,
+          },
+          {
+            id: 65469,
+            name: "Pakoputki",
+            barcode: 8512758022,
+            slot: 1,
+            level: 0,
+          },
+          {
+            id: 65471,
+            name: "Moottoriöljy",
+            barcode: 8512758022,
             level: 0,
             slot: 1,
+          },
+        ],
+      },
+      {
+        barcode: 8512758023,
+        level: 0,
+        slot: 2,
+        products: [
+          {
+            id: 65466,
+            name: "Moottori",
+            barcode: 8512758023,
+            level: 0,
+            slot: 2,
+          },
+        ],
+      },
+      {
+        barcode: 8512758024,
+        level: 1,
+        slot: 2,
+        products: [
+          {
+            id: 65399,
+            name: "Tuulilasi",
+            barcode: 8512758024,
+            level: 1,
+            slot: 2,
+          },
+          {
+            id: 65473,
+            name: "Tunkki",
+            barcode: 8512758024,
+            level: 1,
+            slot: 2,
+          },
+          {
+            id: 65499,
+            name: "Jarrupalat",
+            barcode: 8512758024,
+            level: 1,
+            slot: 2,
           },
         ],
       },
@@ -62,7 +118,7 @@ const App = () => {
             slot: 1,
           },
           {
-            id: 34576,
+            id: 34589,
             name: "Jakoavain",
             barcode: 1630990742,
             level: 0,

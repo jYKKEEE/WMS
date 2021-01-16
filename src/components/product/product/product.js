@@ -58,8 +58,8 @@ function Product(props) {
                   setProduct({
                     id: product.id,
                     name: product.name,
-                    level: product.level,
                     slot: product.slot,
+                    level: product.level,
                     barcode: product.barcode,
                   });
                   messageHandler(`Select shelf for '${product.name}'`);
