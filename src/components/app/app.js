@@ -346,8 +346,8 @@ const App = () => {
   console.log(`filter: ${filter}`);
   console.log(`message: ${message}`);*/
 
-  /*returnShelfNum parametriksi tuotteen barcode-jäsen niin palauttaa hyllyn numeron.
-  käytetään tempview komponentissa jotta käyttäjä tietää tuotteen edellisen hylly paikan */
+  /*returnShelfNum parametriksi tuotteen barcode niin palauttaa hyllyn numeron, jossa tuote on ollut.
+  käytetään tempview komponentissa, jotta käyttäjä tietää tuotteen edellisen hylly paikan */
   const returnShelfNum = (productBarcode) => {
     var out = null;
     shelfs.map((shelf) => {
