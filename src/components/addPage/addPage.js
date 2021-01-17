@@ -27,8 +27,8 @@ function AddPage(props) {
             deleteProduct: false,
             deleteSlot: false,
             deleteShelf: false,
-            edit: false,
             add: false,
+            edit: false,
             addSlot: true,
           }));
           messageHandler(`Select shelf to add a new slot`);
@@ -46,52 +46,57 @@ kunkin painikkeen mukaan vaihdetaan deletemuokkastiloja shelf,slot,product */
 function Delete({ setActive }) {
   return (
     <div className={styles.delete_buttons}>
-      <Button
-        text={"Shelfs"}
-        link={"/shelfs"}
-        action={() => {
-          setActive((prevState) => ({
-            ...prevState,
-            deleteProduct: false,
-            deleteSlot: false,
-            edit: false,
-            add: false,
-            addSlot: false,
-            deleteShelf: true,
-          }));
-        }}
-      />
-      <Button
-        text={"Slots"}
-        link={"/shelfs"}
-        action={() => {
-          setActive((prevState) => ({
-            ...prevState,
-            deleteProduct: false,
-            edit: false,
-            add: false,
-            addSlot: false,
-            deleteShelf: false,
-            deleteSlot: true,
-          }));
-        }}
-      />
-
-      <Button
-        text={"Products"}
-        link={"/shelfs"}
-        action={() => {
-          setActive((prevState) => ({
-            ...prevState,
-            deleteProduct: true,
-            deleteSlot: false,
-            edit: false,
-            add: false,
-            addSlot: false,
-            deleteShelf: false,
-          }));
-        }}
-      />
+      <div>
+        <Button
+          text={"Shelfs"}
+          link={"/shelfs"}
+          action={() => {
+            setActive((prevState) => ({
+              ...prevState,
+              deleteProduct: false,
+              deleteSlot: false,
+              edit: false,
+              add: false,
+              addSlot: false,
+              deleteShelf: true,
+            }));
+          }}
+        />
+      </div>
+      <div>
+        <Button
+          text={"Slots"}
+          link={"/shelfs"}
+          action={() => {
+            setActive((prevState) => ({
+              ...prevState,
+              deleteProduct: false,
+              edit: false,
+              add: false,
+              addSlot: false,
+              deleteShelf: false,
+              deleteSlot: true,
+            }));
+          }}
+        />
+      </div>
+      <div>
+        <Button
+          text={"Products"}
+          link={"/shelfs"}
+          action={() => {
+            setActive((prevState) => ({
+              ...prevState,
+              deleteProduct: true,
+              deleteSlot: false,
+              edit: false,
+              add: false,
+              addSlot: false,
+              deleteShelf: false,
+            }));
+          }}
+        />
+      </div>
     </div>
   );
 } /*<<-- Delete painikkeet omassa komponentissa,

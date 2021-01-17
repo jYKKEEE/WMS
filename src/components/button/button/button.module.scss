@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 .button {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
   width: 115px; //} napin koon säätö
   height: 23px; //}
   background: #f3f0f1;
   position: relative;
   background: #f3f0f1;
-  margin-bottom: 25px;
+  margin-bottom: 3px;
+  margin-top: 3px;
   border-radius: 32px;
   text-align: center;
   cursor: pointer;

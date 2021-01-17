@@ -13,7 +13,7 @@ import Menu from "../menu/menu";
 import Notification from "../notification";
 import Product from "../product/product";
 import Shelfs from "../shelfs";
-import Slots from "../slots/slots";
+import Slots from "../slots";
 import Settings from "../settings";
 import Search from "../search";
 import TempMenu from "../menu/tempMenu";
@@ -46,50 +46,76 @@ const App = () => {
             id: 65471,
             name: "Moottoriöljy",
             barcode: 8512758022,
-            level: 0,
             slot: 1,
+            level: 0,
           },
         ],
       },
       {
+        barcode: 8512758022,
+        slot: 1,
+        level: 1,
+        products: [],
+      },
+      {
+        barcode: 8512758022,
+        slot: 1,
+        level: 2,
+        products: [],
+      },
+      {
         barcode: 8512758023,
-        level: 0,
         slot: 2,
+        level: 0,
         products: [
           {
             id: 65466,
             name: "Moottori",
             barcode: 8512758023,
-            level: 0,
             slot: 2,
+            level: 0,
           },
         ],
       },
       {
         barcode: 8512758024,
-        level: 1,
         slot: 2,
+        level: 1,
         products: [
           {
             id: 65399,
             name: "Tuulilasi",
             barcode: 8512758024,
-            level: 1,
             slot: 2,
+            level: 1,
           },
           {
             id: 65473,
             name: "Tunkki",
             barcode: 8512758024,
-            level: 1,
             slot: 2,
+            level: 1,
           },
           {
             id: 65499,
             name: "Jarrupalat",
             barcode: 8512758024,
-            level: 1,
             slot: 2,
+            level: 1,
+          },
+        ],
+      },
+      {
+        barcode: 8512758098,
+        slot: 2,
+        level: 2,
+        products: [
+          {
+            id: 12236,
+            name: "Rengasavain",
+            barcode: 8512758098,
+            slot: 2,
+            level: 2,
           },
         ],
       },
@@ -100,64 +126,88 @@ const App = () => {
     slots: [
       {
         barcode: 1630990742,
-        level: 0,
         slot: 1,
+        level: 0,
         products: [
           {
             id: 87659,
             name: "Kissan hiekkaa",
             barcode: 1630990742,
-            level: 0,
             slot: 1,
+            level: 0,
           },
           {
             id: 34523,
             name: "Kiviä",
             barcode: 1630990742,
-            level: 0,
             slot: 1,
+            level: 0,
           },
           {
             id: 34589,
             name: "Jakoavain",
             barcode: 1630990742,
-            level: 0,
             slot: 1,
+            level: 0,
           },
           {
             id: 87657,
             name: "Vasara",
             barcode: 1630990742,
-            level: 0,
             slot: 1,
+            level: 0,
           },
         ],
       },
       {
-        barcode: 3377625525,
-        level: 3,
+        barcode: 1630999999,
+        slot: 1,
+        level: 1,
+        products: [],
+      },
+      {
+        barcode: 3322225525,
         slot: 2,
+        level: 0,
+        products: [],
+      },
+      {
+        barcode: 3377625525,
+        slot: 2,
+        level: 1,
+        products: [],
+      },
+      {
+        barcode: 3377625525,
+        slot: 2,
+        level: 2,
+        products: [],
+      },
+      {
+        barcode: 3377625525,
+        slot: 2,
+        level: 3,
         products: [
           {
             id: 23464,
             name: "Nauloja",
             barcode: 3377625525,
-            level: 3,
             slot: 2,
+            level: 3,
           },
           {
             id: 34523,
             name: "Tietokone",
             barcode: 3377625525,
-            level: 3,
             slot: 2,
+            level: 3,
           },
           {
             id: 18765,
             name: "Näyttö",
             barcode: 3377625525,
-            level: 3,
             slot: 2,
+            level: 3,
           },
         ],
       },
@@ -168,63 +218,63 @@ const App = () => {
     slots: [
       {
         barcode: 9723898802,
-        level: 0,
         slot: 1,
+        level: 0,
         products: [
           {
             id: 72341,
             name: "Kirjoja",
             barcode: 9723898802,
-            level: 0,
             slot: 1,
+            level: 0,
           },
           {
             id: 37654,
             name: "Taulu",
             barcode: 9723898802,
-            level: 0,
             slot: 1,
+            level: 0,
           },
           {
             id: 49823,
             name: "Kahvinkeitin",
             barcode: 9723898802,
-            level: 0,
             slot: 1,
+            level: 0,
           },
           {
             id: 49824,
             name: "Näyttötyö",
             barcode: 9723898802,
-            level: 0,
             slot: 1,
+            level: 0,
           },
         ],
       },
       {
-        level: 1,
-        slot: 2,
         barcode: 9800815975,
+        slot: 1,
+        level: 1,
         products: [
           {
             id: 26457,
             name: "Kitara",
+            slot: 1,
             level: 1,
-            slot: 2,
             barcode: 9800815975,
           },
           {
             id: 72345,
             name: "Kitaravahvistin",
+            slot: 1,
             level: 1,
-            slot: 2,
             barcode: 9800815975,
           },
           {
             id: 29864,
             name: "Plektroja",
+            slot: 1,
             level: 1,
-            slot: 2,
             barcode: 9800815975,
           },
         ],
@@ -264,22 +314,22 @@ const App = () => {
       },
       {
         barcode: 8512751235,
-        level: 0,
-        slot: 2,
+        slot: 1,
+        level: 1,
         products: [
           {
             id: 61234,
             name: "Polkimet",
             barcode: 8512751235,
-            level: 0,
-            slot: 2,
+            level: 1,
+            slot: 1,
           },
         ],
       },
       {
         barcode: 8512751238,
-        level: 1,
-        slot: 2,
+        slot: 1,
+        level: 2,
         products: [
           {
             id: 64321,
@@ -331,7 +381,7 @@ const App = () => {
     slot: 1,
   });
 
-  /* console.log(`product add: ${active.add}`);
+  console.log(`product add: ${active.add}`);
   console.log(`product addSlot: ${active.addSlot}`);
   console.log(`product edit: ${active.edit}`);
   console.log(`active temp: ${active.temp}`);
@@ -344,7 +394,7 @@ const App = () => {
   console.log(`active slot: ${product.slot}`);
   console.log(`active level: ${product.level}`);
   console.log(`filter: ${filter}`);
-  console.log(`message: ${message}`);*/
+  console.log(`message: ${message}`);
 
   /*returnShelfNum parametriksi tuotteen barcode niin palauttaa hyllyn numeron, jossa tuote on ollut.
   käytetään tempview komponentissa, jotta käyttäjä tietää tuotteen edellisen hylly paikan */
@@ -580,37 +630,10 @@ const App = () => {
                   shelfIsEmpty={shelfIsEmpty}
                   setActive={setActive}
                 />
-                <Cancel active={active} setActive={setActive} />
               </>
             )}
           />
 
-          <Route
-            path="/shelfs/:id"
-            exact
-            render={() => (
-              <>
-                <Slots
-                  active={active}
-                  addSlot={addSlot}
-                  deleteSlot={deleteSlot}
-                  deleteTempProduct={deleteTempProduct}
-                  messageHandler={messageHandler}
-                  shelfs={shelfs}
-                  product={product}
-                  setActive={setActive}
-                  setProduct={setProduct}
-                  setShelfs={setShelfs}
-                />
-                <AddSlotButton
-                  addSlot={addSlot}
-                  messageHandler={messageHandler}
-                  shelf={shelfs[active.shelf]}
-                />
-                <Cancel active={active} setActive={setActive} />
-              </>
-            )}
-          />
           <Route
             path={`/product/:id`}
             exact
@@ -625,7 +648,6 @@ const App = () => {
                   setActive={setActive}
                   takeProduct={takeProduct}
                 />
-                <Cancel active={active} setActive={setActive} />
               </>
             )}
           />
@@ -646,8 +668,37 @@ const App = () => {
             )}
           />
           <Route path={"/settings"} exact render={() => <Settings />} />
+
+          <Route
+            path="/shelfs/:id"
+            exact
+            render={() => (
+              <>
+                <AddSlotButton
+                  active={active}
+                  addSlot={addSlot}
+                  messageHandler={messageHandler}
+                  shelf={shelfs[active.shelf]}
+                />
+                <Slots
+                  active={active}
+                  addSlot={addSlot}
+                  deleteSlot={deleteSlot}
+                  deleteTempProduct={deleteTempProduct}
+                  messageHandler={messageHandler}
+                  shelfs={shelfs}
+                  product={product}
+                  setActive={setActive}
+                  setProduct={setProduct}
+                  setShelfs={setShelfs}
+                />
+              </>
+            )}
+          />
         </Content>
         <Notification message={message} />
+
+        <Cancel active={active} setActive={setActive} />
         <TempMenu temp={temp} active={active} setActive={setActive} />
         <Menu setActive={setActive} />
       </div>

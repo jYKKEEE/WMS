@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import styles from "./slots.module.scss";
 
-import Slot from "../../slot/slot";
+import Slot from "../slot/slot";
 
 function Slots(props) {
   //HUOM shelf = tällähetkellä aktiivinen hylly eli (shelf[active.shelf])
@@ -17,7 +17,6 @@ function Slots(props) {
   } = props;
 
   let { id } = useParams();
-
   if (parseInt(id) < 1 || isNaN(id) || id > shelfs.length) {
     id = 1;
   }

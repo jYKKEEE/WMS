@@ -37,15 +37,13 @@ function TempMenu({ temp, setActive }) {
       <div className={styles.area}>
         Products in hold:
         <div className={styles.dot}>{temp.length}</div>
-        <div className={styles.view}>
-          <Button
-            text={"view"}
-            link={"/tempview"}
-            action={() => {
-              setActive((prevState) => ({ ...prevState, temp: true }));
-            }}
-          />
-        </div>
+        <Button
+          text={"view"}
+          link={"/tempview"}
+          action={() => {
+            setActive((prevState) => ({ ...prevState, temp: true }));
+          }}
+        />
       </div>
     );
   }

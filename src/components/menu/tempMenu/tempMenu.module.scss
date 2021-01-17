@@ -2,13 +2,12 @@
 
 .area {
   background-image: $temp-background;
-  margin: 1%;
+  margin: 9px;
   color: $menu-text;
-  max-height: $menu-height;
-  min-height: $menu-height;
+  max-height: 1rem;
+  min-height: 0.2rem;
   position: relative;
   display: flex;
-
   align-items: center;
   justify-content: space-between;
   font-size: 16px;
@@ -24,6 +23,10 @@
   100% {
     opacity: 0.1;
   }
+}
+.view {
+  display: flex;
+  justify-self: center;
 }
 
 .dot {

@@ -1,18 +1,20 @@
 @import "../../../assets/styles/config.scss";
 
 .inputs {
-  padding-left: 2%;
+  position: relative;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  padding-left: 1%;
+  max-height: $header-height;
 }
 
 .addButton {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-right: 10px;
+  padding-right: 7px;
   align-content: space-between;
   margin-top: 20px; /*tällä liikutetaan alaspäin*/
 }
