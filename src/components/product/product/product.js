@@ -106,7 +106,7 @@ function Product(props) {
             <ul>id: {product.id}</ul>
             <ul
               onClick={() => {
-                console.log(`EAN: ${product.barcode}`);
+                // console.log(`EAN: ${product.barcode}`);
               }}
             >
               EAN:{product.barcode}
@@ -124,7 +124,7 @@ function Product(props) {
           <Button
             text={"Take"}
             action={() => {
-              console.log(`TAKE id: ${product.id}`);
+              //console.log(`TAKE id: ${product.id}`);
               takeProduct(product.id);
             }}
             link={`/shelfs/${active.shelf + 1}`}

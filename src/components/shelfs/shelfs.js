@@ -22,7 +22,6 @@ function Shelfs(props) {
 
   const output = shelfs.map((shelf, index) => {
     if (active.deleteShelf === true) {
-      console.log(` check  empty ${index}?: ${shelfIsEmpty(index)}`);
       if (shelfIsEmpty(index)) {
         return (
           <Link

@@ -21,8 +21,6 @@ function Slots(props) {
     id = 1;
   }
 
-  console.log(`:id on :!:!:!${id}`);
-
   //funktiot joilla muutetaan tiloja
   const productIdHandler = (id) => {
     setActive((prevState) => ({
@@ -48,7 +46,6 @@ function Slots(props) {
     }));
   };
 
-  console.log(`shelf id: `);
   const slots = shelfs[parseInt(id) - 1].slots.map((slot, index) => (
     <Slot
       key={index}

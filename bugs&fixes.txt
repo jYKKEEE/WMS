@@ -1,3 +1,6 @@
+-test:      Miten minne sijoittuu uusi hylly, kun hyllyjä lisää yli 30kpl, poistaa hyllyn 20 ja lisää uuden hyllyn.
+            Toimii: lisätty hylly tuli paikalle 20 hyllynumerolla 20.
+
 -fix        Search komponentinkautta product näkymään siirryttäessä tuotteen tiedot hukkuivat.
             Luotu handleStatesByProductId funcktio joka löytää tuotteen ja kerää tiedot.
 

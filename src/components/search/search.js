@@ -9,7 +9,7 @@ function Search(props) {
 
   //inputin value talteen
   const onChangeEvent = (e) => {
-    console.log(`${filter}`);
+    //console.log(`${filter}`);
     setFilter(e.target.value);
   };
 
