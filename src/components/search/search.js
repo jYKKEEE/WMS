@@ -45,7 +45,11 @@ function Search(props) {
     return (
       <div className={styles.search_table}>
         <h2>Search</h2>
-        <input value={filter} onChange={onChangeEvent} />
+        <input
+          value={filter}
+          onChange={onChangeEvent}
+          placeholder="Insert Name or Id"
+        />
         {output}
       </div>
     );
@@ -53,7 +57,11 @@ function Search(props) {
     return (
       <div className={styles.search_table}>
         <h2>Search</h2>
-        <input value={filter} onChange={onChangeEvent} />
+        <input
+          value={filter}
+          onChange={onChangeEvent}
+          placeholder="Insert Name or Id"
+        />
         <p>Too many products to display</p>
       </div>
     );

@@ -1,7 +1,12 @@
 import styles from "./content.module.scss";
 
 function Content(props) {
-  return <div className={styles.content}>{props.children}</div>;
+  return (
+    <div className={styles.content}>
+      <div className={styles.tag}>Jyri Linna-alho®</div>
+      {props.children}
+    </div>
+  );
 }
 
 function TempMenuContent(props) {
