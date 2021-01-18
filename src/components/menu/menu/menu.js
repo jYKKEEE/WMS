@@ -22,27 +22,21 @@ function Menu({ setActive }) {
   return (
     <>
       <div className={styles.menu}>
-        <Link
-          style={({ textDecoration: "none" }, { color: "white" })}
-          to="/add"
-        >
+        <Link to="/add">
           <AddIcon
             onClick={() => {
               setActiveStatesToFalse();
             }}
           />
         </Link>
-        <Link style={({ textDecoration: "none" }, { color: "white" })} to="/">
+        <Link to="/">
           <SearchIcon
             onClick={() => {
               setActiveStatesToFalse();
             }}
           />
         </Link>
-        <Link
-          style={({ textDecoration: "none" }, { color: "white" })}
-          to="/shelfs"
-        >
+        <Link to="/shelfs">
           <ShelfsIcon
             onClick={() => {
               setActive((prevState) => ({

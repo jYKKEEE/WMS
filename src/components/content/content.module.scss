@@ -16,3 +16,6 @@
 ::-webkit-scrollbar-thumb {
   background: $scrollbar-thumb;
 }
+.tempMenuContent > div {
+  transform: translateZ(0);
+}

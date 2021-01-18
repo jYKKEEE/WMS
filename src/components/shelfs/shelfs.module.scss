@@ -1,4 +1,7 @@
 @import "../../assets/styles/config.scss";
+.output a {
+  text-decoration: none;
+}
 .addText {
   display: flex;
   justify-content: center;

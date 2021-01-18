@@ -1,4 +1,4 @@
--test:      Miten minne sijoittuu uusi hylly, kun hyllyjä lisää yli 30kpl, poistaa hyllyn 20 ja lisää uuden hyllyn.
+﻿-test:      Miten minne sijoittuu uusi hylly, kun hyllyjä lisää yli 30kpl, poistaa hyllyn 20 ja lisää uuden hyllyn.
             Toimii: lisätty hylly tuli paikalle 20 hyllynumerolla 20.
 
 -fix        Search komponentinkautta product näkymään siirryttäessä tuotteen tiedot hukkuivat.
@@ -25,6 +25,8 @@
 
 18.1->
 
-add:        Search komponentin haku toimii myös tuotteen id:llä
+add:        Search komponentin haku myös tuotteen id:llä
+
+edit:	    AddProduct nappula sijoiteltu uudelleen
 
 

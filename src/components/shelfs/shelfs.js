@@ -25,7 +25,6 @@ function Shelfs(props) {
       if (shelfIsEmpty(index)) {
         return (
           <Link
-            style={{ textDecoration: "none" }}
             key={shelf.id}
             to={`/add`}
             onClick={() => {
@@ -53,7 +52,6 @@ function Shelfs(props) {
     } else {
       return (
         <Link
-          style={{ textDecoration: "none" }}
           key={shelf.id}
           to={`shelfs/${shelf.id}`}
           onClick={() => {
@@ -66,7 +64,7 @@ function Shelfs(props) {
     }
   });
 
-  return <div>{output}</div>;
+  return <div className={styles.output}>{output}</div>;
 }
 
 export default Shelfs;

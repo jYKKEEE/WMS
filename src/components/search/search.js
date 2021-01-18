@@ -33,12 +33,11 @@ function Search(props) {
       <Link
         key={index}
         to={`/product/${out.id}`}
-        style={{ textDecoration: "none", color: "black" }}
         onClick={() => {
           handleStatesByProductId(out.id);
         }}
       >
-        <li key={index}>{out.name}</li>
+        <ul key={index} className={styles.list}>{`${out.name} `}</ul>
       </Link>
     ));
 

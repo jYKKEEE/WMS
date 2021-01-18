@@ -27,6 +27,7 @@ function Product(props) {
   if (product.id === 0 && product.barcode === 0) {
     return (
       <div className={styles.badState}>
+        Page Not Found
         <Button text={`Back`} link={"/"} action={() => {}} />
       </div>
     );
@@ -100,7 +101,7 @@ function Product(props) {
       <div>
         <div className={styles.product}>
           <div className={styles.product_name}>
-            <h1>{product.name}</h1>
+            <h2>{product.name}</h2>
           </div>
           <div className={styles.product_data}>
             <ul>id: {product.id}</ul>

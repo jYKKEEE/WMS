@@ -17,6 +17,7 @@ import Slots from "../slots";
 import Settings from "../settings";
 import Search from "../search";
 import TempMenu from "../menu/tempMenu";
+import { TempMenuContent } from "../content";
 import TempView from "../tempView";
 
 const App = () => {
@@ -697,8 +698,8 @@ const App = () => {
             )}
           />
         </Content>
-        <Notification message={message} />
 
+        <Notification message={message} />
         <Cancel active={active} setActive={setActive} />
         <TempMenu temp={temp} active={active} setActive={setActive} />
         <Menu setActive={setActive} />

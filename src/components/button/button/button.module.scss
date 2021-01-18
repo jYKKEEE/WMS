@@ -1,11 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
+.link a {
+  text-decoration: none;
+  text-decoration-color: black;
+}
+
 .button {
   display: flex;
   justify-content: center;
   justify-self: center;
-  width: 115px; //} napin koon säätö
-  height: 23px; //}
+  width: 100px; //} napin koon säätö
+  height: 22px; //}
   background: #f3f0f1;
   position: relative;
   background: #f3f0f1;
@@ -53,8 +58,4 @@
         6px 6px 10px rgba(0, 0, 0, 0.2);
     }
   }
-}
-.route {
-  text-decoration: "none";
-  text-decoration-color: black;
 }

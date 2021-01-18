@@ -8,21 +8,19 @@ function Button(props) {
 
   if (link === "") {
     return (
-      <div>
-        <div
-          className={styles.button}
-          onClick={() => {
-            action();
-          }}
-        >
-          <span>{text}</span>
-        </div>
+      <div
+        className={styles.button}
+        onClick={() => {
+          action();
+        }}
+      >
+        <span>{text}</span>
       </div>
     );
   } else {
     return (
-      <div>
-        <Link style={{ textDecoration: "none" }} to={link}>
+      <div className={styles.link}>
+        <Link to={link}>
           <div
             className={styles.button}
             onClick={() => {
