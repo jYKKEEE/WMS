@@ -56,8 +56,8 @@ function Slot(props) {
             EAN:{barcode}
           </div>
         </div>
-        <div className={styles.product_products}>{products}</div>
-        <div className={styles.product_receiver}>
+        <div className={styles.product_products}>
+          {products}
           {/*Add to this slot-nappi, ilmestyy kun add state on true -->components\slot\addProductButton*/}
           <AddProductButton
             active={active}
@@ -71,6 +71,7 @@ function Slot(props) {
             slot={slot}
           ></AddProductButton>
         </div>
+        <div className={styles.product_receiver}></div>
       </div>
     </div>
   ); /*<<--Jos käyttäjä on lisäämässä tuotetta, lisätään tulosteeseen AddButton,

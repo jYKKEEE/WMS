@@ -11,7 +11,7 @@
 
 
 -fix:       TempMenun tekstit sekoittavat näkymän mikäli tuotteita enemmän kuin 3.
-            korjattu ehtolauseella, jos tuotteita enemmän kuin 2 näytetään {temp} tuotteiden lukumäärä.
+            korjattu ehtolauseella, jos tuotteita enemmän kuin 1 näytetään {temp} tuotteiden lukumäärä.
 
 -bugfix:    Tempview näkymän Return painike muuttaa add ja temp tilat trueksi. Mikäli käyttäjä painaa painiketta,
             mutta päättää olla lisäämättä tuotteita slotteihin tilat jäivät True. Myöhemmin palattaessa tarkastelemaan hyllyjä sovellus ehdottaa yhä tuotteiden lisäystä.
@@ -22,5 +22,9 @@
             KORJATTU sijoittamalla tilojen muuttaminen jokaisen linkin taakse jotta tempview näkymä ei vaihdu
 
 -fix:       AddSlotButton ei saa lisätä kertalisäyksellä yli 25 tasoa(level)
+
+18.1->
+
+add:        Search komponentin haku toimii myös tuotteen id:llä
 
 

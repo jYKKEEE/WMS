@@ -46,7 +46,8 @@ function AddProductButton(props) {
   if (active.temp) {
     return (
       <div className={styles.addButton}>
-        {`From temp: '${product.name}'`}
+        {`'${product.name}' `}
+
         <Button
           text={"Add here"}
           link={"/tempview"}
@@ -73,9 +74,9 @@ function AddProductButton(props) {
   } else if (active.add) {
     return (
       <div className={styles.addButton}>
-        Add product:
+        {`'${product.name}'`}
         <Button
-          text={`${product.name}`}
+          text={`Add here`}
           link={"/add"}
           action={() => {
             addProductToSlot();

@@ -9,7 +9,7 @@ function Search(props) {
 
   //inputin value talteen
   const onChangeEvent = (e) => {
-    //console.log(`${filter}`);
+    console.log(`${filter}`);
     setFilter(e.target.value);
   };
 
@@ -22,9 +22,13 @@ function Search(props) {
     40. jos filtteri palauttaa enemmän kuin 24 tuotetta niin ilmoitetaan listan olevan liian pitkä
   */
   const output = productsToList()
-    .filter((product) =>
-      product.name.toLowerCase().includes(filter.toLowerCase())
-    )
+    .filter((product) => {
+      if (isNaN(parseInt(filter))) {
+        return product.name.toLowerCase().includes(filter.toLowerCase());
+      } else {
+        return product.id.toString().includes(filter);
+      }
+    })
     .map((out, index) => (
       <Link
         key={index}

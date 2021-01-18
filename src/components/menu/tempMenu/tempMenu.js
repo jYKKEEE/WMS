@@ -14,28 +14,26 @@ function TempMenu({ temp, setActive }) {
 
   if (temp.length === 0) {
     return <></>;
-  } else if (temp.length < 3) {
+  } else if (temp.length < 2) {
     return (
       <div className={styles.area}>
-        Products in hold:<div className={styles.dot}> {output}</div>
-        <div className={styles.button}>
-          <Button
-            text={"view"}
-            link={"/tempview"}
-            action={() => {
-              setActive((prevState) => ({
-                ...prevState,
-                temp: true,
-              }));
-            }}
-          />
-        </div>
+        In temp:<div className={styles.dot}> {output}</div>
+        <Button
+          text={"view"}
+          link={"/tempview"}
+          action={() => {
+            setActive((prevState) => ({
+              ...prevState,
+              temp: true,
+            }));
+          }}
+        />
       </div>
     );
   } else {
     return (
       <div className={styles.area}>
-        Products in hold:
+        Products in temp:
         <div className={styles.dot}>{temp.length}</div>
         <Button
           text={"view"}
