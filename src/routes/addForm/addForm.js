@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import styles from "./addForm.module.scss";
+import styles from "./addform.module.scss";
 
 import Input from "../../components/input";
 

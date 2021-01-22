@@ -1,1 +1,1 @@
-export { default } from "./addSlotForm.js";
+export { default } from "./addslotform.js";

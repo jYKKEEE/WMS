@@ -1,8 +1,7 @@
 import { useState } from "react";
-import styles from "./addSlotButton.module.scss";
 
-import Button from "../../../components/button/button";
-import Input from "../../../components/input";
+import Button from "../button";
+import Input from "../../input";
 import Checkbox from "@material-ui/core/Checkbox";
 
 const AddSlotForm = (props) => {

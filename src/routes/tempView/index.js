@@ -1,1 +1,1 @@
-export { default } from "./tempView.js";
+export { default } from "./tempview.js";

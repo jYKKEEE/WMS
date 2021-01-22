@@ -1,1 +1,1 @@
-export { default } from "./addProductButton.js";
+export { default } from "./addproductbutton.js";

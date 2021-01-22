@@ -4,13 +4,13 @@ import styles from "./app.module.scss";
 import data from "../../testdata.js";
 
 //Routes komponentit
-import AddPage from "../../routes/addPage";
-import AddForm from "../../routes/addForm";
-import AddSlotForm from "../../routes/slots/addSlotForm";
+import AddPage from "../../routes/addpage";
+import AddForm from "../../routes/addform";
+import AddSlotForm from "../../routes/slots/addslotform";
 import Product from "../../routes/product";
 import Shelfs from "../../routes/shelfs";
 import Slots from "../../routes/slots/slots";
-import TempView from "../../routes/tempView";
+import TempView from "../../routes/tempview";
 
 //Komponentit
 import Cancel from "../button/cancelbutton";
@@ -20,7 +20,7 @@ import Menu from "../menu/menu";
 import Notification from "../notification";
 import Settings from "../settings";
 import Search from "../../routes/search";
-import TempMenu from "../menu/tempMenu";
+import TempMenu from "../menu/tempmenu";
 
 const App = () => {
   // shelfs (data):n tilalle tyhjä taulukko jos ei haluu käyttää testi dataa

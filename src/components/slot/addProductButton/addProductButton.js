@@ -1,4 +1,4 @@
-import styles from "./addButton.module.scss";
+import styles from "./addproductbutton.module.scss";
 
 import Button from "../../button/button";
 

@@ -1,4 +1,4 @@
-import styles from "./tempMenu.module.scss";
+import styles from "./tempmenu.module.scss";
 
 import Button from "../../button/button";
 

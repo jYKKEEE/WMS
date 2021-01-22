@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./addSlotForm.module.scss";
+import styles from "./addslotform.module.scss";
 
 import Button from "../../../components/button/button";
 import Input from "../../../components/input";

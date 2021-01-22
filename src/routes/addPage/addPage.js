@@ -1,6 +1,6 @@
-import styles from "./addPage.module.scss";
+import styles from "./addpage.module.scss";
 
-import AddShelf from "../../components/shelf/addShelf";
+import AddShelf from "../../components/shelf/addshelf";
 import Button from "../../components/button/button";
 
 /*AddPage-komponentti sisältää toiminnot lisäämiseen ja poistamiseen.

@@ -1,4 +1,4 @@
-import styles from "./tempView.module.scss";
+import styles from "./tempview.module.scss";
 
 import Product from "../product/product";
 
