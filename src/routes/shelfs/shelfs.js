@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./shelfs.module.scss";
 
-import Shelf from "../shelf/shelf";
+import Shelf from "../../components/shelf/shelf";
 
 function Shelfs(props) {
   const {

@@ -2,26 +2,27 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import styles from "./app.module.scss";
 
+//Routes komponentit
+import AddPage from "../../routes/addPage";
+import AddForm from "../../routes/addForm";
+import AddSlotForm from "../../routes/slots/addSlotForm";
+import Product from "../../routes/product";
+import Shelfs from "../../routes/shelfs";
+import Slots from "../../routes/slots/slots";
+import TempView from "../../routes/tempView";
+
 //Komponentit
-import AddPage from "../addPage";
-import AddForm from "../product/addForm";
-import AddSlotButton from "../button/addSlotButton";
 import Cancel from "../button/cancelbutton";
 import Content from "../content";
 import Header from "../header";
 import Menu from "../menu/menu";
 import Notification from "../notification";
-import Product from "../product/product";
-import Shelfs from "../shelfs";
-import Slots from "../slots";
 import Settings from "../settings";
-import Search from "../search";
+import Search from "../../routes/search";
 import TempMenu from "../menu/tempMenu";
-import { TempMenuContent } from "../content";
-import TempView from "../tempView";
 
 const App = () => {
-  var hylly1 = {
+  /*  var hylly1 = {
     id: 1,
     slots: [
       {
@@ -356,9 +357,9 @@ const App = () => {
         ],
       },
     ],
-  };
+  };*/
 
-  const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3, hylly4]);
+  const [shelfs, setShelfs] = useState([]);
   const [active, setActive] = useState({
     add: false,
     addSlot: false,
@@ -676,7 +677,7 @@ const App = () => {
             exact
             render={() => (
               <>
-                <AddSlotButton
+                <AddSlotForm
                   active={active}
                   addSlot={addSlot}
                   messageHandler={messageHandler}

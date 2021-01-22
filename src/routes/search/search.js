@@ -37,7 +37,7 @@ function Search(props) {
           handleStatesByProductId(out.id);
         }}
       >
-        <ul key={index} className={styles.list}>{`${out.name} `}</ul>
+        <p key={index} className={styles.list}>{`${out.name} `}</p>
       </Link>
     ));
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import styles from "./addForm.module.scss";
 
-import Input from "../../input";
+import Input from "../../components/input";
 
 //AddFormissa määritetään uusi varastoon lisättävä tuote ja linkitetään käyttäjä eteenpäin
 function AddForm(props) {

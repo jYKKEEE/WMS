@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import styles from "./slots.module.scss";
 
-import Slot from "../slot/slot";
+import Slot from "../../../components/slot/slot";
 
 function Slots(props) {
   //HUOM shelf = tällähetkellä aktiivinen hylly eli (shelf[active.shelf])

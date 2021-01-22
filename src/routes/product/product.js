@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import styles from "./product.module.scss";
 
-import Button from "../../button/button";
+import Button from "../../components/button/button";
 
 // tuotteen näkymä
 function Product(props) {

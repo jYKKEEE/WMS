@@ -1,11 +1,11 @@
 import { useState } from "react";
-import styles from "./addSlotButton.module.scss";
+import styles from "./addSlotForm.module.scss";
 
-import Button from "../button";
-import Input from "../../input";
+import Button from "../../../components/button/button";
+import Input from "../../../components/input";
 import Checkbox from "@material-ui/core/Checkbox";
 
-const AddSlotButton = (props) => {
+const AddSlotForm = (props) => {
   const { addSlot, messageHandler, shelf, active } = props;
 
   const [level, setLevel] = useState("");
@@ -157,4 +157,4 @@ const AddSlotButton = (props) => {
     return <></>;
   }
 };
-export default AddSlotButton;
+export default AddSlotForm;
