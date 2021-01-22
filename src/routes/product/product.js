@@ -21,14 +21,14 @@ function Product(props) {
 
   if (!isNaN(parseInt(id))) {
     handleStatesByProductId(id);
-    console.log(`states changed on comp: product`);
+    console.log(`states changed on comp: product ${id}`);
   }
 
   if (product.id === 0 && product.barcode === 0) {
     return (
       <div className={styles.badState}>
         Page Not Found
-        <Button text={`Back`} link={"/"} action={() => {}} />
+        <Button text={`Back`} link={`/`} action={() => {}} />
       </div>
     );
   }
@@ -105,13 +105,7 @@ function Product(props) {
           </div>
           <div className={styles.product_data}>
             <ul>id: {product.id}</ul>
-            <ul
-              onClick={() => {
-                // console.log(`EAN: ${product.barcode}`);
-              }}
-            >
-              EAN:{product.barcode}
-            </ul>
+            <ul>EAN:{product.barcode}</ul>
           </div>
         </div>
         <div className={styles.buttons}>
@@ -125,7 +119,6 @@ function Product(props) {
           <Button
             text={"Take"}
             action={() => {
-              //console.log(`TAKE id: ${product.id}`);
               takeProduct(product.id);
             }}
             link={`/shelfs/${active.shelf + 1}`}

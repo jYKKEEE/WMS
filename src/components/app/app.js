@@ -22,7 +22,7 @@ import Search from "../../routes/search";
 import TempMenu from "../menu/tempMenu";
 
 const App = () => {
-  /*  var hylly1 = {
+  var hylly1 = {
     id: 1,
     slots: [
       {
@@ -337,29 +337,29 @@ const App = () => {
             id: 64321,
             name: "Jarruvaijeri",
             barcode: 8512751238,
-            level: 1,
-            slot: 2,
+            slot: 1,
+            level: 2,
           },
           {
             id: 54321,
             name: "Takavalo",
             barcode: 8512751238,
-            level: 1,
-            slot: 2,
+            slot: 1,
+            level: 2,
           },
           {
             id: 99875,
             name: "Polkupyörän ketjut",
             barcode: 8512751238,
-            level: 1,
-            slot: 2,
+            slot: 1,
+            level: 2,
           },
         ],
       },
     ],
-  };*/
+  };
 
-  const [shelfs, setShelfs] = useState([]);
+  const [shelfs, setShelfs] = useState([hylly1, hylly2, hylly3, hylly4]);
   const [active, setActive] = useState({
     add: false,
     addSlot: false,
@@ -396,8 +396,8 @@ const App = () => {
   console.log(`active slot: ${product.slot}`);
   console.log(`active level: ${product.level}`);
   console.log(`filter: ${filter}`);
-  console.log(`message: ${message}`);*/
-
+  console.log(`message: ${message}`);
+*/
   /*returnShelfNum parametriksi tuotteen barcode niin palauttaa hyllyn numeron, jossa tuote on ollut.
   käytetään tempview komponentissa, jotta käyttäjä tietää tuotteen edellisen hylly paikan */
   const returnShelfNum = (productBarcode) => {
@@ -414,14 +414,26 @@ const App = () => {
     return out;
   };
 
-  /*handleStatesByProductId parametri ottaa vastaan luvun jonka mukaan etsi varastosta tuotteen ja asettaa tilat tuotteen speksejä vastaaviksi*/
+  /*handleStatesByProductId parametri ottaa vastaan luvun jonka mukaan etsi varastosta tuotteen ja asettaa tilat tuotteen speksejä vastaaviksi
+   
+    barcode: 0,
+
+
+    shelf: 0,
+    productId: 0,
+*/
   const handleStatesByProductId = (productId) => {
     var bool = false;
     shelfs.map((shelf) =>
       shelf.slots.map((mapSlot) => {
         mapSlot.products.map((product) => {
           if (product.id === productId) {
-            setActive((prevState) => ({ ...prevState, shelf: shelf.id - 1 }));
+            setActive((prevState) => ({
+              ...prevState,
+              barcode: mapSlot.barcode,
+              shelf: shelf.id - 1,
+              productId: product.id,
+            }));
             setProduct({
               id: product.id,
               name: product.name,

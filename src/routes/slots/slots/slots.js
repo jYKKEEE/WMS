@@ -4,7 +4,6 @@ import styles from "./slots.module.scss";
 import Slot from "../../../components/slot/slot";
 
 function Slots(props) {
-  //HUOM shelf = tällähetkellä aktiivinen hylly eli (shelf[active.shelf])
   const {
     active,
     deleteSlot,
