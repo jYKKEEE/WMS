@@ -48,7 +48,7 @@ const App = () => {
     slot: 1,
   });
 
-  console.log(`product add: ${active.add}`);
+  /*console.log(`product add: ${active.add}`);
   console.log(`product addSlot: ${active.addSlot}`);
   console.log(`product edit: ${active.edit}`);
   console.log(`active temp: ${active.temp}`);
@@ -61,7 +61,7 @@ const App = () => {
   console.log(`active slot: ${product.slot}`);
   console.log(`active level: ${product.level}`);
   console.log(`filter: ${filter}`);
-  console.log(`message: ${message}`);
+  console.log(`message: ${message}`);*/
 
   /*returnShelfNum parametriksi tuotteen barcode niin palauttaa hyllyn numeron, jossa tuote on ollut.
   käytetään tempview komponentissa, jotta käyttäjä tietää tuotteen edellisen hylly paikan */

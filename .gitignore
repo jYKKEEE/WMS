@@ -3,8 +3,10 @@
 # dependencies
 /node_modules
 /.pnp
+/.firebase
 .pnp.js
-bugFixes.txt
+.eslintcache
+
 
 # testing
 /coverage
@@ -22,3 +24,4 @@ bugFixes.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+bugFixes.txt
