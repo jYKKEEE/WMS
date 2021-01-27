@@ -1,5 +1,4 @@
 import styles from "./tempview.module.scss";
-
 import Product from "../product/product";
 
 function TempView(props) {

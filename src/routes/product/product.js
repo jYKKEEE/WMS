@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import styles from "./product.module.scss";
 
 import Button from "../../components/button/button";
@@ -9,25 +9,38 @@ function Product(props) {
     active,
     deleteProduct,
     messageHandler,
-    handleStatesByProductId,
-    product,
     returnShelfNum,
+    product,
+    shelfs,
     setActive,
     setProduct,
     takeProduct,
   } = props;
 
   let { id } = useParams();
+  const history = useHistory();
 
-  if (!isNaN(parseInt(id))) {
-    handleStatesByProductId(id);
-    console.log(`states changed on comp: product ${id}`);
-  }
+  // luodaan tulostettava product. Mikäli käyttäjä päivittää sivun, haetaan tuote shelfs tilasta :id perusteella
+  var returnedProduct = product;
+  shelfs
+    ? shelfs.map((shelf) =>
+        shelf.slots.map((mapSlot) =>
+          mapSlot.products.map((product) => {
+            if (product.id === parseInt(id)) {
+              returnedProduct = product;
+            }
+            return null;
+          })
+        )
+      )
+    : console.log();
 
-  if (product.id === 0 && product.barcode === 0) {
+  //takeProduct ottaa hyllystä id:tä vastaavan tuotteen ja siirtää temp "hyllyyn"
+
+  if (returnedProduct.id === 0) {
     return (
       <div className={styles.badState}>
-        Page Not Found
+        Product Not Found
         <Button text={`Back`} link={`/`} action={() => {}} />
       </div>
     );
@@ -38,14 +51,16 @@ function Product(props) {
         <div className={styles.product}>
           <div className={styles.product_data}>
             <div className={styles.product_nameTemp}>
-              <h2>{product.name}</h2>
+              <h2>{returnedProduct.name}</h2>
             </div>
             <div className={styles.buttons}>
               <Button
                 text={"Remove"}
                 action={() => {
-                  deleteProduct(product.id);
-                  messageHandler(`Product " ${product.name} " deleted!`);
+                  deleteProduct(returnedProduct.id);
+                  messageHandler(
+                    `Product " ${returnedProduct.name} " deleted!`
+                  );
                 }}
                 link={`/tempview`}
               />
@@ -58,40 +73,38 @@ function Product(props) {
                     temp: true,
                   }));
                   setProduct({
-                    id: product.id,
-                    name: product.name,
-                    slot: product.slot,
-                    level: product.level,
-                    barcode: product.barcode,
+                    id: returnedProduct.id,
+                    name: returnedProduct.name,
+                    slot: returnedProduct.slot,
+                    level: returnedProduct.level,
+                    barcode: returnedProduct.barcode,
                   });
-                  messageHandler(`Select shelf for '${product.name}'`);
+                  messageHandler(`Select shelf for '${returnedProduct.name}'`);
                 }}
                 link={`/shelfs`}
               />
             </div>
-
-            <div className={styles.product_date}></div>
-            <div className={styles.product_timespan}>
-              <ul>id: {product.id}</ul>
+            <div>
+              <ul>id: {returnedProduct.id}</ul>
               <ul>
                 Previous
                 <button
                   className={styles.ean}
                   onClick={() => {
                     messageHandler(
-                      `${product.name} were in shelf${returnShelfNum(
-                        product.barcode
-                      )}: slot: ${product.slot}, level:${product.level} `
+                      `${returnedProduct.name} were in shelf${returnShelfNum(
+                        returnedProduct.barcode
+                      )}: slot: ${returnedProduct.slot}, level:${
+                        returnedProduct.level
+                      } `
                     );
                   }}
                 >
                   EAN
                 </button>
-                :{product.barcode}
+                :{returnedProduct.barcode}
               </ul>
             </div>
-            <div className={styles.product_receiver}></div>
-            <div className={styles.product_average}></div>
           </div>
         </div>
       </div>
@@ -101,25 +114,26 @@ function Product(props) {
       <div>
         <div className={styles.product}>
           <div className={styles.product_name}>
-            <h2>{product.name}</h2>
+            <h2>{returnedProduct.name}</h2>
           </div>
           <div className={styles.product_data}>
-            <ul>id: {product.id}</ul>
-            <ul>EAN:{product.barcode}</ul>
+            <ul>id: {returnedProduct.id}</ul>
+            <ul>EAN:{returnedProduct.barcode}</ul>
           </div>
         </div>
         <div className={styles.buttons}>
           <Button
             text={"Delete"}
             action={() => {
-              deleteProduct(product.id);
+              deleteProduct(returnedProduct.id);
             }}
             link={`/shelfs/${active.shelf + 1}`}
           />
           <Button
             text={"Take"}
             action={() => {
-              takeProduct(product.id);
+              takeProduct(returnedProduct.id);
+              history.push(`/shelfs`);
             }}
             link={`/shelfs/${active.shelf + 1}`}
           />
@@ -127,9 +141,9 @@ function Product(props) {
             text={"Locate"}
             action={() => {
               messageHandler(
-                `Find ${product.name} @ Shelf${active.shelf + 1}: slot:${
-                  product.slot
-                },level:${product.level}.`
+                `Find ${returnedProduct.name} @ Shelf${
+                  active.shelf + 1
+                }: slot:${returnedProduct.slot},level:${returnedProduct.level}.`
               );
             }}
             link={""}

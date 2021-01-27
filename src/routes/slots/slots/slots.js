@@ -16,6 +16,7 @@ function Slots(props) {
   } = props;
 
   let { id } = useParams();
+
   if (parseInt(id) < 1 || isNaN(id) || id > shelfs.length) {
     id = 1;
   }

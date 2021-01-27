@@ -29,4 +29,11 @@ add:        Search komponentin haku myös tuotteen id:llä
 
 edit:	    AddProduct nappula sijoiteltu uudelleen
 
+25.1
+bug:        Tempview tuotten "add Here" nappi bugittaa. jos painaa addhere-nappia ja sitten selaimella edellinen add here tulee taas näkyviin
+            ja tuotteita voi lisätä loputtomasti.
 
+27.1
+fix:        Tempview tuotteen nappi korjattu. temp ja add tiloja muutetaan kun return- ja addhere-nappia painetaan.
+
+fix:        tuotteen lisäys ja poisto ei enään tilasta riippuvainen

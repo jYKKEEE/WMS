@@ -14,3 +14,15 @@
 .list:hover {
   transform: scale(1.5);
 }
+.filterText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.filterText_first {
+  font-size: 15px;
+}
+.filterText_second {
+  font-size: 7px;
+}

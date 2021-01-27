@@ -92,26 +92,34 @@ const AddSlotForm = (props) => {
 
   if (active.addSlot) {
     //Jos checked on true palautetaan yhden hyllypaikan lisäysnäkymä.
-    if (checked === true) {
-      return (
-        <div className={styles.inputs}>
-          <Checkbox
-            checked={checked}
-            onChange={handleChange}
-            size="small"
-            inputProps={{ "aria-label": "checkbox with small size" }}
-          />
-          <Input
-            text={`Insert slot number:`}
-            value={slot}
-            onChange={handleSlotChange}
-          />
+    return (
+      <div className={styles.inputs}>
+        <Checkbox
+          checked={checked}
+          onChange={handleChange}
+          size="small"
+          inputProps={{ "aria-label": "checkbox with small size" }}
+        />
+        <Input
+          text={`Insert slot number:`}
+          value={slot}
+          onChange={handleSlotChange}
+        />
+        {checked ? (
           <Input
             text={`Insert level number:`}
             value={level}
             onChange={handleLevelChange}
           />
-          <div className={styles.addButton}>
+        ) : (
+          <Input
+            text={`How many levels?`}
+            value={level}
+            onChange={handleLevelChange}
+          />
+        )}
+        <div className={styles.addButton}>
+          {checked ? (
             <Button
               text={"Add slot"}
               link={""}
@@ -119,29 +127,7 @@ const AddSlotForm = (props) => {
                 addOneSlot();
               }}
             />
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className={styles.inputs}>
-          <Checkbox
-            checked={checked}
-            onChange={handleChange}
-            size="small"
-            inputProps={{ "aria-label": "checkbox with small size" }}
-          />
-          <Input
-            text={`Insert slot number:`}
-            value={slot}
-            onChange={handleSlotChange}
-          />
-          <Input
-            text={`How many levels?`}
-            value={level}
-            onChange={handleLevelChange}
-          />
-          <div className={styles.addButton}>
+          ) : (
             <Button
               text={"Add slot"}
               link={""}
@@ -149,10 +135,10 @@ const AddSlotForm = (props) => {
                 addMultipleSlots(level);
               }}
             />
-          </div>
+          )}
         </div>
-      );
-    }
+      </div>
+    );
   } else {
     return <></>;
   }

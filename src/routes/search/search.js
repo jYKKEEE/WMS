@@ -1,3 +1,4 @@
+import { FontDownload } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styles from "./search.module.scss";
 
@@ -5,7 +6,7 @@ import styles from "./search.module.scss";
 Jokainen listan tuote on <Linkki> jota painamalla ohjataan Product näkymään
 */
 function Search(props) {
-  const { filter, handleStatesByProductId, productsToList, setFilter } = props;
+  const { filter, productsToList, setFilter } = props;
 
   //inputin value talteen
   const onChangeEvent = (e) => {
@@ -30,41 +31,33 @@ function Search(props) {
       }
     })
     .map((out, index) => (
-      <Link
-        key={index}
-        to={`/product/${out.id}`}
-        onClick={() => {
-          handleStatesByProductId(out.id);
-        }}
-      >
+      <Link key={index} to={`/product/${out.id}`} onClick={() => {}}>
         <p key={index} className={styles.list}>{`${out.name} `}</p>
       </Link>
     ));
 
-  if (output.length < 25) {
-    return (
-      <div className={styles.search_table}>
-        <h2>Search</h2>
-        <input
-          value={filter}
-          onChange={onChangeEvent}
-          placeholder="Insert Name or Id"
-        />
-        {output}
-      </div>
-    );
-  } else {
-    return (
-      <div className={styles.search_table}>
-        <h2>Search</h2>
-        <input
-          value={filter}
-          onChange={onChangeEvent}
-          placeholder="Insert Name or Id"
-        />
-        <p>Too many products to display</p>
-      </div>
-    );
-  }
+  return (
+    <div className={styles.search_table}>
+      <h2>Search</h2>
+      <input
+        value={filter}
+        onChange={onChangeEvent}
+        placeholder="Search by name or id:"
+      />
+      {output.length < 25 ? (
+        <>{output}</>
+      ) : (
+        <div className={styles.filterText}>
+          <p className={styles.filterText_first}>
+            Too many products to display
+          </p>
+          <p className={styles.filterText_second}>
+            Filter products by wroting something
+          </p>
+        </div>
+      )}
+    </div>
+  );
 }
+
 export default Search;

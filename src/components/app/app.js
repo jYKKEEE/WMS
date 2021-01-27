@@ -48,7 +48,7 @@ const App = () => {
     slot: 1,
   });
 
-  /*console.log(`product add: ${active.add}`);
+  console.log(`product add: ${active.add}`);
   console.log(`product addSlot: ${active.addSlot}`);
   console.log(`product edit: ${active.edit}`);
   console.log(`active temp: ${active.temp}`);
@@ -62,60 +62,21 @@ const App = () => {
   console.log(`active level: ${product.level}`);
   console.log(`filter: ${filter}`);
   console.log(`message: ${message}`);
-*/
+
   /*returnShelfNum parametriksi tuotteen barcode niin palauttaa hyllyn numeron, jossa tuote on ollut.
   käytetään tempview komponentissa, jotta käyttäjä tietää tuotteen edellisen hylly paikan */
   const returnShelfNum = (productBarcode) => {
     var out = null;
-    shelfs.map((shelf) => {
+    shelfs.map((shelf) =>
       shelf.slots.map((slot) => {
         if (slot.barcode === productBarcode) {
           out = shelf.id;
         }
         return null;
-      });
-      return null;
-    });
-    return out;
-  };
-
-  /*handleStatesByProductId parametri ottaa vastaan luvun jonka mukaan etsi varastosta tuotteen ja asettaa tilat tuotteen speksejä vastaaviksi
-   
-    barcode: 0,
-
-
-    shelf: 0,
-    productId: 0,
-*/
-  const handleStatesByProductId = (productId) => {
-    var bool = false;
-    shelfs.map((shelf) =>
-      shelf.slots.map((mapSlot) => {
-        mapSlot.products.map((product) => {
-          if (product.id === productId) {
-            setActive((prevState) => ({
-              ...prevState,
-              barcode: mapSlot.barcode,
-              shelf: shelf.id - 1,
-              productId: product.id,
-            }));
-            setProduct({
-              id: product.id,
-              name: product.name,
-              level: product.level,
-              slot: product.slot,
-              barcode: product.barcode,
-            });
-            bool = true;
-            return null;
-          }
-          return null;
-        });
-        return null;
       })
     );
-    return bool;
-  }; //<-- käytetaan search komponentissä
+    return out;
+  };
 
   // shelfIsEmpty parametriksi annetaan mäpätty shelfs indeksi
   const shelfIsEmpty = (index) => {
@@ -126,29 +87,23 @@ const App = () => {
 
   //takeProduct ottaa hyllystä id:tä vastaavan tuotteen ja siirtää temp "hyllyyn"
   const takeProduct = (id) => {
-    var array = shelfs[active.shelf];
-    array.slots.map((mapSlot) => {
-      if (mapSlot.slot === product.slot && mapSlot.level === product.level) {
-        mapSlot.products.map((ware, index) => {
-          if (ware.id === id) {
-            setTemp(temp.concat(ware));
-            mapSlot.products.splice(index, 1);
+    shelfs.map((shelf, shelfIndex) =>
+      shelf.slots.map((mapSlot) =>
+        mapSlot.products.map((product, productIndex) => {
+          if (product.id === parseInt(id)) {
+            var array = shelfs[shelfIndex];
+            setTemp(temp.concat(product));
+            mapSlot.products.splice(productIndex, 1);
             //slot.splice(indeksi, montaPoistetaan);
-            setActive((prevState) => ({
-              ...prevState,
-              deleteProduct: false,
-            }));
             setShelfs(
               (prevState) => [...prevState],
-              (shelfs[active.shelf] = array)
+              (shelfs[shelfIndex] = array)
             );
-            // console.log(`take product works!`);
           }
           return null;
-        });
-      }
-      return null;
-    });
+        })
+      )
+    );
   };
   //messageHandler hallitsee Notifications-komponentin tulostetta, parametriksi merkkijono / mj muuttuja.
   const messageHandler = (message) => {
@@ -158,7 +113,7 @@ const App = () => {
     }, 3200);
   };
 
-  //productsToList ottaa koko varaston tuotteet yhdelle listalle ...components\search
+  //productsToList laittaa koko varaston tuotteet yhdelle listalle ...components\search
   const productsToList = () => {
     var array = [];
     shelfs.map((shelf) => {
@@ -182,7 +137,7 @@ const App = () => {
 
   //DELETET
   const deleteShelf = (index) => {
-    var q = prompt(`Really want to delete?`, `yes`);
+    var q = prompt(`Really want to delete Shelf ${shelfs[index].id}?`, `yes`);
 
     if (q !== null || q === "yes") {
       const shelfNumber = shelfs[index].id;
@@ -191,8 +146,11 @@ const App = () => {
       setShelfs(newShelfs);
       setActive((prevState) => ({ ...prevState, deleteShelf: false }));
       messageHandler(`Shelf ${shelfNumber} deleted permanetly.`);
+    } else {
+      setActive((prevState) => ({ ...prevState, deleteShelf: false }));
     }
   };
+
   //kun deleteSlot-tila true, jokainen hyllypaikka saa käyttöön tämän function. paramenteinä mäpätut slot ja level
   const deleteSlot = (slot, level) => {
     var q = prompt(`Really want to delete?`, `yes`);
@@ -205,7 +163,6 @@ const App = () => {
           index = i;
         }
       }
-      console.log(`poistooon!: ${index}`);
       setShelfs(
         (prevState) => [...prevState],
         shelfs[active.shelf].slots.splice(index, 1)
@@ -217,30 +174,34 @@ const App = () => {
   //kun deleteProduct-tila true product komponentti saa deleteProduct funktion ja poistaa tuotteen annetulla id:llä
   const deleteProduct = (id) => {
     var q = prompt(`Really want to delete?`, `yes`);
-    console.log(`vastaus: ${q}`);
+
     if (q !== null || q === "yes") {
-      var taulu = shelfs[active.shelf];
-      taulu.slots.map((mapSlot) => {
-        if (mapSlot.slot === product.slot && mapSlot.level === product.level) {
-          mapSlot.products.map((ware, index) => {
-            if (ware.id === id) {
-              mapSlot.products.splice(index, 1);
-              //slot.splice(indeksi, montaPoistetaan);
-              setActive((prevState) => ({
-                ...prevState,
-                deleteProduct: false,
-              }));
-              setShelfs(
-                (prevState) => [...prevState],
-                (shelfs[active.shelf] = taulu)
-              );
-              messageHandler(`Product " ${product.name} " deleted!`);
-            }
-            return null;
-          });
-        }
-        return null;
-      });
+      shelfs.map((shelf, shelfIndex) =>
+        shelf.slots.map((mapSlot) => {
+          if (
+            mapSlot.slot === product.slot &&
+            mapSlot.level === product.level
+          ) {
+            mapSlot.products.map((product, index) => {
+              if (product.id === id) {
+                mapSlot.products.splice(index, 1);
+                //slot.splice(indeksi, montaPoistetaan);
+                setActive((prevState) => ({
+                  ...prevState,
+                  deleteProduct: false,
+                }));
+                setShelfs(
+                  (prevState) => [...prevState],
+                  (shelfs[shelfIndex] = shelf)
+                );
+                messageHandler(`Product " ${product.name} " deleted!`);
+              }
+              return null;
+            });
+          }
+          return null;
+        })
+      );
     }
   };
   // deleteTempProduct parametriksi poistettavan tuotteen id ja poistaa sen temp[] tilasta
@@ -267,7 +228,6 @@ const App = () => {
             render={() => (
               <Search
                 filter={filter}
-                handleStatesByProductId={handleStatesByProductId}
                 productsToList={productsToList}
                 shelfs={shelfs}
                 setFilter={setFilter}
@@ -322,10 +282,12 @@ const App = () => {
                 <Product
                   active={active}
                   deleteProduct={deleteProduct}
-                  handleStatesByProductId={handleStatesByProductId}
                   messageHandler={messageHandler}
                   product={product}
                   setActive={setActive}
+                  setTemp={setTemp}
+                  shelfs={shelfs}
+                  setShelfs={setShelfs}
                   takeProduct={takeProduct}
                 />
               </>

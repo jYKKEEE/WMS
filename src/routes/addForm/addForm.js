@@ -48,23 +48,26 @@ function AddForm(props) {
   }; //<<-- RETURN TRUE jos tuote syötetty oikein eli id numero ja tuotteella nimi
 
   return (
-    <div className={styles.inputs}>
-      <Input text={`Product id:`} value={id} onChange={handleId} />{" "}
-      <Input text={`Product name:`} value={name} onChange={handleName} />
-      <div className={styles.buttons}>
-        <Link to="/shelfs">
-          <button
-            disabled={name === "" || isNaN(parseInt(id))}
-            type="submit"
-            className={styles.addbutton}
-            onClick={() => {
-              addingHandler();
-              messageHandler(`Select shelf to add a product: ${name}`);
-            }}
-          >
-            next
-          </button>
-        </Link>
+    <div>
+      <div className={styles.inputs}>
+        <h1>Add a new product</h1>
+        <Input text={`Product id:`} value={id} onChange={handleId} />
+        <Input text={`Product name:`} value={name} onChange={handleName} />
+        <div className={styles.buttons}>
+          <Link to="/shelfs">
+            <button
+              disabled={name === "" || isNaN(parseInt(id))}
+              type="submit"
+              className={styles.addbutton}
+              onClick={() => {
+                addingHandler();
+                messageHandler(`Select shelf to add a product: ${name}`);
+              }}
+            >
+              continue
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

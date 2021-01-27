@@ -1,5 +1,5 @@
 import styles from "./addproductbutton.module.scss";
-
+import { useHistory } from "react-router-dom";
 import Button from "../../button/button";
 
 function AddProductButton(props) {
@@ -15,6 +15,7 @@ function AddProductButton(props) {
     deleteTempProduct,
   } = props;
 
+  const history = useHistory();
   const handleProductState = () => {
     setActive((prevState) => ({
       ...prevState,
@@ -43,15 +44,15 @@ function AddProductButton(props) {
       return null;
     });
   };
-  if (active.temp) {
+  if (active.add && active.temp) {
     return (
       <div className={styles.addButton}>
         {`'${product.name}' `}
-
         <Button
           text={"Add here"}
           link={"/tempview"}
           action={() => {
+            history.push("/");
             addProductToSlot();
             setActive((prevState) => ({
               ...prevState,
@@ -71,7 +72,7 @@ function AddProductButton(props) {
         />
       </div>
     );
-  } else if (active.add) {
+  } else if (active.add && !active.temp) {
     return (
       <div className={styles.addButton}>
         {`'${product.name}'`}
@@ -79,6 +80,7 @@ function AddProductButton(props) {
           text={`Add here`}
           link={"/add"}
           action={() => {
+            history.push("/");
             addProductToSlot();
             handleProductState();
             messageHandler(

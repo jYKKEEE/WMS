@@ -22,7 +22,7 @@ function AddShelf(props) {
   const newShelfHandler = () => {
     console.log(nextFreeShelfNum());
     var shelfNum = nextFreeShelfNum();
-    /* tämä toiminnallisuus käyttöön jos useampi tai isompi varasto. pyytää käyttäjää määrittämään itse hyllynumeron
+    /* tämä toiminnallisuus käyttöön jos useampi tai isompi varasto. Pyytää käyttäjää määrittämään itse hyllynumeron
     //1.kysy hyllynumero kunnes antaa numeron tai painaa peruuta
     var shelfNumber = prompt(`Give number to a new shelf:`, nextFreeShelfNum());
     // addNewShell true:lla pääsee läpi false ei tee mitään
