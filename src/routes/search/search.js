@@ -1,4 +1,3 @@
-import { FontDownload } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styles from "./search.module.scss";
 

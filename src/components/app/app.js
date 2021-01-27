@@ -173,37 +173,28 @@ const App = () => {
   };
   //kun deleteProduct-tila true product komponentti saa deleteProduct funktion ja poistaa tuotteen annetulla id:llä
   const deleteProduct = (id) => {
-    var q = prompt(`Really want to delete?`, `yes`);
-
+    var q = prompt(`Really want to delete this product?`, `yes`);
     if (q !== null || q === "yes") {
       shelfs.map((shelf, shelfIndex) =>
-        shelf.slots.map((mapSlot) => {
-          if (
-            mapSlot.slot === product.slot &&
-            mapSlot.level === product.level
-          ) {
-            mapSlot.products.map((product, index) => {
-              if (product.id === id) {
-                mapSlot.products.splice(index, 1);
-                //slot.splice(indeksi, montaPoistetaan);
-                setActive((prevState) => ({
-                  ...prevState,
-                  deleteProduct: false,
-                }));
-                setShelfs(
-                  (prevState) => [...prevState],
-                  (shelfs[shelfIndex] = shelf)
-                );
-                messageHandler(`Product " ${product.name} " deleted!`);
-              }
-              return null;
-            });
-          }
-          return null;
-        })
+        shelf.slots.map((mapSlot) =>
+          mapSlot.products.map((product, productIndex) => {
+            if (product.id === parseInt(id)) {
+              var array = shelfs[shelfIndex];
+              mapSlot.products.splice(productIndex, 1);
+              //slot.splice(indeksi, montaPoistetaan);
+              setShelfs(
+                (prevState) => [...prevState],
+                (shelfs[shelfIndex] = array)
+              );
+              messageHandler(`Product " ${product.name} " deleted!`);
+            }
+            return null;
+          })
+        )
       );
     }
   };
+
   // deleteTempProduct parametriksi poistettavan tuotteen id ja poistaa sen temp[] tilasta
   const deleteTempProduct = (productId) => {
     var array = temp;
