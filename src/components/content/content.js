@@ -1,4 +1,5 @@
-import styles from "./content.module.scss";
+import React from 'react';
+import styles from './content.module.scss';
 
 function Content(props) {
   return (

@@ -1,6 +1,7 @@
-import styles from "./addproductbutton.module.scss";
-import { useHistory } from "react-router-dom";
-import Button from "../../button/button";
+import React from 'react';
+import styles from './addproductbutton.module.scss';
+import { useHistory } from 'react-router-dom';
+import Button from '../../button/button';
 
 function AddProductButton(props) {
   const {
@@ -49,10 +50,10 @@ function AddProductButton(props) {
       <div className={styles.addButton}>
         {`'${product.name}' `}
         <Button
-          text={"Add here"}
-          link={"/tempview"}
+          text={'Add here'}
+          link={'/tempview'}
           action={() => {
-            history.push("/");
+            history.push('/');
             addProductToSlot();
             setActive((prevState) => ({
               ...prevState,
@@ -77,10 +78,10 @@ function AddProductButton(props) {
       <div className={styles.addButton}>
         {`'${product.name}'`}
         <Button
-          text={`Add here`}
-          link={"/add"}
+          text={'Add here'}
+          link={'/add'}
           action={() => {
-            history.push("/");
+            history.push('/');
             addProductToSlot();
             handleProductState();
             messageHandler(

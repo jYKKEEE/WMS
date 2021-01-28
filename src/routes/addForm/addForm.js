@@ -1,16 +1,17 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import styles from "./addform.module.scss";
+import styles from './addform.module.scss';
 
-import Input from "../../components/input";
+import Input from '../../components/input';
 
 //AddFormissa määritetään uusi varastoon lisättävä tuote ja linkitetään käyttäjä eteenpäin
 function AddForm(props) {
   const { messageHandler, setProduct, setActive } = props;
 
-  const [name, setName] = useState("");
-  const [id, setId] = useState("");
+  const [name, setName] = useState('');
+  const [id, setId] = useState('');
   // Tilat ja niden käsittelyt
   const handleName = (e) => {
     setName(e.target.value);
@@ -22,7 +23,7 @@ function AddForm(props) {
   /*addingHandler tarkistaa onko käyttäjän syöttämät arvon oikein.
   nimikenttä ei tyhjä ja id on Integer*/
   const addingHandler = () => {
-    if (name !== "" && id !== "" && !isNaN(parseInt(id))) {
+    if (name !== '' && id !== '' && !isNaN(parseInt(id))) {
       setProduct((prevState) => ({
         ...prevState,
         id: parseInt(id),
@@ -37,7 +38,7 @@ function AddForm(props) {
       setProduct((prevState) => ({
         ...prevState,
         id: 0,
-        name: "",
+        name: '',
       }));
       setActive((prevState) => ({
         ...prevState,
@@ -51,13 +52,13 @@ function AddForm(props) {
     <div>
       <div className={styles.inputs}>
         <h1>Add a new product</h1>
-        <Input text={`Product id:`} value={id} onChange={handleId} />
-        <Input text={`Product name:`} value={name} onChange={handleName} />
+        <Input text={'Product id:'} value={id} onChange={handleId} />
+        <Input text={'Product name:'} value={name} onChange={handleName} />
         <div className={styles.buttons}>
-          <Link to="/shelfs">
+          <Link to='/shelfs'>
             <button
-              disabled={name === "" || isNaN(parseInt(id))}
-              type="submit"
+              disabled={name === '' || isNaN(parseInt(id))}
+              type='submit'
               className={styles.addbutton}
               onClick={() => {
                 addingHandler();

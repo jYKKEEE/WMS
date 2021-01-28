@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
-import styles from "./shelfs.module.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './shelfs.module.scss';
 
-import Shelf from "../../components/shelf/shelf";
+import Shelf from '../../components/shelf/shelf';
 
 function Shelfs(props) {
   const {
@@ -26,7 +27,7 @@ function Shelfs(props) {
         return (
           <Link
             key={shelf.id}
-            to={`/add`}
+            to={'/add'}
             onClick={() => {
               deleteShelf(index);
             }}

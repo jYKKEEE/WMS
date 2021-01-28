@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import styles from "./slot.module.scss";
+import styles from './slot.module.scss';
 
-import AddProductButton from "../addproductbutton";
-import Button from "../../button/button";
+import AddProductButton from '../addproductbutton';
+import Button from '../../button/button';
 
 function Slot(props) {
   const {
@@ -25,19 +26,19 @@ function Slot(props) {
       return (
         <div className={styles.addProducts}>
           <Link
-            style={{ textDecoration: "", color: "#000000" }}
-            to={"/addform"}
+            style={{ textDecoration: '', color: '#000000' }}
+            to={'/addform'}
           >
             Products:
           </Link>
         </div>
       );
     } else if (products.length === 1) {
-      return "Product:";
+      return 'Product:';
     } else {
       return `${products.length} products:`;
     }
-  }; /*<-- slotin toinen(oikea yläkulma) headeri. 
+  }; /*<-- slotin toinen(oikea yläkulma) headeri.
   Näyttää slotissa olevien tuotteiden määrän ehdoin.*/
 
   return (
@@ -73,8 +74,8 @@ function Slot(props) {
           {/*jos tila on true, lisätään tulosteeseen Button, jolla poistetaan slotti */}
           {active.deleteSlot ? (
             <Button
-              text={"Delete this slot"}
-              link={""}
+              text={'Delete this slot'}
+              link={''}
               action={() => {
                 deleteSlot(slot, level);
               }}

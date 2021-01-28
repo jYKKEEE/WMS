@@ -1,1 +1,1 @@
-export { default } from "./slots.js";
+export { default } from './slots.js';

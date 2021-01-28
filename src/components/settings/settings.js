@@ -1,4 +1,5 @@
-import styles from "./settings.module.scss";
+import React from 'react';
+import styles from './settings.module.scss';
 
 function Settings() {
   return (

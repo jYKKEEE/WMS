@@ -9,21 +9,21 @@ const data = [
         products: [
           {
             id: 65464,
-            name: "Autonrengas",
+            name: 'Autonrengas',
             barcode: 8512758022,
             slot: 1,
             level: 0,
           },
           {
             id: 65469,
-            name: "Pakoputki",
+            name: 'Pakoputki',
             barcode: 8512758022,
             slot: 1,
             level: 0,
           },
           {
             id: 65471,
-            name: "Moottoriöljy",
+            name: 'Moottoriöljy',
             barcode: 8512758022,
             slot: 1,
             level: 0,
@@ -49,7 +49,7 @@ const data = [
         products: [
           {
             id: 65466,
-            name: "Moottori",
+            name: 'Moottori',
             barcode: 8512758023,
             slot: 2,
             level: 0,
@@ -63,21 +63,21 @@ const data = [
         products: [
           {
             id: 65399,
-            name: "Tuulilasi",
+            name: 'Tuulilasi',
             barcode: 8512758024,
             slot: 2,
             level: 1,
           },
           {
             id: 65473,
-            name: "Tunkki",
+            name: 'Tunkki',
             barcode: 8512758024,
             slot: 2,
             level: 1,
           },
           {
             id: 65499,
-            name: "Jarrupalat",
+            name: 'Jarrupalat',
             barcode: 8512758024,
             slot: 2,
             level: 1,
@@ -91,7 +91,7 @@ const data = [
         products: [
           {
             id: 12236,
-            name: "Rengasavain",
+            name: 'Rengasavain',
             barcode: 8512758098,
             slot: 2,
             level: 2,
@@ -110,28 +110,28 @@ const data = [
         products: [
           {
             id: 87659,
-            name: "Kissan hiekkaa",
+            name: 'Kissan hiekkaa',
             barcode: 1630990742,
             slot: 1,
             level: 0,
           },
           {
             id: 34523,
-            name: "Kiviä",
+            name: 'Kiviä',
             barcode: 1630990742,
             slot: 1,
             level: 0,
           },
           {
             id: 34589,
-            name: "Jakoavain",
+            name: 'Jakoavain',
             barcode: 1630990742,
             slot: 1,
             level: 0,
           },
           {
             id: 87657,
-            name: "Vasara",
+            name: 'Vasara',
             barcode: 1630990742,
             slot: 1,
             level: 0,
@@ -169,21 +169,21 @@ const data = [
         products: [
           {
             id: 23464,
-            name: "Nauloja",
+            name: 'Nauloja',
             barcode: 3377625525,
             slot: 2,
             level: 3,
           },
           {
             id: 34523,
-            name: "Tietokone",
+            name: 'Tietokone',
             barcode: 3377625525,
             slot: 2,
             level: 3,
           },
           {
             id: 18765,
-            name: "Näyttö",
+            name: 'Näyttö',
             barcode: 3377625525,
             slot: 2,
             level: 3,
@@ -202,28 +202,28 @@ const data = [
         products: [
           {
             id: 72341,
-            name: "Kirjoja",
+            name: 'Kirjoja',
             barcode: 9723898802,
             slot: 1,
             level: 0,
           },
           {
             id: 37654,
-            name: "Taulu",
+            name: 'Taulu',
             barcode: 9723898802,
             slot: 1,
             level: 0,
           },
           {
             id: 49823,
-            name: "Kahvinkeitin",
+            name: 'Kahvinkeitin',
             barcode: 9723898802,
             slot: 1,
             level: 0,
           },
           {
             id: 49824,
-            name: "Näyttötyö",
+            name: 'Näyttötyö',
             barcode: 9723898802,
             slot: 1,
             level: 0,
@@ -237,21 +237,21 @@ const data = [
         products: [
           {
             id: 26457,
-            name: "Kitara",
+            name: 'Kitara',
             slot: 1,
             level: 1,
             barcode: 9800815975,
           },
           {
             id: 72345,
-            name: "Kitaravahvistin",
+            name: 'Kitaravahvistin',
             slot: 1,
             level: 1,
             barcode: 9800815975,
           },
           {
             id: 29864,
-            name: "Plektroja",
+            name: 'Plektroja',
             slot: 1,
             level: 1,
             barcode: 9800815975,
@@ -270,21 +270,21 @@ const data = [
         products: [
           {
             id: 98765,
-            name: "Polkupyörän runko",
+            name: 'Polkupyörän runko',
             barcode: 8512751234,
             slot: 1,
             level: 0,
           },
           {
             id: 67654,
-            name: "Polkupyörän rengas",
+            name: 'Polkupyörän rengas',
             barcode: 8512751234,
             slot: 1,
             level: 0,
           },
           {
             id: 66543,
-            name: "Ohjaustanko",
+            name: 'Ohjaustanko',
             barcode: 8512751234,
             slot: 1,
             level: 0,
@@ -298,7 +298,7 @@ const data = [
         products: [
           {
             id: 61234,
-            name: "Polkimet",
+            name: 'Polkimet',
             barcode: 8512751235,
             level: 1,
             slot: 1,
@@ -312,21 +312,21 @@ const data = [
         products: [
           {
             id: 64321,
-            name: "Jarruvaijeri",
+            name: 'Jarruvaijeri',
             barcode: 8512751238,
             slot: 1,
             level: 2,
           },
           {
             id: 54321,
-            name: "Takavalo",
+            name: 'Takavalo',
             barcode: 8512751238,
             slot: 1,
             level: 2,
           },
           {
             id: 99875,
-            name: "Polkupyörän ketjut",
+            name: 'Polkupyörän ketjut',
             barcode: 8512751238,
             slot: 1,
             level: 2,
@@ -345,21 +345,21 @@ const data = [
         products: [
           {
             id: 22315,
-            name: "Kiekkoja",
+            name: 'Kiekkoja',
             barcode: 8565487234,
             slot: 1,
             level: 0,
           },
           {
             id: 33212,
-            name: "Kaunoluistimet",
+            name: 'Kaunoluistimet',
             barcode: 8565487234,
             slot: 1,
             level: 0,
           },
           {
             id: 11111,
-            name: "Teräsuojat",
+            name: 'Teräsuojat',
             barcode: 8565487234,
             slot: 1,
             level: 0,
@@ -373,7 +373,7 @@ const data = [
         products: [
           {
             id: 21222,
-            name: "Kypärä",
+            name: 'Kypärä',
             barcode: 8193845234,
             slot: 1,
             level: 1,
@@ -387,21 +387,21 @@ const data = [
         products: [
           {
             id: 31312,
-            name: "Kiekkoja",
+            name: 'Kiekkoja',
             barcode: 1253541238,
             slot: 2,
             level: 0,
           },
           {
             id: 19043,
-            name: "Maila (vanha kunnon koho)",
+            name: 'Maila (vanha kunnon koho)',
             barcode: 1253541238,
             slot: 2,
             level: 0,
           },
           {
             id: 91111,
-            name: "Luistimet",
+            name: 'Luistimet',
             barcode: 1253541238,
             slot: 2,
             level: 0,

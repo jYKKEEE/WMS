@@ -1,7 +1,8 @@
-import styles from "./addpage.module.scss";
+import React from 'react';
+import styles from './addpage.module.scss';
 
-import AddShelf from "../../components/shelf/addshelf";
-import Button from "../../components/button/button";
+import AddShelf from '../../components/shelf/addshelf';
+import Button from '../../components/button/button';
 
 /*AddPage-komponentti sisältää toiminnot lisäämiseen ja poistamiseen.
 <Buttonit> reitittää käyttäjän seuraavin vaiheisiin */
@@ -19,8 +20,8 @@ function AddPage(props) {
       />
       <h1>Slots:</h1>
       <Button
-        text={"Add Slots"}
-        link={"/shelfs"}
+        text={'Add Slots'}
+        link={'/shelfs'}
         action={() => {
           setActive((prevState) => ({
             ...prevState,
@@ -31,11 +32,11 @@ function AddPage(props) {
             edit: false,
             addSlot: true,
           }));
-          messageHandler(`Select shelf to add a new slot`);
+          messageHandler('Select shelf to add a new slot');
         }}
       />
       <h1>Product:</h1>
-      <Button text={"Add product"} link={"/addform"} action={() => {}} />
+      <Button text={'Add product'} link={'/addform'} action={() => {}} />
       <h1>Delete:</h1>
       <Delete setActive={setActive} />
     </div>
@@ -48,8 +49,8 @@ function Delete({ setActive }) {
     <div className={styles.delete_buttons}>
       <div>
         <Button
-          text={"Shelfs"}
-          link={"/shelfs"}
+          text={'Shelfs'}
+          link={'/shelfs'}
           action={() => {
             setActive((prevState) => ({
               ...prevState,
@@ -65,8 +66,8 @@ function Delete({ setActive }) {
       </div>
       <div>
         <Button
-          text={"Slots"}
-          link={"/shelfs"}
+          text={'Slots'}
+          link={'/shelfs'}
           action={() => {
             setActive((prevState) => ({
               ...prevState,
@@ -82,8 +83,8 @@ function Delete({ setActive }) {
       </div>
       <div>
         <Button
-          text={"Products"}
-          link={"/shelfs"}
+          text={'Products'}
+          link={'/shelfs'}
           action={() => {
             setActive((prevState) => ({
               ...prevState,

@@ -1,1 +1,1 @@
-export { default } from "./tempmenu.js";
+export { default } from './tempmenu.js';

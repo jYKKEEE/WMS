@@ -1,6 +1,7 @@
-import styles from "./tempmenu.module.scss";
+import React from 'react';
+import styles from './tempmenu.module.scss';
 
-import Button from "../../button/button";
+import Button from '../../button/button';
 
 /*TempMenu: alaruudun tilapäis säilö tuotteille.
   Tempmenu näkyy JOS temp tilassa on tuotteita ja näkymä vaihtuu tuotteiden määrän mukaan.
@@ -28,8 +29,8 @@ function TempMenu({ temp, setActive }) {
           </>
         )}
         <Button
-          text={"view"}
-          link={"/tempview"}
+          text={'view'}
+          link={'/tempview'}
           action={() => {
             setActive((prevState) => ({
               ...prevState,

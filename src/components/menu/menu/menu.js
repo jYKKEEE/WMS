@@ -1,9 +1,10 @@
-import styles from "./menu.module.scss";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styles from './menu.module.scss';
+import { Link } from 'react-router-dom';
 
-import AddIcon from "@material-ui/icons/Add";
-import ShelfsIcon from "@material-ui/icons/ListAlt";
-import SearchIcon from "@material-ui/icons/Search";
+import AddIcon from '@material-ui/icons/Add';
+import ShelfsIcon from '@material-ui/icons/ListAlt';
+import SearchIcon from '@material-ui/icons/Search';
 
 //Alapalkin navigointi toiminnot. Jokainen iconi muuttaa muokkaus tilat FALSEksi
 function Menu({ setActive }) {
@@ -22,21 +23,21 @@ function Menu({ setActive }) {
   return (
     <>
       <div className={styles.menu}>
-        <Link to="/add">
+        <Link to='/add'>
           <AddIcon
             onClick={() => {
               setActiveStatesToFalse();
             }}
           />
         </Link>
-        <Link to="/">
+        <Link to='/'>
           <SearchIcon
             onClick={() => {
               setActiveStatesToFalse();
             }}
           />
         </Link>
-        <Link to="/shelfs">
+        <Link to='/shelfs'>
           <ShelfsIcon
             onClick={() => {
               setActive((prevState) => ({

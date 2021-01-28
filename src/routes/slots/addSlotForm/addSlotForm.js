@@ -1,15 +1,15 @@
-import { useState } from "react";
-import styles from "./addslotform.module.scss";
+import React, { useState } from 'react';
+import styles from './addslotform.module.scss';
 
-import Button from "../../../components/button/button";
-import Input from "../../../components/input";
-import Checkbox from "@material-ui/core/Checkbox";
+import Button from '../../../components/button/button';
+import Input from '../../../components/input';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const AddSlotForm = (props) => {
   const { addSlot, messageHandler, shelf, active } = props;
 
-  const [level, setLevel] = useState("");
-  const [slot, setSlot] = useState("");
+  const [level, setLevel] = useState('');
+  const [slot, setSlot] = useState('');
   const [checked, setChecked] = useState(true);
 
   const handleChange = (event) => {
@@ -23,7 +23,7 @@ const AddSlotForm = (props) => {
     setSlot(e.target.value);
   };
 
-  /* Testit hyllypaikan lisäykselle palauttaa TRUE, 
+  /* Testit hyllypaikan lisäykselle palauttaa TRUE,
   jos annettu hyllyslotti jo käytössä */
   const shelfSlotAddingTests = (slot, level) => {
     var bool = false;
@@ -50,17 +50,17 @@ const AddSlotForm = (props) => {
     }
 
     // Jos jompikumpi input kenttä tyhjänä tai slot numero 0
-    if (slot === "") {
-      messageHandler(`Please insert a number to "slot"`);
+    if (slot === '') {
+      messageHandler('Please insert a number to "slot"');
       return (bool = true);
-    } else if (level === "") {
-      messageHandler(`Please insert a number to "level"`);
+    } else if (level === '') {
+      messageHandler('Please insert a number to "level"');
       return (bool = true);
     } else if (parseInt(slot) < 1) {
-      messageHandler(`Slot number can't be lower than 1`);
+      messageHandler('Slot number can\'t be lower than 1');
       return (bool = true);
     } else if (parseInt(level) > 25 && !checked) {
-      messageHandler(`Maximum ammount of levels: 25`);
+      messageHandler('Maximum ammount of levels: 25');
     }
     return bool;
   };
@@ -97,23 +97,23 @@ const AddSlotForm = (props) => {
         <Checkbox
           checked={checked}
           onChange={handleChange}
-          size="small"
-          inputProps={{ "aria-label": "checkbox with small size" }}
+          size='small'
+          inputProps={{ 'aria-label': 'checkbox with small size' }}
         />
         <Input
-          text={`Insert slot number:`}
+          text={'Insert slot number:'}
           value={slot}
           onChange={handleSlotChange}
         />
         {checked ? (
           <Input
-            text={`Insert level number:`}
+            text={'Insert level number:'}
             value={level}
             onChange={handleLevelChange}
           />
         ) : (
           <Input
-            text={`How many levels?`}
+            text={'How many levels?'}
             value={level}
             onChange={handleLevelChange}
           />
@@ -121,16 +121,16 @@ const AddSlotForm = (props) => {
         <div className={styles.addButton}>
           {checked ? (
             <Button
-              text={"Add slot"}
-              link={""}
+              text={'Add slot'}
+              link={''}
               action={() => {
                 addOneSlot();
               }}
             />
           ) : (
             <Button
-              text={"Add slot"}
-              link={""}
+              text={'Add slot'}
+              link={''}
               action={() => {
                 addMultipleSlots(level);
               }}

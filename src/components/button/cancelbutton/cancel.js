@@ -1,6 +1,7 @@
-import styles from "./cancel.module.scss";
+import React from 'react';
+import styles from './cancel.module.scss';
 
-import Button from "../button";
+import Button from '../button';
 
 //Komponentin ideana on tulostaa <Button /> joka peruuttaa "lisäys tilan", jos jokin Add- tai Delete-tiloista on True.
 function Cancel({ active, setActive }) {
@@ -29,8 +30,8 @@ function Cancel({ active, setActive }) {
     return (
       <div className={styles.cancel}>
         <Button
-          text={"Cancel"}
-          link={"/"}
+          text={'Cancel'}
+          link={'/'}
           action={() => {
             cancel();
           }}

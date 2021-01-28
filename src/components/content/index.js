@@ -1,1 +1,1 @@
-export { Content as default, Content, TempMenuContent } from "./content.js";
+export { Content as default, Content, TempMenuContent } from './content.js';

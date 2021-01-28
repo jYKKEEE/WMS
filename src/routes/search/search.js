@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
-import styles from "./search.module.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './search.module.scss';
 
 /*Search on input, joka filtteröi ja näyttää varastossa olevia tuotteita annetuilla arvoilla.
 Jokainen listan tuote on <Linkki> jota painamalla ohjataan Product näkymään
@@ -41,7 +42,7 @@ function Search(props) {
       <input
         value={filter}
         onChange={onChangeEvent}
-        placeholder="Search by name or id:"
+        placeholder='Search by name or id:'
       />
       {output.length < 25 ? (
         <>{output}</>

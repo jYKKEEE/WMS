@@ -1,7 +1,8 @@
-import { useParams, useHistory } from "react-router-dom";
-import styles from "./product.module.scss";
+import React from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import styles from './product.module.scss';
 
-import Button from "../../components/button/button";
+import Button from '../../components/button/button';
 
 // tuotteen näkymä
 function Product(props) {
@@ -24,15 +25,15 @@ function Product(props) {
   var returnedProduct = product;
   shelfs
     ? shelfs.map((shelf) =>
-        shelf.slots.map((mapSlot) =>
-          mapSlot.products.map((product) => {
-            if (product.id === parseInt(id)) {
-              returnedProduct = product;
-            }
-            return null;
-          })
-        )
+      shelf.slots.map((mapSlot) =>
+        mapSlot.products.map((product) => {
+          if (product.id === parseInt(id)) {
+            returnedProduct = product;
+          }
+          return null;
+        })
       )
+    )
     : console.log();
 
   //takeProduct ottaa hyllystä id:tä vastaavan tuotteen ja siirtää temp "hyllyyn"
@@ -41,7 +42,7 @@ function Product(props) {
     return (
       <div className={styles.badState}>
         Product Not Found
-        <Button text={`Back`} link={`/`} action={() => {}} />
+        <Button text={'Back'} link={'/'} action={() => {}} />
       </div>
     );
   }
@@ -55,17 +56,17 @@ function Product(props) {
             </div>
             <div className={styles.buttons}>
               <Button
-                text={"Remove"}
+                text={'Remove'}
                 action={() => {
                   deleteProduct(returnedProduct.id);
                   messageHandler(
                     `Product " ${returnedProduct.name} " deleted!`
                   );
                 }}
-                link={`/tempview`}
+                link={'/tempview'}
               />
               <Button
-                text={"Return"}
+                text={'Return'}
                 action={() => {
                   setActive((prevState) => ({
                     ...prevState,
@@ -81,7 +82,7 @@ function Product(props) {
                   });
                   messageHandler(`Select shelf for '${returnedProduct.name}'`);
                 }}
-                link={`/shelfs`}
+                link={'/shelfs'}
               />
             </div>
             <div>
@@ -123,22 +124,22 @@ function Product(props) {
         </div>
         <div className={styles.buttons}>
           <Button
-            text={"Delete"}
+            text={'Delete'}
             action={() => {
               deleteProduct(returnedProduct.id);
             }}
             link={`/shelfs/${active.shelf + 1}`}
           />
           <Button
-            text={"Take"}
+            text={'Take'}
             action={() => {
               takeProduct(returnedProduct.id);
-              history.push(`/shelfs`);
+              history.push('/shelfs');
             }}
             link={`/shelfs/${active.shelf + 1}`}
           />
           <Button
-            text={"Locate"}
+            text={'Locate'}
             action={() => {
               messageHandler(
                 `Find ${returnedProduct.name} @ Shelf${
@@ -146,7 +147,7 @@ function Product(props) {
                 }: slot:${returnedProduct.slot},level:${returnedProduct.level}.`
               );
             }}
-            link={""}
+            link={''}
           />
         </div>
       </div>

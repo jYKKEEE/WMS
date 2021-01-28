@@ -1,1 +1,1 @@
-export { default } from "./shelf.js";
+export { default } from './shelf.js';

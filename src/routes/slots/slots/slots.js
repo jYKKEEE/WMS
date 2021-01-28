@@ -1,7 +1,8 @@
-import { Link, useParams } from "react-router-dom";
-import styles from "./slots.module.scss";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import styles from './slots.module.scss';
 
-import Slot from "../../../components/slot/slot";
+import Slot from '../../../components/slot/slot';
 
 function Slots(props) {
   const {
@@ -71,7 +72,7 @@ function Slots(props) {
           return (
             <Link
               key={product.id}
-              style={{ textDecoration: "", color: "#223" }}
+              style={{ textDecoration: '', color: '#223' }}
               to={`/product/${product.id}`}
               onClick={() => {
                 productHandler(

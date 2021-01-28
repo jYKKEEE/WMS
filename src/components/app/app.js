@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import styles from "./app.module.scss";
-import data from "../../testdata.js";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import styles from './app.module.scss';
+import data from '../../testdata.js';
 
 //Routes komponentit
-import AddPage from "../../routes/addpage";
-import AddForm from "../../routes/addform";
-import AddSlotForm from "../../routes/slots/addslotform";
-import Product from "../../routes/product";
-import Shelfs from "../../routes/shelfs";
-import Slots from "../../routes/slots/slots";
-import TempView from "../../routes/tempview";
+import AddPage from '../../routes/addpage';
+import AddForm from '../../routes/addform';
+import AddSlotForm from '../../routes/slots/addslotform';
+import Product from '../../routes/product';
+import Shelfs from '../../routes/shelfs';
+import Slots from '../../routes/slots/slots';
+import TempView from '../../routes/tempview';
 
 //Komponentit
-import Cancel from "../button/cancelbutton";
-import Content from "../content";
-import Header from "../header";
-import Menu from "../menu/menu";
-import Notification from "../notification";
-import Settings from "../settings";
-import Search from "../../routes/search";
-import TempMenu from "../menu/tempmenu";
+import Cancel from '../button/cancelbutton';
+import Content from '../content';
+import Header from '../header';
+import Menu from '../menu/menu';
+import Notification from '../notification';
+import Settings from '../settings';
+import Search from '../../routes/search';
+import TempMenu from '../menu/tempmenu';
 
 const App = () => {
   // shelfs (data):n tilalle tyhjä taulukko jos ei haluu käyttää testi dataa
@@ -38,11 +38,11 @@ const App = () => {
     temp: false,
   });
   const [temp, setTemp] = useState([]);
-  const [filter, setFilter] = useState("");
-  const [message, setMessage] = useState("");
+  const [filter, setFilter] = useState('');
+  const [message, setMessage] = useState('');
   const [product, setProduct] = useState({
     id: 0,
-    name: "",
+    name: '',
     barcode: 0,
     level: 0,
     slot: 1,
@@ -109,7 +109,7 @@ const App = () => {
   const messageHandler = (message) => {
     setMessage(message);
     setTimeout(() => {
-      setMessage("");
+      setMessage('');
     }, 3200);
   };
 
@@ -137,9 +137,9 @@ const App = () => {
 
   //DELETET
   const deleteShelf = (index) => {
-    var q = prompt(`Really want to delete Shelf ${shelfs[index].id}?`, `yes`);
+    var q = prompt(`Really want to delete Shelf ${shelfs[index].id}?`, 'yes');
 
-    if (q !== null || q === "yes") {
+    if (q !== null || q === 'yes') {
       const shelfNumber = shelfs[index].id;
       var newShelfs = shelfs;
       newShelfs.splice(index, 1);
@@ -153,9 +153,9 @@ const App = () => {
 
   //kun deleteSlot-tila true, jokainen hyllypaikka saa käyttöön tämän function. paramenteinä mäpätut slot ja level
   const deleteSlot = (slot, level) => {
-    var q = prompt(`Really want to delete?`, `yes`);
+    var q = prompt('Really want to delete?', 'yes');
 
-    if (q !== null || q === "yes") {
+    if (q !== null || q === 'yes') {
       var index = 0;
       var slots = shelfs[active.shelf].slots;
       for (let i = 0; i < shelfs[active.shelf].slots.length; i++) {
@@ -173,8 +173,8 @@ const App = () => {
   };
   //kun deleteProduct-tila true product komponentti saa deleteProduct funktion ja poistaa tuotteen annetulla id:llä
   const deleteProduct = (id) => {
-    var q = prompt(`Really want to delete this product?`, `yes`);
-    if (q !== null || q === "yes") {
+    var q = prompt('Really want to delete this product?', 'yes');
+    if (q !== null || q === 'yes') {
       shelfs.map((shelf, shelfIndex) =>
         shelf.slots.map((mapSlot) =>
           mapSlot.products.map((product, productIndex) => {
@@ -214,7 +214,7 @@ const App = () => {
         <Header />
         <Content>
           <Route
-            path="/"
+            path='/'
             exact
             render={() => (
               <Search
@@ -227,7 +227,7 @@ const App = () => {
           />
 
           <Route
-            path="/add"
+            path='/add'
             render={() => (
               <AddPage
                 messageHandler={messageHandler}
@@ -238,7 +238,7 @@ const App = () => {
             )}
           />
           <Route
-            path={"/addform"}
+            path={'/addform'}
             exact
             render={() => (
               <AddForm
@@ -249,7 +249,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/shelfs"
+            path='/shelfs'
             exact
             render={() => (
               <>
@@ -266,7 +266,7 @@ const App = () => {
           />
 
           <Route
-            path={`/product/:id`}
+            path={'/product/:id'}
             exact
             render={() => (
               <>
@@ -286,7 +286,7 @@ const App = () => {
           />
 
           <Route
-            path={"/tempview"}
+            path={'/tempview'}
             exact
             render={() => (
               <TempView
@@ -300,10 +300,10 @@ const App = () => {
               />
             )}
           />
-          <Route path={"/settings"} exact render={() => <Settings />} />
+          <Route path={'/settings'} exact render={() => <Settings />} />
 
           <Route
-            path="/shelfs/:id"
+            path='/shelfs/:id'
             exact
             render={() => (
               <>

@@ -1,5 +1,6 @@
-import styles from "./tempview.module.scss";
-import Product from "../product/product";
+import React from 'react';
+import styles from './tempview.module.scss';
+import Product from '../product/product';
 
 function TempView(props) {
   const {

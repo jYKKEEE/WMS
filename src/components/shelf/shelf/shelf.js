@@ -1,4 +1,5 @@
-import styles from "./shelf.module.scss";
+import React from 'react';
+import styles from './shelf.module.scss';
 
 //hyllyn sisältö "url/shelfs"
 function Shelf(props) {
@@ -11,7 +12,7 @@ function Shelf(props) {
         <div className={styles.shelf_slotsHeader}>Slots in shelf:</div>
         <div></div>
         <div className={styles.shelf_slotsCount}>
-          {slots.length === 0 ? "Empty" : slots.length}
+          {slots.length === 0 ? 'Empty' : slots.length}
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
-import Button from "../../button/button";
+import React from 'react';
+import Button from '../../button/button';
 
 //palauttaa Buttonin joka luo uuden hyllyn ja ilmoittaa käyttäjälle luonnista messagehandlerilla
 function AddShelf(props) {
@@ -17,7 +18,7 @@ function AddShelf(props) {
     return array.length + 1;
   }; // <-- palauttaa seuraavan vapaan hyllynumeron
 
-  /*newShelfHandler luo uuden hyllyn varastoon. 
+  /*newShelfHandler luo uuden hyllyn varastoon.
   tarkistaa nextFreeShelfNum funktion avulla seuraavan vapaan numeron.*/
   const newShelfHandler = () => {
     console.log(nextFreeShelfNum());
@@ -46,7 +47,7 @@ function AddShelf(props) {
           nextFreeShelfNum()
         );
       } else {
-        /*kysytään hyllyn numeroa niin kauan kunnes 
+        /*kysytään hyllyn numeroa niin kauan kunnes
             painetaan cancel tai löytyy numero joka ei ole käytössä
         let i = 0;
         while (true) {
@@ -91,7 +92,7 @@ function AddShelf(props) {
 
   return (
     <div>
-      <Button text={"Add Shelfs"} link={""} action={newShelfHandler} />
+      <Button text={'Add Shelfs'} link={''} action={newShelfHandler} />
     </div>
   );
 }

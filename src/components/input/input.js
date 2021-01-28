@@ -1,4 +1,5 @@
-import styles from "./input.module.scss";
+import React from 'react';
+import styles from './input.module.scss';
 
 // tyylitelty input kenttä
 const Input = (props) => {
@@ -8,12 +9,12 @@ const Input = (props) => {
       <input
         value={value}
         onChange={onChange}
-        type="text"
-        name="shellName"
-        autoComplete="off"
+        type='text'
+        name='shellName'
+        autoComplete='off'
         required
       />
-      <label htmlFor="shellName" className={styles.label_name}>
+      <label htmlFor='shellName' className={styles.label_name}>
         <span className={styles.content_name}>{text}</span>
       </label>
     </div>
