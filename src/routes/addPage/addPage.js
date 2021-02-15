@@ -7,7 +7,7 @@ import Button from '../../components/button/button';
 /*AddPage-komponentti sisältää toiminnot lisäämiseen ja poistamiseen.
 <Buttonit> reitittää käyttäjän seuraavin vaiheisiin */
 function AddPage(props) {
-  const { messageHandler, shelfs, setActive, setShelfs } = props;
+  const { messageHandler, shelfs, setActive, addShelf } = props;
 
   return (
     <div className={styles.addPage}>
@@ -15,7 +15,7 @@ function AddPage(props) {
       {/*AddShelf lisää uuden seuraavan vapaan hyllyn */}
       <AddShelf
         shelfs={shelfs}
-        setShelfs={setShelfs}
+        addShelf={addShelf}
         messageHandler={messageHandler}
       />
       <h1>Slots:</h1>

@@ -36,28 +36,44 @@ function Search(props) {
       </Link>
     ));
 
-  return (
-    <div className={styles.search_table}>
-      <h2>Search</h2>
-      <input
-        value={filter}
-        onChange={onChangeEvent}
-        placeholder='Search by name or id:'
-      />
-      {output.length < 25 ? (
-        <>{output}</>
-      ) : (
-        <div className={styles.filterText}>
-          <p className={styles.filterText_first}>
-            Too many products to display
-          </p>
-          <p className={styles.filterText_second}>
-            Filter products by wroting something
-          </p>
-        </div>
-      )}
-    </div>
-  );
+  if (productsToList().length > 0 && output.length === 0) {
+    return (
+      <div className={styles.search_table}>
+        <h2>Search</h2>
+        <input
+          value={filter}
+          onChange={onChangeEvent}
+          placeholder='Search by name or id:'
+        />
+        <p className={styles.filterText_first}>
+          No products to display by `{filter}`.
+        </p>
+      </div>
+    );
+  } else {
+    return (
+      <div className={styles.search_table}>
+        <h2>Search</h2>
+        <input
+          value={filter}
+          onChange={onChangeEvent}
+          placeholder='Search by name or id:'
+        />
+        {output.length < 25 ? (
+          <>{output}</>
+        ) : (
+          <div className={styles.filterText}>
+            <p className={styles.filterText_first}>
+              Too many products to display
+            </p>
+            <p className={styles.filterText_second}>
+              Filter products by writing something
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 
 export default Search;

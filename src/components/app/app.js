@@ -48,21 +48,6 @@ const App = () => {
     slot: 1,
   });
 
-  /*console.log(`product add: ${active.add}`);
-  console.log(`product addSlot: ${active.addSlot}`);
-  console.log(`product edit: ${active.edit}`);
-  console.log(`active temp: ${active.temp}`);
-  console.log(`active deleteProduct: ${active.deleteProduct}`);
-  console.log(`active deleteslot: ${active.deleteSlot}`);
-  console.log(`active deleteshelf: ${active.deleteShelf}`);
-  console.log(`active Product: ${product.name} ja ${product.id}`);
-  console.log(`active Shelf: ${active.shelf}`);
-  console.log(`active barcode: ${active.barcode}`);
-  console.log(`active slot: ${product.slot}`);
-  console.log(`active level: ${product.level}`);
-  console.log(`filter: ${filter}`);
-  console.log(`message: ${message}`);*/
-
   /*returnShelfNum parametriksi tuotteen barcode niin palauttaa hyllyn numeron, jossa tuote on ollut.
   käytetään tempview komponentissa, jotta käyttäjä tietää tuotteen edellisen hylly paikan */
   const returnShelfNum = (productBarcode) => {
@@ -76,6 +61,10 @@ const App = () => {
       })
     );
     return out;
+  };
+
+  const addShelf = (newShelf) => {
+    setShelfs(shelfs.concat(newShelf).sort((a, b) => a.id - b.id));
   };
 
   // shelfIsEmpty parametriksi annetaan mäpätty shelfs indeksi
@@ -110,7 +99,7 @@ const App = () => {
     setMessage(message);
     setTimeout(() => {
       setMessage('');
-    }, 3200);
+    }, 3500);
   };
 
   //productsToList laittaa koko varaston tuotteet yhdelle listalle ...components\search
@@ -233,7 +222,7 @@ const App = () => {
                 messageHandler={messageHandler}
                 shelfs={shelfs}
                 setActive={setActive}
-                setShelfs={setShelfs}
+                addShelf={addShelf}
               />
             )}
           />

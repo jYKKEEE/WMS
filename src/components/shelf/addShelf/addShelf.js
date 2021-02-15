@@ -3,7 +3,7 @@ import Button from '../../button/button';
 
 //palauttaa Buttonin joka luo uuden hyllyn ja ilmoittaa käyttäjälle luonnista messagehandlerilla
 function AddShelf(props) {
-  const { shelfs, setShelfs, messageHandler } = props;
+  const { shelfs, addShelf, messageHandler } = props;
 
   const nextFreeShelfNum = () => {
     const array = [];
@@ -85,10 +85,10 @@ function AddShelf(props) {
             jos käyttäjä painaa cancel, peruutetaan kaikki. jos syöttää kirjaimen ni ei tehä mitää-
             DONELLA VIIMEISTELLÄÄN LISÄYS */
     var newShelf = { id: shelfNum, slots: [] };
+    addShelf(newShelf);
 
-    setShelfs(shelfs.concat(newShelf).sort((a, b) => a.id - b.id));
     messageHandler(`Shelf number: ${newShelf.id} added`);
-  }; // <-- TOIMII
+  }; // <-- TOIMII......
 
   return (
     <div>

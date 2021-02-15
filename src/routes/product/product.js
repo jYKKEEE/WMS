@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import styles from './product.module.scss';
@@ -25,15 +26,15 @@ function Product(props) {
   var returnedProduct = product;
   shelfs
     ? shelfs.map((shelf) =>
-      shelf.slots.map((mapSlot) =>
-        mapSlot.products.map((product) => {
-          if (product.id === parseInt(id)) {
-            returnedProduct = product;
-          }
-          return null;
-        })
+        shelf.slots.map((mapSlot) =>
+          mapSlot.products.map((product) => {
+            if (product.id === parseInt(id)) {
+              returnedProduct = product;
+            }
+            return null;
+          })
+        )
       )
-    )
     : console.log();
 
   //takeProduct ottaa hyllystä id:tä vastaavan tuotteen ja siirtää temp "hyllyyn"
@@ -56,11 +57,11 @@ function Product(props) {
             </div>
             <div className={styles.buttons}>
               <Button
-                text={'Remove'}
+                text={'Give away'}
                 action={() => {
                   deleteProduct(returnedProduct.id);
                   messageHandler(
-                    `Product " ${returnedProduct.name} " deleted!`
+                    `Product " ${returnedProduct.name} " removed!`
                   );
                 }}
                 link={'/tempview'}

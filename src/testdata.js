@@ -410,5 +410,9 @@ const data = [
       },
     ],
   },
+  {
+    id: 6,
+    slots: [],
+  },
 ];
 export default data;

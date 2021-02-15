@@ -48,7 +48,7 @@ function Slot(props) {
           className={styles.product_slot_and_level}
         >{` slot:${slot}, level: ${level}`}</div>
         <div className={styles.product_amount}>{numberOfProoductsHeader()}</div>
-        <div className={styles.product_barcode}>EAN:{barcode}</div>
+        <div className={styles.product_barcode}>EAN: {barcode}</div>
         <div className={styles.product_products}>
           {/*Jos käyttäjä on lisäämässä tuotetta, lisätään tulosteeseen AddButton,jolla lisätään tuote slottiin*/}
           {active.add || active.temp ? (

@@ -32,7 +32,7 @@ function TempView(props) {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.header}>Temporary hold View</h1>
+      <h1 className={styles.header}>Temporary hold view</h1>
       <div>{output}</div>
     </div>
   );

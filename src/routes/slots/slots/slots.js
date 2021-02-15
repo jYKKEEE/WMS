@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styles from './slots.module.scss';
@@ -17,7 +18,6 @@ function Slots(props) {
   } = props;
 
   let { id } = useParams();
-
   if (parseInt(id) < 1 || isNaN(id) || id > shelfs.length) {
     id = 1;
   }

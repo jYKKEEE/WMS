@@ -9,12 +9,7 @@ function Button(props) {
 
   if (link === '') {
     return (
-      <div
-        className={styles.button}
-        onClick={() => {
-          action();
-        }}
-      >
+      <div className={styles.button} onClick={action}>
         <span>{text}</span>
       </div>
     );
@@ -22,12 +17,7 @@ function Button(props) {
     return (
       <div className={styles.link}>
         <Link to={link}>
-          <div
-            className={styles.button}
-            onClick={() => {
-              action();
-            }}
-          >
+          <div className={styles.button} onClick={action}>
             <span>{text}</span>
           </div>
         </Link>
