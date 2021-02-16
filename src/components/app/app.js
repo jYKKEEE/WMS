@@ -321,7 +321,7 @@ const App = () => {
 
         <Notification message={message} />
         <Cancel active={active} setActive={setActive} />
-        <TempMenu temp={temp} active={active} setActive={setActive} />
+        <TempMenu temp={temp} setActive={setActive} />
         <Menu setActive={setActive} />
       </div>
     </Router>
