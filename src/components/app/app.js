@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styles from './app.module.scss';
-import data from '../../testdata.js';
+//import data from '../../testdata.js';
 
 //Routes komponentit
 import AddPage from '../../routes/addpage';
@@ -24,7 +24,7 @@ import TempMenu from '../menu/tempmenu';
 
 const App = () => {
   // shelfs (data):n tilalle tyhjä taulukko jos ei haluu käyttää testi dataa
-  const [shelfs, setShelfs] = useState(data);
+  const [shelfs, setShelfs] = useState([data]);
   const [active, setActive] = useState({
     add: false,
     addSlot: false,

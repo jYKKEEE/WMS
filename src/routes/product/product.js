@@ -57,7 +57,7 @@ function Product(props) {
             </div>
             <div className={styles.buttons}>
               <Button
-                text={'Give away'}
+                text={'Remove'}
                 action={() => {
                   deleteProduct(returnedProduct.id);
                   messageHandler(
