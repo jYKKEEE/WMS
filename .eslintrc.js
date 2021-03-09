@@ -14,7 +14,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    indent: ['error', 2],
+    indent: ['error', 2, { offsetTernaryExpressions: false }],
     'linebreak-style': ['error', 'windows'],
     quotes: ['error', 'single'],
     semi: ['error'],
