@@ -11,6 +11,5 @@ Tavaroita voi lisätä,poistaa tai siirtää paikalta toiselle.
 
 Varastosta voi etsiä tuotteita nimen tai id:n perusteella.
 
-Bäkkäri puuttuu....
 
 Preview: https://ware-61780.firebaseapp.com/
