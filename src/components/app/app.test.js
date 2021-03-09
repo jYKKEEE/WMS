@@ -46,7 +46,6 @@ const testproducts = [
     slot: 2,
   },
 ];
-
 test('App test: Temp menu bar: show name', () => {
   render(
     <Router>

@@ -94,20 +94,12 @@ function Slots(props) {
     />
   ));
 
-  if (active.add) {
-    return (
-      <div>
-        <div className={styles.products_header}> Shelf {parseInt(id)}</div>
-        {slots}
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <div className={styles.products_header}> Shelf {parseInt(id)}</div>
-        {slots}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <div className={styles.products_header}> Shelf {parseInt(id)}</div>
+      {slots}
+    </div>
+  );
 }
+
 export default Slots;

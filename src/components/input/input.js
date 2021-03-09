@@ -10,11 +10,11 @@ const Input = (props) => {
         value={value}
         onChange={onChange}
         type='text'
-        name='shellName'
+        name='shelName'
         autoComplete='off'
         required
       />
-      <label htmlFor='shellName' className={styles.label_name}>
+      <label htmlFor='shelName' className={styles.label_name}>
         <span className={styles.content_name}>{text}</span>
       </label>
     </div>

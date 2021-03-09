@@ -4,7 +4,6 @@ import { useParams, useHistory } from 'react-router-dom';
 import styles from './product.module.scss';
 
 import Button from '../../components/button/button';
-
 // tuotteen näkymä
 function Product(props) {
   const {

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import styles from './slot.module.scss';
-
 import AddProductButton from '../addproductbutton';
 import Button from '../../button/button';
 

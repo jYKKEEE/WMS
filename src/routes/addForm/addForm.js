@@ -1,9 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import styles from './addform.module.scss';
-
 import Input from '../../components/input';
 
 //AddFormissa määritetään uusi varastoon lisättävä tuote ja linkitetään käyttäjä eteenpäin

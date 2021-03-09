@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './menu.module.scss';
 import { Link } from 'react-router-dom';
-
 import AddIcon from '@material-ui/icons/Add';
 import ShelfsIcon from '@material-ui/icons/ListAlt';
 import SearchIcon from '@material-ui/icons/Search';

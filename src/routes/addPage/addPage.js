@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './addpage.module.scss';
-
 import AddShelf from '../../components/shelf/addshelf';
 import Button from '../../components/button/button';
 
@@ -11,7 +10,7 @@ function AddPage(props) {
 
   return (
     <div className={styles.addPage}>
-      <h1>Shelf:</h1>
+      <h3>Shelf:</h3>
       {/*AddShelf lisää uuden seuraavan vapaan hyllyn */}
       <AddShelf
         shelfs={shelfs}

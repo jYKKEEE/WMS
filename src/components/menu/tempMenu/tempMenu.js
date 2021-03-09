@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './tempmenu.module.scss';
-
 import Button from '../../button/button';
 
 /*TempMenu: alaruudun tilapäis säilö tuotteille.
