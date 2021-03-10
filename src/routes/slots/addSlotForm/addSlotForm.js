@@ -57,7 +57,7 @@ const AddSlotForm = (props) => {
       messageHandler('Please insert a number to "level"');
       return (bool = true);
     } else if (parseInt(slot) < 1) {
-      messageHandler('Slot number can\'t be lower than 1');
+      messageHandler('Slot number can´t be lower than 1');
       return (bool = true);
     } else if (parseInt(level) > 25 && !checked) {
       messageHandler('Maximum ammount of levels: 25');

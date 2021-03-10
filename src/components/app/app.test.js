@@ -46,7 +46,7 @@ const testproducts = [
     slot: 2,
   },
 ];
-test('App test: Temp menu bar: show name', () => {
+test('App test: Temp menu bar: show product name', () => {
   render(
     <Router>
       <TempMenu temp={testproduct} active={{ temp: true }} />
