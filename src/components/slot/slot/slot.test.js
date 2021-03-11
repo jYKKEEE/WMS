@@ -24,7 +24,29 @@ test('Slot test: show product names & barcode', () => {
   expect(testi2).toBeInTheDocument();
   const testi3 = screen.getByText(/testi321/i);
   expect(testi3).toBeInTheDocument();
+  const addButton = screen.queryByText('Add here');
+  expect(addButton).toBeNull();
+  const deleteButton = screen.queryByText('Delete this slot');
+  expect(deleteButton).toBeNull();
 });
+test('Slot test: dont show buttons when states false ', () => {
+  var testObj = { add: false, deleteSlot: false, name: 'testi' };
+  render(
+    <Slot
+      active={testObj}
+      barcode='123456789'
+      level='123'
+      shelf={data[2]}
+      slot='123'
+      products={['testi1', 'testi2', 'testi321']}
+    />
+  );
+  const addButton = screen.queryByText('Add here');
+  expect(addButton).toBeNull();
+  const deleteButton = screen.queryByText('Delete this slot');
+  expect(deleteButton).toBeNull();
+});
+
 test('addslotbutton test: Show button (Add here):', () => {
   var testObj = { add: true, deleteSlot: false, name: 'testi' };
   render(

@@ -46,6 +46,19 @@ const testproducts = [
     slot: 2,
   },
 ];
+
+test('App test: Temp menu bar not visible if empty', () => {
+  render(
+    <Router>
+      <TempMenu temp={[]} active={{ temp: false }} />
+    </Router>
+  );
+  const viewButton = screen.queryByText('view');
+  expect(viewButton).toBeNull();
+  const text = screen.queryByText('In temp:');
+  expect(text).toBeNull();
+});
+
 test('App test: Temp menu bar: show product name', () => {
   render(
     <Router>
