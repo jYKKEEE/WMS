@@ -99,7 +99,7 @@ const App = () => {
     setMessage(message);
     setTimeout(() => {
       setMessage('');
-    }, 3500);
+    }, 4000);
   };
 
   //productsToList laittaa koko varaston tuotteet yhdelle listalle ...components\search
